@@ -1,0 +1,60 @@
+{
+  "site": {
+    "title": "Humanoid Robot Directory",
+    "tagline": "Search and compare humanoid robots from around the world"
+  },
+  "nav": {
+    "home": "Home"
+  },
+  "search": {
+    "placeholder": "Search by name or manufacturer",
+    "filters": "Filters",
+    "country": "Country",
+    "category": "Category",
+    "status": "Status",
+    "all": "All",
+    "results": "{count, plural, =0 {No robots} =1 {1 robot} other {# robots}}",
+    "empty": "No robots match your search. Try adjusting the filters."
+  },
+  "category": {
+    "general": "General purpose",
+    "industrial": "Industrial",
+    "service": "Service",
+    "research": "Research",
+    "entertainment": "Entertainment",
+    "logistics": "Logistics",
+    "healthcare": "Healthcare"
+  },
+  "status": {
+    "research": "Research",
+    "commercial": "Commercial",
+    "concept": "Concept"
+  },
+  "robot": {
+    "manufacturer": "Manufacturer",
+    "country": "Country",
+    "year": "Announced",
+    "height": "Height",
+    "weight": "Weight",
+    "dof": "Degrees of freedom",
+    "specs": "Specifications",
+    "description": "Description",
+    "gallery": "Gallery",
+    "sources": "Sources",
+    "fetchedAt": "Collected",
+    "verified": "Verified",
+    "unverified": "Unverified",
+    "unverifiedNote": "Some data was gathered by AI search and has not been verified.",
+    "backToList": "Back to list",
+    "notFound": "Robot not found"
+  },
+  "units": {
+    "cm": "cm",
+    "kg": "kg"
+  },
+  "language": {
+    "label": "Language",
+    "ko": "한국어",
+    "en": "English"
+  }
+}

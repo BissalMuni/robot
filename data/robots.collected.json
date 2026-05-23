@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cyberone",
+    "name": "CyberOne",
+    "manufacturer": "Xiaomi",
+    "country": "China",
+    "year": 2022,
+    "category": "general",
+    "status": "concept",
+    "height": 177,
+    "weight": 52,
+    "dof": 21,
+    "description": "Xiaomi가 공개한 범용 휴머노이드 콘셉트. 감정 인식과 이족 보행을 시연했다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/CyberOne",
+        "fetchedAt": "2026-05-22T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "kaleido",
+    "name": "Kaleido",
+    "manufacturer": "Kawasaki Heavy Industries",
+    "country": "Japan",
+    "year": 2022,
+    "category": "service",
+    "status": "research",
+    "height": 178,
+    "weight": 60,
+    "dof": 34,
+    "description": "Kawasaki가 재난 대응·인명 구조를 목표로 개발한 인간 크기 휴머노이드. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://kawasakirobotics.com/",
+        "fetchedAt": "2026-05-22T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "t-hr3",
+    "name": "T-HR3",
+    "manufacturer": "Toyota",
+    "country": "Japan",
+    "year": 2017,
+    "category": "research",
+    "status": "research",
+    "height": 154,
+    "weight": 75,
+    "dof": 32,
+    "description": "Toyota의 3세대 휴머노이드 연구 플랫폼. 원격 조작(텔레프레즌스)과 전신 균형 제어를 시연한다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://global.toyota/en/detail/19666346",
+        "fetchedAt": "2026-05-22T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "site": {
+    "title": "휴머노이드 로봇 카탈로그",
+    "tagline": "전 세계 휴머노이드 로봇을 검색하고 비교하세요"
+  },
+  "nav": {
+    "home": "홈"
+  },
+  "search": {
+    "placeholder": "이름 또는 제조사로 검색",
+    "filters": "필터",
+    "country": "국가",
+    "category": "용도",
+    "status": "상태",
+    "all": "전체",
+    "results": "{count, plural, =0 {로봇 없음} other {로봇 #개}}",
+    "empty": "검색 결과가 없습니다. 필터를 조정해 보세요."
+  },
+  "category": {
+    "general": "범용",
+    "industrial": "산업용",
+    "service": "서비스",
+    "research": "연구용",
+    "entertainment": "엔터테인먼트",
+    "logistics": "물류",
+    "healthcare": "헬스케어"
+  },
+  "status": {
+    "research": "연구용",
+    "commercial": "상용",
+    "concept": "콘셉트"
+  },
+  "robot": {
+    "manufacturer": "제조사",
+    "country": "국가",
+    "year": "발표연도",
+    "height": "키",
+    "weight": "무게",
+    "dof": "자유도",
+    "specs": "사양",
+    "description": "설명",
+    "gallery": "갤러리",
+    "sources": "출처",
+    "fetchedAt": "수집 시각",
+    "verified": "검증됨",
+    "unverified": "미검증",
+    "unverifiedNote": "일부 데이터는 AI 검색으로 수집되어 아직 검증되지 않았습니다.",
+    "backToList": "목록으로",
+    "notFound": "로봇을 찾을 수 없습니다"
+  },
+  "units": {
+    "cm": "cm",
+    "kg": "kg"
+  },
+  "language": {
+    "label": "언어",
+    "ko": "한국어",
+    "en": "English"
+  }
+}

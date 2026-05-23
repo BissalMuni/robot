@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# docker claude dangerous mode
+Dockerfile.claude
+docker-compose.claude.yml
+.claude-output/
+.pnpm-store/
