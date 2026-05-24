@@ -4,7 +4,11 @@
     "tagline": "Search and compare humanoid robots from around the world"
   },
   "nav": {
-    "home": "Home"
+    "home": "Home",
+    "guide": "What is a humanoid?"
+  },
+  "guide": {
+    "browseRobots": "Browse the robot catalog"
   },
   "search": {
     "placeholder": "Search by name or manufacturer",

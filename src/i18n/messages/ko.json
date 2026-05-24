@@ -4,7 +4,11 @@
     "tagline": "전 세계 휴머노이드 로봇을 검색하고 비교하세요"
   },
   "nav": {
-    "home": "홈"
+    "home": "홈",
+    "guide": "휴머노이드란?"
+  },
+  "guide": {
+    "browseRobots": "로봇 카탈로그 둘러보기"
   },
   "search": {
     "placeholder": "이름 또는 제조사로 검색",

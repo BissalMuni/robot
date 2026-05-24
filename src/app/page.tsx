@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import RobotGrid from "@/components/RobotGrid";
@@ -42,7 +43,15 @@ export default async function Home({
             {t("site.tagline")}
           </p>
         </div>
-        <LanguageSwitcher />
+        <div className="flex items-center gap-3">
+          <Link
+            href="/guide"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            {t("nav.guide")}
+          </Link>
+          <LanguageSwitcher />
+        </div>
       </header>
 
       <section className="mb-6 flex flex-col gap-3">

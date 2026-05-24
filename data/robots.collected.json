@@ -61,5 +61,171 @@
         "verified": false
       }
     ]
+  },
+  {
+    "id": "drc-hubo-plus",
+    "name": "DRC-HUBO+",
+    "manufacturer": "Rainbow Robotics (KAIST)",
+    "country": "South Korea",
+    "year": 2015,
+    "category": "research",
+    "status": "research",
+    "height": 170,
+    "weight": 80,
+    "dof": 32,
+    "description": "KAIST HUBO Lab과 Rainbow Robotics가 개발한 재난 대응 휴머노이드. 무릎의 바퀴로 보행과 주행을 전환할 수 있으며, 2015년 DARPA Robotics Challenge 결승에서 우승했다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/2015_DARPA_Robotics_Challenge_150605-N-PO203-881.jpg/960px-2015_DARPA_Robotics_Challenge_150605-N-PO203-881.jpg"],
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/HUBO",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      },
+      {
+        "url": "https://spectrum.ieee.org/how-kaist-drc-hubo-won-darpa-robotics-challenge",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "hubo-2",
+    "name": "HUBO-2",
+    "manufacturer": "Rainbow Robotics (KAIST)",
+    "country": "South Korea",
+    "year": 2009,
+    "category": "research",
+    "status": "commercial",
+    "height": 125,
+    "weight": 45,
+    "dof": 40,
+    "description": "한국 최초의 이족 보행 휴머노이드 HUBO의 후속작이자, 세계 최초로 상용화된 휴머노이드 연구 플랫폼으로 평가받는다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/HUBO",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      },
+      {
+        "url": "https://www.rainbow-robotics.com/",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "rb-y1",
+    "name": "RB-Y1",
+    "manufacturer": "Rainbow Robotics",
+    "country": "South Korea",
+    "year": 2024,
+    "category": "general",
+    "status": "concept",
+    "weight": 131,
+    "dof": 24,
+    "description": "Rainbow Robotics가 개발 중인 양팔 모바일 매니퓰레이터. 바퀴 기반 이동부 위에 휴머노이드 상체를 얹은 형태로, AI 기반 자율 작업을 목표로 한다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://www.rainbow-robotics.com/",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Rainbow_Robotics",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "thormang",
+    "name": "THORMANG",
+    "manufacturer": "Robotis",
+    "country": "South Korea",
+    "year": 2014,
+    "category": "research",
+    "status": "commercial",
+    "height": 137,
+    "weight": 42,
+    "dof": 29,
+    "description": "Robotis의 풀사이즈 휴머노이드 연구 플랫폼(THORMANG3). 높은 연산 성능과 센서를 갖춰 DARPA Robotics Challenge 등 연구·교육에 사용된다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2015_DARPA_Robotics_Challenge_150606-N-PO203-547.jpg/960px-2015_DARPA_Robotics_Challenge_150606-N-PO203-547.jpg"],
+    "sources": [
+      {
+        "url": "https://emanual.robotis.com/docs/en/platform/thormang3/introduction/",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      },
+      {
+        "url": "https://en.robotis.com/",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "darwin-op",
+    "name": "DARwIn-OP",
+    "manufacturer": "Robotis",
+    "country": "South Korea",
+    "year": 2010,
+    "category": "research",
+    "status": "commercial",
+    "height": 45.5,
+    "weight": 2.9,
+    "dof": 20,
+    "description": "Robotis가 Virginia Tech 등과 협력해 개발한 소형 오픈 플랫폼 휴머노이드(ROBOTIS OP). 보행 알고리즘·비전·AI 연구와 RoboCup에 널리 쓰인다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DARwIn-OP.jpg/960px-DARwIn-OP.jpg"],
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/DARwIn-OP",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      },
+      {
+        "url": "https://en.robotis.com/model/page.php?co_id=prd_op2",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "ambidex",
+    "name": "AMBIDEX",
+    "manufacturer": "NAVER Labs",
+    "country": "South Korea",
+    "year": 2017,
+    "category": "research",
+    "status": "research",
+    "dof": 14,
+    "description": "NAVER Labs가 Korea Tech와 협력해 개발한 케이블 구동 양팔 로봇. 사람 근육과 유사한 힘 전달 방식으로 가볍고 안전하며, 양방향 원격조작(텔레오퍼레이션)을 지원한다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://www.naverlabs.com/en/ambidex",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "lg-cloid",
+    "name": "CLOiD",
+    "manufacturer": "LG Electronics",
+    "country": "South Korea",
+    "year": 2026,
+    "category": "service",
+    "status": "concept",
+    "description": "LG전자가 CES 2026에서 공개 예정인 가정용 휴머노이드. 7자유도 양팔과 다섯 손가락 핸드를 갖추고, 자사 AI 에이전트 Q9과 결합해 가사 보조를 지향한다. (AI 조사로 수집된 항목 — 미검증)",
+    "images": [],
+    "sources": [
+      {
+        "url": "https://www.therobotreport.com/ces-2026-lg-to-debut-new-cloid-humanoid-robot-for-the-home/",
+        "fetchedAt": "2026-05-24T00:00:00.000Z",
+        "verified": false
+      }
+    ]
   }
 ]
