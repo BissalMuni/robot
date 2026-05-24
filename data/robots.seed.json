@@ -11,7 +11,7 @@
     "weight": 89,
     "dof": 28,
     "description": "Boston Dynamics의 연구용 이족 보행 휴머노이드. 동적 균형과 전신 조작 능력을 시연하는 플랫폼이다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlas_from_boston_dynamics.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Atlas_during_testing.jpg/960px-Atlas_during_testing.jpg"],
     "sources": [
       { "url": "https://bostondynamics.com/atlas/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/Atlas_(robot)", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
@@ -29,7 +29,7 @@
     "weight": 57,
     "dof": 28,
     "description": "Tesla가 개발 중인 범용 휴머노이드 로봇(Tesla Bot). 반복적이고 위험한 작업의 자동화를 목표로 한다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/3/3a/Tesla_Optimus_Gen_2.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Optimus_bot_at_Tesla_showroom_-_20251118_-_01.jpg/960px-Optimus_bot_at_Tesla_showroom_-_20251118_-_01.jpg"],
     "sources": [
       { "url": "https://www.tesla.com/optimus", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/Optimus_(robot)", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
@@ -47,7 +47,7 @@
     "weight": 65,
     "dof": 20,
     "description": "물류 창고용으로 설계된 상용 이족 휴머노이드. 박스를 들어 옮기는 작업에 특화되어 있다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/9/9f/Digit_robot.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://agilityrobotics.com/products/digit", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
@@ -64,7 +64,7 @@
     "weight": 48,
     "dof": 57,
     "description": "Honda가 개발한 선구적인 이족 보행 휴머노이드. 보행·계단 오르기·달리기를 시연했으며 2022년 개발이 종료되었다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/0/05/HONDA_ASIMO.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg/960px-Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg"],
     "sources": [
       { "url": "https://global.honda/en/robotics/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/ASIMO", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
@@ -82,7 +82,7 @@
     "weight": 70,
     "dof": 24,
     "description": "Figure AI의 2세대 범용 휴머노이드. 제조·물류 현장에서의 자율 작업을 목표로 한다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/4/4a/Figure_02_robot.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://www.figure.ai/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -99,7 +99,7 @@
     "weight": 5.5,
     "dof": 25,
     "description": "교육·연구용으로 널리 쓰이는 소형 휴머노이드. 프로그래밍 교육과 HRI 연구의 표준 플랫폼이다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/0/04/Nao_Robot_%28Robocup_2016%29.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Nao_Robot_%28Robocup_2016%29.jpg/960px-Nao_Robot_%28Robocup_2016%29.jpg"],
     "sources": [
       { "url": "https://www.aldebaran.com/en/nao", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/Nao_(robot)", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
@@ -117,7 +117,7 @@
     "weight": 28,
     "dof": 20,
     "description": "감정 인식을 강조한 서비스용 휴머노이드. 매장 안내·접객 용도로 상용 배치되었다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/9/9f/SoftBank_pepper.JPG"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/SoftBank_pepper.JPG/960px-SoftBank_pepper.JPG"],
     "sources": [
       { "url": "https://en.wikipedia.org/wiki/Pepper_(robot)", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
@@ -133,7 +133,7 @@
     "height": 167,
     "dof": 62,
     "description": "표정이 풍부한 안드로이드형 휴머노이드. 사람과의 자연스러운 상호작용을 시연하는 연구·홍보 플랫폼이다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/1/1e/Sophia_at_the_AI_for_Good_Global_Summit_2018_%2827254369347%29_%28cropped%29.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sophia_at_the_AI_for_Good_Global_Summit_2018_%2827254369347%29_%28cropped%29.jpg/960px-Sophia_at_the_AI_for_Good_Global_Summit_2018_%2827254369347%29_%28cropped%29.jpg"],
     "sources": [
       { "url": "https://en.wikipedia.org/wiki/Sophia_(robot)", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
@@ -149,7 +149,7 @@
     "height": 187,
     "dof": 51,
     "description": "사실적인 표정과 상체 동작에 특화된 휴머노이드. HRI 연구와 전시용으로 판매된다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/8/8b/Ameca_robot.jpg"],
+    "images": ["https://upload.wikimedia.org/wikipedia/commons/5/5e/Ameca_Generation_1.jpg"],
     "sources": [
       { "url": "https://www.engineeredarts.co.uk/robot/ameca/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
@@ -166,7 +166,7 @@
     "weight": 47,
     "dof": 19,
     "description": "고출력 관절과 빠른 보행 속도를 강조한 범용 휴머노이드. 상대적으로 낮은 가격으로 주목받았다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/2/2e/Unitree_H1.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://www.unitree.com/h1", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -183,7 +183,7 @@
     "weight": 73,
     "dof": 30,
     "description": "모듈형 설계의 산업용 범용 휴머노이드. 제조·물류 작업을 위한 협동 로봇으로 개발되었다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/5/5a/Apptronik_Apollo.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://apptronik.com/apollo", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -200,7 +200,7 @@
     "weight": 70,
     "dof": 20,
     "description": "정교한 손 조작 능력을 강조한 범용 휴머노이드. 인지 제어 시스템과 결합해 다양한 작업을 수행한다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/9/95/Sanctuary_AI_Phoenix.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://sanctuary.ai/product/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -217,7 +217,7 @@
     "weight": 30,
     "dof": 22,
     "description": "가정용 작업을 목표로 한 경량 휴머노이드. 안전한 인간 상호작용을 위해 텐던 구동을 채택했다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/3/3e/1X_NEO_robot.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://www.1x.tech/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -234,7 +234,7 @@
     "weight": 55,
     "dof": 40,
     "description": "재활·헬스케어 분야 경험을 바탕으로 한 범용 휴머노이드. 보행 및 무거운 하중 운반을 시연했다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/0/0b/Fourier_GR-1.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://www.fourierintelligence.com/gr-1/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -251,7 +251,7 @@
     "weight": 77,
     "dof": 41,
     "description": "가정·서비스 환경을 겨냥한 이족 보행 휴머노이드. 양팔 조작과 균형 제어를 시연한다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/6/6e/UBTECH_Walker.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://www.ubtrobot.com/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
     ]
@@ -268,7 +268,7 @@
     "weight": 95,
     "dof": 32,
     "description": "전기 구동 토크 제어 관절을 갖춘 연구용 풀사이즈 휴머노이드. 산업 연구 환경에서 사용된다.",
-    "images": ["https://upload.wikimedia.org/wikipedia/commons/5/57/TALOS_robot.jpg"],
+    "images": [],
     "sources": [
       { "url": "https://pal-robotics.com/robots/talos/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
