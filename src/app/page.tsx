@@ -50,6 +50,12 @@ export default async function Home({
           >
             {t("nav.guide")}
           </Link>
+          <Link
+            href="/business"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            {t("nav.business")}
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>

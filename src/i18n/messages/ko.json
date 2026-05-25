@@ -5,7 +5,8 @@
   },
   "nav": {
     "home": "홈",
-    "guide": "휴머노이드란?"
+    "guide": "휴머노이드란?",
+    "business": "조립 사업"
   },
   "guide": {
     "browseRobots": "로봇 카탈로그 둘러보기"

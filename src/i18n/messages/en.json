@@ -5,7 +5,8 @@
   },
   "nav": {
     "home": "Home",
-    "guide": "What is a humanoid?"
+    "guide": "What is a humanoid?",
+    "business": "Assembly business"
   },
   "guide": {
     "browseRobots": "Browse the robot catalog"
