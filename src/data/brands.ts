@@ -1,0 +1,133 @@
+export type Brand = {
+  id: string;
+  name: string;
+  country: "KR" | "US" | "CN" | "NO" | "UK";
+  robots: string[];
+  website: string;
+  description: string;
+  market: ("industrial" | "service" | "research" | "consumer")[];
+  founded?: number;
+};
+
+export const brands: Brand[] = [
+  {
+    id: "boston-dynamics",
+    name: "Boston Dynamics",
+    country: "US",
+    robots: ["Atlas", "Spot", "Stretch"],
+    website: "https://bostondynamics.com",
+    description: "세계 최고 수준의 동적 균형 제어 기술. 현대자동차그룹 소유.",
+    market: ["industrial", "research"],
+    founded: 1992,
+  },
+  {
+    id: "figure-ai",
+    name: "Figure AI",
+    country: "US",
+    robots: ["Figure 02"],
+    website: "https://figure.ai",
+    description: "OpenAI·NVIDIA 투자. BMW 공장 실증 배포 중.",
+    market: ["industrial"],
+    founded: 2022,
+  },
+  {
+    id: "1x-technologies",
+    name: "1X Technologies",
+    country: "NO",
+    robots: ["NEO", "EVE"],
+    website: "https://1x.tech",
+    description: "가정용 시장 직접 타깃. 소프트 바디 안전성 강조.",
+    market: ["consumer", "service"],
+    founded: 2014,
+  },
+  {
+    id: "agility-robotics",
+    name: "Agility Robotics",
+    country: "US",
+    robots: ["Digit"],
+    website: "https://agilityrobotics.com",
+    description: "Amazon 자회사. 물류창고 실증 배포 중.",
+    market: ["industrial"],
+    founded: 2015,
+  },
+  {
+    id: "apptronik",
+    name: "Apptronik",
+    country: "US",
+    robots: ["Apollo"],
+    website: "https://apptronik.com",
+    description: "NASA 우주복 개발진 창업. 배터리 교체형 설계.",
+    market: ["industrial", "service"],
+    founded: 2016,
+  },
+  {
+    id: "tesla",
+    name: "Tesla",
+    country: "US",
+    robots: ["Optimus"],
+    website: "https://tesla.com/we-robot",
+    description: "FSD 자율주행 AI + Dojo 슈퍼컴퓨터. 2026년 양산 목표.",
+    market: ["industrial", "consumer"],
+    founded: 2003,
+  },
+  {
+    id: "unitree",
+    name: "Unitree Robotics",
+    country: "CN",
+    robots: ["H1", "G1", "Go2"],
+    website: "https://unitree.com",
+    description: "가장 낮은 가격대(G1 $16K). 연구자·개발자 최선호.",
+    market: ["research"],
+    founded: 2016,
+  },
+  {
+    id: "rainbow-robotics",
+    name: "Rainbow Robotics",
+    country: "KR",
+    robots: ["RB-Y1"],
+    website: "https://rainbowrobotics.com",
+    description: "국내 유일 양산 가능 휴머노이드. 삼성전자 지분 투자.",
+    market: ["research", "service"],
+    founded: 2011,
+  },
+  {
+    id: "ubtech",
+    name: "UBTECH",
+    country: "CN",
+    robots: ["Walker X"],
+    website: "https://ubtrobot.com",
+    description: "중국 대표 서비스 로봇. Walker X 상업 배포 중.",
+    market: ["service", "industrial"],
+    founded: 2012,
+  },
+  {
+    id: "sanctuary-ai",
+    name: "Sanctuary AI",
+    country: "US",
+    robots: ["Phoenix"],
+    website: "https://sanctuary.ai",
+    description: "범용 AGI 로봇 목표. Carbon™ AI 시스템.",
+    market: ["industrial", "research"],
+    founded: 2018,
+  },
+  {
+    id: "fourier-intelligence",
+    name: "Fourier Intelligence",
+    country: "CN",
+    robots: ["GR-2"],
+    website: "https://fourierintelligence.com",
+    description: "올인원 액추에이터 자체 개발. 재활·산업 이중 시장.",
+    market: ["service", "industrial"],
+    founded: 2015,
+  },
+  {
+    id: "engineered-arts",
+    name: "Engineered Arts",
+    country: "UK",
+    robots: ["Ameca"],
+    website: "https://engineeredarts.co.uk",
+    description: "인간형 표정·제스처 특화. AI 상호작용 연구 플랫폼.",
+    market: ["research", "service"],
+    founded: 2004,
+  },
+];

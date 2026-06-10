@@ -56,6 +56,12 @@ export default async function Home({
           >
             {t("nav.business")}
           </Link>
+          <Link
+            href="/brands"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            브랜드
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>
