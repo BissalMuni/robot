@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { partCategories } from "@/data/parts";
 import { PartCard } from "@/components/PartCard";
+import { PartsNav } from "@/components/PartsNav";
 
 export const metadata: Metadata = {
   title: "부품 가이드 | 휴머노이드 로봇",
@@ -20,6 +21,8 @@ export default function PartsPage() {
           ※ 업체·구매처 링크는 정보 제공 목적이며, 본 사이트는 제휴 관계가 없습니다.
         </p>
       </header>
+
+      <PartsNav />
 
       <div className="grid gap-6 md:grid-cols-2">
         {partCategories.map((part) => (
