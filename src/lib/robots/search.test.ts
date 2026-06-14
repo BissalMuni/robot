@@ -34,6 +34,25 @@ describe("searchRobots", () => {
     expect(searchRobots(data, { query: "tesla" }).map((r) => r.id)).toEqual(["3"]);
   });
 
+  it("설명(description) 키워드로 검색한다", () => {
+    const withDesc: Robot[] = [
+      ...data,
+      robot({
+        id: "4",
+        name: "Digit",
+        manufacturer: "Agility Robotics",
+        country: "United States",
+        description: "bipedal logistics automation robot",
+      }),
+    ];
+    expect(searchRobots(withDesc, { query: "bipedal" }).map((r) => r.id)).toEqual(["4"]);
+  });
+
+  it("설명이 빈 로봇은 설명 검색에 걸리지 않는다", () => {
+    // 기존 data 는 모두 description: "" → "bipedal" 매칭 없음
+    expect(searchRobots(data, { query: "bipedal" })).toEqual([]);
+  });
+
   it("국가 필터를 적용한다", () => {
     expect(searchRobots(data, { country: "United States" }).map((r) => r.id)).toEqual(["1", "3"]);
   });

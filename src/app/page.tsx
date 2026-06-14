@@ -68,6 +68,18 @@ export default async function Home({
           >
             소프트웨어
           </Link>
+          <Link
+            href="/parts"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            부품
+          </Link>
+          <Link
+            href="/assembly"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            조립 방법
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>

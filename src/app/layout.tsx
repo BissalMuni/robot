@@ -15,12 +15,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  // sitemap.ts 와 동일한 env 변수를 써서 사이트 출처를 단일화한다.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  ),
   title: {
     default: "Humanoid Robot Directory",
     template: "%s · Humanoid Robot Directory",
   },
   description:
     "Search and compare humanoid robots from around the world, normalized into one catalog.",
+  openGraph: {
+    siteName: "Humanoid Robot Directory",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({

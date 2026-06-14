@@ -92,14 +92,14 @@ export default async function RobotDetail({
         <section className="mb-8">
           <h2 className="sr-only">{t("robot.gallery")}</h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {robot.images.map((src) => (
+            {robot.images.map((src, idx) => (
               <div
                 key={src}
                 className="relative aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800"
               >
                 <Image
                   src={src}
-                  alt={robot.name}
+                  alt={idx === 0 ? robot.name : `${robot.name} – photo ${idx + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"

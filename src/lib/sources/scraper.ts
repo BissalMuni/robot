@@ -3,10 +3,14 @@ import { Robot } from "@/lib/robots/types";
 import type { RobotSource } from "./types";
 
 // ── robots.txt 처리 ────────────────────────────────────────────────
-// 매우 단순한 robots.txt 파서. 우리 user-agent(또는 *)에 대한 Disallow 규칙만 본다.
-export function parseDisallows(robotsTxt: string, userAgent = "*"): string[] {
+// 매우 단순한 robots.txt 파서. 우리 user-agent(또는 *)에 대한 지정 지시어 규칙을 모은다.
+function parseRules(
+  robotsTxt: string,
+  directive: "disallow" | "allow",
+  userAgent = "*",
+): string[] {
   const lines = robotsTxt.split(/\r?\n/);
-  const disallows: string[] = [];
+  const rules: string[] = [];
   let appliesToUs = false;
 
   for (const rawLine of lines) {
@@ -18,21 +22,44 @@ export function parseDisallows(robotsTxt: string, userAgent = "*"): string[] {
 
     if (key === "user-agent") {
       appliesToUs = value === "*" || value.toLowerCase() === userAgent.toLowerCase();
-    } else if (key === "disallow" && appliesToUs && value) {
-      disallows.push(value);
+    } else if (key === directive && appliesToUs && value) {
+      rules.push(value);
     }
   }
-  return disallows;
+  return rules;
 }
 
-// 경로가 robots.txt 규칙상 허용되는지 검사한다 (접두사 매칭).
+// 우리 user-agent(또는 *)에 대한 Disallow 규칙을 모은다.
+export function parseDisallows(robotsTxt: string, userAgent = "*"): string[] {
+  return parseRules(robotsTxt, "disallow", userAgent);
+}
+
+// 우리 user-agent(또는 *)에 대한 Allow 규칙을 모은다.
+export function parseAllows(robotsTxt: string, userAgent = "*"): string[] {
+  return parseRules(robotsTxt, "allow", userAgent);
+}
+
+// 경로가 robots.txt 규칙상 허용되는지 검사한다.
+// Disallow 와 Allow 를 모두 보고, 더 긴(= 더 구체적인) 규칙을 우선한다(Google 스펙).
+// 동점이면 Allow 우선, 매칭 규칙이 없으면 허용이 기본값이다.
 export function isPathAllowed(
   robotsTxt: string,
   path: string,
   userAgent = "*",
 ): boolean {
   const disallows = parseDisallows(robotsTxt, userAgent);
-  return !disallows.some((rule) => path.startsWith(rule));
+  const allows = parseAllows(robotsTxt, userAgent);
+
+  const longestMatch = (rules: string[]) =>
+    rules
+      .filter((rule) => path.startsWith(rule))
+      .reduce((max, rule) => Math.max(max, rule.length), 0);
+
+  const allowLen = longestMatch(allows);
+  const disallowLen = longestMatch(disallows);
+
+  if (allowLen === 0 && disallowLen === 0) return true;
+  return allowLen >= disallowLen;
 }
 
 // ── rate limit ─────────────────────────────────────────────────────

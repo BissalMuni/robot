@@ -2,7 +2,7 @@ import type { Robot, RobotCategory, RobotStatus } from "./types";
 
 // 검색/필터 조건. 모두 선택적이며, 비어 있으면 해당 조건은 무시한다.
 export interface RobotFilters {
-  query?: string; // 이름·제조사 텍스트 검색
+  query?: string; // 이름·제조사·설명 텍스트 검색
   country?: string;
   category?: RobotCategory;
   status?: RobotStatus;
@@ -13,9 +13,11 @@ export function searchRobots(robots: Robot[], filters: RobotFilters): Robot[] {
   const q = filters.query?.trim().toLowerCase();
 
   return robots.filter((robot) => {
-    // 텍스트 검색: 이름 또는 제조사에 부분 일치
+    // 텍스트 검색: 이름·제조사·설명에 부분 일치
+    // description 은 zod default("") 보장이라 null 체크 불필요.
     if (q) {
-      const haystack = `${robot.name} ${robot.manufacturer}`.toLowerCase();
+      const haystack =
+        `${robot.name} ${robot.manufacturer} ${robot.description}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     if (filters.country && robot.country !== filters.country) return false;

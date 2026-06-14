@@ -32,6 +32,30 @@ Disallow: /
   });
 });
 
+describe("isPathAllowed — Allow 규칙", () => {
+  it("Disallow:/ + Allow:/robots/ → /robots/ 하위는 허용", () => {
+    const txt = "User-agent: *\nDisallow: /\nAllow: /robots/\n";
+    expect(isPathAllowed(txt, "/robots/atlas-info")).toBe(true);
+    expect(isPathAllowed(txt, "/private/page")).toBe(false);
+  });
+
+  it("더 긴 Disallow 규칙이 짧은 Allow보다 우선", () => {
+    const txt = "User-agent: *\nAllow: /public/\nDisallow: /public/secret/\n";
+    expect(isPathAllowed(txt, "/public/open")).toBe(true);
+    expect(isPathAllowed(txt, "/public/secret/doc")).toBe(false);
+  });
+
+  it("매칭 규칙이 없으면 허용", () => {
+    const txt = "User-agent: *\nDisallow: /admin/\n";
+    expect(isPathAllowed(txt, "/robots/index")).toBe(true);
+  });
+
+  it("동점 시 Allow 우선 (Google 스펙)", () => {
+    const txt = "User-agent: *\nDisallow: /page\nAllow: /page\n";
+    expect(isPathAllowed(txt, "/page")).toBe(true);
+  });
+});
+
 describe("RateLimiter", () => {
   it("최소 간격만큼 대기한다", async () => {
     let clock = 0;
