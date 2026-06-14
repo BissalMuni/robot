@@ -62,6 +62,12 @@ export default async function Home({
           >
             브랜드
           </Link>
+          <Link
+            href="/software"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            소프트웨어
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>
