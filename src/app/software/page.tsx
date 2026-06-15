@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { softwareTools, categoryLabels, SoftwareCategory } from "@/data/software";
 import { SoftwareToolCard } from "@/components/SoftwareToolCard";
+import { SoftwareNav } from "@/components/SoftwareNav";
 
 export const metadata: Metadata = {
   title: "소프트웨어 스택 | 휴머노이드 로봇",
@@ -31,13 +32,15 @@ export default function SoftwarePage() {
         </p>
       </header>
 
+      <SoftwareNav />
+
       <div className="space-y-12">
         {CATEGORY_ORDER.map((category) => {
           const tools = softwareTools.filter((t) => t.category === category);
           if (tools.length === 0) return null;
           const { ko, en, icon } = categoryLabels[category];
           return (
-            <section key={category}>
+            <section key={category} id={category} className="scroll-mt-16">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-200">
                 <span>{icon}</span>
                 <span>{ko}</span>

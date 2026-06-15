@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { assemblySteps, roadmapPhases } from "@/data/assembly";
 import { AssemblyStepCard } from "@/components/AssemblyStepCard";
+import { AssemblyNav } from "@/components/AssemblyNav";
 import { RoadmapPhaseCard } from "@/components/RoadmapPhaseCard";
 
 export const metadata: Metadata = {
@@ -23,6 +24,8 @@ export default function AssemblyPage() {
           총 예상 시간: <strong className="text-zinc-600 dark:text-zinc-300">{totalTime}</strong> (1유닛 기준, 숙련도에 따라 변동)
         </p>
       </header>
+
+      <AssemblyNav />
 
       {/* 진행 표시 */}
       <div className="mb-10 flex items-center gap-1 overflow-x-auto pb-2">
