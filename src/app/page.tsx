@@ -80,6 +80,12 @@ export default async function Home({
           >
             조립 방법
           </Link>
+          <Link
+            href="/research"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            연구 자료
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>
