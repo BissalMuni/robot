@@ -86,6 +86,12 @@ export default async function Home({
           >
             연구 자료
           </Link>
+          <Link
+            href="/community"
+            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          >
+            커뮤니티
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>
