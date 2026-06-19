@@ -43,62 +43,29 @@ export default async function Home({
             {t("site.tagline")}
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/guide"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            {t("nav.guide")}
-          </Link>
-          <Link
-            href="/business"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            {t("nav.business")}
-          </Link>
-          <Link
-            href="/brands"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            브랜드
-          </Link>
-          <Link
-            href="/software"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            소프트웨어
-          </Link>
-          <Link
-            href="/parts"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            부품
-          </Link>
-          <Link
-            href="/assembly"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            조립 방법
-          </Link>
-          <Link
-            href="/research"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            연구 자료
-          </Link>
-          <Link
-            href="/community"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            커뮤니티
-          </Link>
-          <Link
-            href="/timeline"
-            className="rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-          >
-            연표
-          </Link>
-          <LanguageSwitcher />
+        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <div className="flex min-w-max items-center gap-2 sm:flex-wrap sm:min-w-0">
+            {[
+              { href: "/guide", label: t("nav.guide") },
+              { href: "/business", label: t("nav.business") },
+              { href: "/brands", label: "브랜드" },
+              { href: "/parts", label: "부품" },
+              { href: "/assembly", label: "조립 방법" },
+              { href: "/software", label: "소프트웨어" },
+              { href: "/research", label: "연구 자료" },
+              { href: "/community", label: "커뮤니티" },
+              { href: "/timeline", label: "연표" },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="whitespace-nowrap rounded-lg border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              >
+                {label}
+              </Link>
+            ))}
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 

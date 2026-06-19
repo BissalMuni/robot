@@ -112,6 +112,27 @@ export const researchItems: ResearchItem[] = [
     tags: ["Atlas", "동적 보행", "접촉 계획"],
     country: "US",
   },
+  {
+    id: "stanford-hcr",
+    name: "Stanford Human-Centered Robotics",
+    category: "labs",
+    description:
+      "Jeannette Bohg 교수 주도. 촉각·시각 통합 물체 파지·MANO 핸드 모델·접촉 풍부 조작(dexterous manipulation) 연구.",
+    website: "https://hcr.cs.stanford.edu",
+    tags: ["파지", "촉각", "조작", "dexterous"],
+    country: "US",
+  },
+  {
+    id: "physical-intelligence",
+    name: "Physical Intelligence (Pi)",
+    category: "labs",
+    description:
+      "Sergey Levine·Chelsea Finn 등이 창업한 범용 로봇 AI 스타트업. π0(Pi Zero) 모델로 다양한 로봇 플랫폼에 적용 가능한 VLA 개발. 2024년 4억 달러 시리즈 A 유치.",
+    website: "https://www.physicalintelligence.company",
+    tags: ["VLA", "π0", "범용 로봇", "Foundation Model"],
+    featured: true,
+    country: "US",
+  },
 
   // ── 학회 ────────────────────────────────────────────────────────────────────
   {
@@ -172,6 +193,15 @@ export const researchItems: ResearchItem[] = [
     website: "https://iclr.cc",
     tags: ["RL", "트랜스포머", "딥러닝"],
   },
+  {
+    id: "neurips-robot",
+    name: "NeurIPS (로봇·RL 트랙)",
+    category: "conferences",
+    description:
+      "Neural Information Processing Systems. 기반 모델·강화학습·모방 학습 분야 최상위 학회. 로봇 학습 워크숍이 별도 운영되며 최신 VLA·세계모델 연구가 집중 발표됨.",
+    website: "https://neurips.cc",
+    tags: ["기반 모델", "RL", "VLA", "세계 모델", "연간"],
+  },
 
   // ── 데이터셋 ─────────────────────────────────────────────────────────────────
   {
@@ -229,6 +259,18 @@ export const researchItems: ResearchItem[] = [
     website: "http://mocap.cs.cmu.edu",
     tags: ["모캡", "무료", "보행", "DeepMimic"],
     year: 2003,
+  },
+  {
+    id: "humanml3d",
+    name: "HumanML3D",
+    category: "datasets",
+    description:
+      "14,616개 모션 클립 + 44,970개 자연어 설명 쌍. AMASS·HumanAct12 기반 재처리. MDM·MotionGPT 등 텍스트→모션 생성 연구의 표준 벤치마크.",
+    website: "https://github.com/EricGuo5513/HumanML3D",
+    tags: ["텍스트-모션", "모션 생성", "NLP", "오픈소스"],
+    featured: true,
+    year: 2022,
+    authors: "Guo et al.",
   },
 
   // ── 핵심 논문 ────────────────────────────────────────────────────────────────
@@ -300,5 +342,17 @@ export const researchItems: ResearchItem[] = [
     tags: ["모방 학습", "모캡", "물리 시뮬레이션"],
     year: 2018,
     authors: "Peng et al. (UC Berkeley)",
+  },
+  {
+    id: "humanplus",
+    name: "HumanPlus: Humanoid Shadowing and Imitation from Humans",
+    category: "papers",
+    description:
+      "Stanford / CMU. 인간 동작 동영상만으로 휴머노이드 전신 조작 모방 학습. Unitree H1 로봇이 체조·악기·식기 세척 등 다양한 작업 수행. 전신 정책+조작 전략 분리 구조.",
+    website: "https://arxiv.org/abs/2406.10454",
+    tags: ["모방 학습", "전신 제어", "Unitree H1", "조작"],
+    featured: true,
+    year: 2024,
+    authors: "Fu et al. (Stanford / CMU)",
   },
 ];
