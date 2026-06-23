@@ -55,6 +55,7 @@ export default async function Home({
               { href: "/research", label: "연구 자료" },
               { href: "/community", label: "커뮤니티" },
               { href: "/timeline", label: "연표" },
+              { href: "/compare", label: "스펙 비교" },
             ].map(({ href, label }) => (
               <Link
                 key={href}
