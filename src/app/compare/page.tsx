@@ -120,8 +120,8 @@ export default async function ComparePage({
           href={buildStatusHref()}
           className={`rounded-full border px-3 py-1 text-sm transition-colors ${
             !status
-              ? "border-zinc-600 bg-zinc-800 text-zinc-100"
-              : "border-zinc-700 text-zinc-400 hover:border-zinc-600 hover:text-zinc-300"
+              ? "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
+              : "border-zinc-300 text-zinc-600 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-300"
           }`}
         >
           전체 <span className="ml-1 text-xs text-zinc-500">{humanoidSpecs.length}</span>
@@ -136,7 +136,7 @@ export default async function ComparePage({
               className={`rounded-full border px-3 py-1 text-sm transition-colors ${
                 active
                   ? color
-                  : "border-zinc-700 text-zinc-400 hover:border-zinc-600 hover:text-zinc-300"
+                  : "border-zinc-300 text-zinc-600 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-300"
               }`}
             >
               {ko} <span className="ml-1 text-xs opacity-70">{counts[s] ?? 0}</span>

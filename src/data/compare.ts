@@ -21,15 +21,18 @@ export type HumanoidSpec = {
 export const statusLabel: Record<RobotStatus, { ko: string; color: string }> = {
   prototype: {
     ko: "프로토타입",
-    color: "text-amber-400 bg-amber-400/10 border-amber-400/30",
+    color:
+      "text-amber-700 bg-amber-50 border-amber-200 dark:text-amber-400 dark:bg-amber-400/10 dark:border-amber-400/30",
   },
   pilot: {
     ko: "파일럿",
-    color: "text-blue-400 bg-blue-400/10 border-blue-400/30",
+    color:
+      "text-blue-700 bg-blue-50 border-blue-200 dark:text-blue-400 dark:bg-blue-400/10 dark:border-blue-400/30",
   },
   production: {
     ko: "양산",
-    color: "text-green-400 bg-green-400/10 border-green-400/30",
+    color:
+      "text-green-700 bg-green-50 border-green-200 dark:text-green-400 dark:bg-green-400/10 dark:border-green-400/30",
   },
 };
 

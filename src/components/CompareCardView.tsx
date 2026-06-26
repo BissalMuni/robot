@@ -3,11 +3,11 @@ import { statusLabel, countryMeta, type HumanoidSpec } from "@/data/compare";
 function SpecRow({ label, value, unit }: { label: string; value: number | null; unit: string }) {
   return (
     <div className="flex items-center justify-between gap-2 text-sm">
-      <span className="text-zinc-500">{label}</span>
+      <span className="text-zinc-500 dark:text-zinc-400">{label}</span>
       {value === null ? (
-        <span className="text-zinc-700">—</span>
+        <span className="text-zinc-400 dark:text-zinc-600">—</span>
       ) : (
-        <span className="font-mono tabular-nums text-zinc-300">
+        <span className="font-mono tabular-nums text-zinc-700 dark:text-zinc-300">
           {value}
           <span className="ml-0.5 text-xs text-zinc-500">{unit}</span>
         </span>
@@ -21,11 +21,11 @@ function CompareCard({ spec }: { spec: HumanoidSpec }) {
   const { flag, name: countryName } = countryMeta[spec.country];
 
   return (
-    <article className="flex flex-col gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-colors hover:border-zinc-700">
+    <article className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700">
       <header className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="font-semibold text-zinc-100">{spec.name}</h3>
-          <p className="mt-0.5 text-sm text-zinc-400">
+          <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">{spec.name}</h3>
+          <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
             {spec.maker} · {flag} {countryName} · {spec.year}
           </p>
         </div>
@@ -47,14 +47,14 @@ function CompareCard({ spec }: { spec: HumanoidSpec }) {
         {spec.useCase.map((u) => (
           <span
             key={u}
-            className="rounded-md border border-zinc-700 px-2 py-0.5 text-xs text-zinc-400"
+            className="rounded-md border border-zinc-200 px-2 py-0.5 text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
           >
             {u}
           </span>
         ))}
       </footer>
 
-      <p className="border-t border-zinc-800 pt-3 text-xs leading-relaxed text-zinc-500">
+      <p className="border-t border-zinc-100 pt-3 text-xs leading-relaxed text-zinc-500 dark:border-zinc-800">
         {spec.notes}
       </p>
     </article>

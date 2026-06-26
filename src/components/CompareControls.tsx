@@ -61,11 +61,11 @@ export function CompareControls() {
           placeholder="모델명·제조사 검색..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="min-w-0 flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-500 focus:border-zinc-500 focus:outline-none"
+          className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-800 placeholder-zinc-400 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:placeholder-zinc-500"
         />
         <button
           type="submit"
-          className="rounded-lg border border-zinc-700 px-3 py-1.5 text-sm text-zinc-400 transition-colors hover:border-zinc-500 hover:text-zinc-300"
+          className="rounded-lg border border-zinc-300 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-300"
         >
           검색
         </button>
@@ -73,7 +73,7 @@ export function CompareControls() {
           <button
             type="button"
             onClick={handleClear}
-            className="rounded-lg border border-zinc-700 px-3 py-1.5 text-sm text-zinc-500 transition-colors hover:border-zinc-600 hover:text-zinc-400"
+            className="rounded-lg border border-zinc-300 px-3 py-1.5 text-sm text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700 dark:border-zinc-700 dark:hover:border-zinc-600 dark:hover:text-zinc-400"
           >
             초기화
           </button>
@@ -85,7 +85,7 @@ export function CompareControls() {
         value={currentSort}
         onChange={(e) => updateParams({ sort: e.target.value })}
         aria-label="정렬 기준"
-        className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 focus:border-zinc-500 focus:outline-none"
+        className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
       >
         {SORT_OPTIONS.map(({ value, label }) => (
           <option key={value} value={value}>
