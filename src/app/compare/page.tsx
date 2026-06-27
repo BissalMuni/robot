@@ -29,6 +29,12 @@ function nullLast(a: number | null, b: number | null, desc = false): number {
 function sortSpecs(specs: HumanoidSpec[], sort: string): HumanoidSpec[] {
   const arr = [...specs];
   switch (sort) {
+    case "year_asc":
+      return arr.sort((a, b) => a.year - b.year);
+    case "year_desc":
+      return arr.sort((a, b) => b.year - a.year);
+    case "speed_asc":
+      return arr.sort((a, b) => nullLast(a.maxSpeedMs, b.maxSpeedMs));
     case "speed_desc":
       return arr.sort((a, b) => nullLast(a.maxSpeedMs, b.maxSpeedMs, true));
     case "weight_asc":
@@ -39,10 +45,18 @@ function sortSpecs(specs: HumanoidSpec[], sort: string): HumanoidSpec[] {
       return arr.sort((a, b) => nullLast(a.heightCm, b.heightCm));
     case "height_desc":
       return arr.sort((a, b) => nullLast(a.heightCm, b.heightCm, true));
+    case "payload_asc":
+      return arr.sort((a, b) => nullLast(a.payloadKg, b.payloadKg));
     case "payload_desc":
       return arr.sort((a, b) => nullLast(a.payloadKg, b.payloadKg, true));
+    case "dof_asc":
+      return arr.sort((a, b) => nullLast(a.dof, b.dof));
     case "dof_desc":
       return arr.sort((a, b) => nullLast(a.dof, b.dof, true));
+    case "battery_asc":
+      return arr.sort((a, b) => nullLast(a.batteryHours, b.batteryHours));
+    case "battery_desc":
+      return arr.sort((a, b) => nullLast(a.batteryHours, b.batteryHours, true));
     default:
       return arr.sort(
         (a, b) =>

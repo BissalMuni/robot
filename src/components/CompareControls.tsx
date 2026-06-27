@@ -5,6 +5,8 @@ import { useTransition, useState, useEffect } from "react";
 
 const SORT_OPTIONS = [
   { value: "status", label: "상태순 (기본)" },
+  { value: "year_desc", label: "최신순" },
+  { value: "year_asc", label: "오래된 순" },
   { value: "speed_desc", label: "속도 빠른 순" },
   { value: "weight_asc", label: "무게 가벼운 순" },
   { value: "weight_desc", label: "무게 무거운 순" },
