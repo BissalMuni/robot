@@ -37,8 +37,8 @@ export default async function CommunityPage({
       <header className="mb-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-zinc-100">커뮤니티</h1>
-            <p className="mt-2 max-w-2xl text-zinc-400">
+            <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">커뮤니티</h1>
+            <p className="mt-2 max-w-2xl text-zinc-600 dark:text-zinc-400">
               휴머노이드·로봇공학 관련 포럼, 디스코드/슬랙, 깃허브 오픈소스 프로젝트,
               유튜브 채널, 뉴스레터를 카테고리별로 정리했습니다.
               ★ 추천 항목은 입문자가 먼저 찾아볼 채널입니다.
@@ -62,7 +62,7 @@ export default async function CommunityPage({
             const { ko, en, icon } = categoryLabels[category];
             return (
               <section key={category} id={category} className="scroll-mt-16">
-                <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-200">
+                <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
                   <span>{icon}</span>
                   <span>{ko}</span>
                   <span className="text-sm font-normal text-zinc-500">/ {en}</span>

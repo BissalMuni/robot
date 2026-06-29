@@ -36,8 +36,8 @@ export default async function ResearchPage({
       <header className="mb-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-zinc-100">연구 자료</h1>
-            <p className="mt-2 max-w-2xl text-zinc-400">
+            <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">연구 자료</h1>
+            <p className="mt-2 max-w-2xl text-zinc-600 dark:text-zinc-400">
               휴머노이드 로봇 연구의 주요 연구소·학회·데이터셋·핵심 논문을 카테고리별로 정리했습니다.
               ★ 추천 항목은 입문자가 먼저 살펴볼 자료입니다.
             </p>
@@ -60,7 +60,7 @@ export default async function ResearchPage({
             const { ko, en, icon } = categoryLabels[category];
             return (
               <section key={category} id={category} className="scroll-mt-16">
-                <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-200">
+                <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
                   <span>{icon}</span>
                   <span>{ko}</span>
                   <span className="text-sm font-normal text-zinc-500">/ {en}</span>

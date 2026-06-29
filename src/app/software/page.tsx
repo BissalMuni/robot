@@ -25,8 +25,8 @@ export default function SoftwarePage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-zinc-100">소프트웨어 스택</h1>
-        <p className="mt-2 text-zinc-400 max-w-2xl">
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">소프트웨어 스택</h1>
+        <p className="mt-2 text-zinc-600 dark:text-zinc-400 max-w-2xl">
           휴머노이드 로봇 개발에 필요한 9개 카테고리별 핵심 소프트웨어 도구를 정리했습니다.
           ★ 추천 마크는 입문/중급 팀이 우선 도입할 도구입니다.
         </p>
@@ -41,7 +41,7 @@ export default function SoftwarePage() {
           const { ko, en, icon } = categoryLabels[category];
           return (
             <section key={category} id={category} className="scroll-mt-16">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-200">
+              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
                 <span>{icon}</span>
                 <span>{ko}</span>
                 <span className="text-sm font-normal text-zinc-500">/ {en}</span>

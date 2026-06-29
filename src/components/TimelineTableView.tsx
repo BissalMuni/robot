@@ -7,9 +7,9 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
   );
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-700">
+    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-700">
       <table className="min-w-full text-sm">
-        <thead className="bg-zinc-800 text-zinc-400">
+        <thead className="bg-zinc-50 text-zinc-600 dark:bg-zinc-900/60 dark:text-zinc-400">
           <tr>
             <th className="px-4 py-3 text-left font-medium whitespace-nowrap">연도</th>
             <th className="px-4 py-3 text-left font-medium whitespace-nowrap">분류</th>
@@ -18,22 +18,22 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
             <th className="px-4 py-3 text-left font-medium hidden lg:table-cell">태그</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-700/60">
+        <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700/60">
           {sorted.map((event) => {
             const { icon, ko, color } = categoryLabels[event.category];
             return (
               <tr
                 key={event.id}
-                className={`transition-colors hover:bg-zinc-800/50 ${
-                  event.milestone ? "bg-zinc-800/30" : ""
+                className={`transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50 ${
+                  event.milestone ? "bg-amber-50/60 dark:bg-zinc-800/30" : ""
                 }`}
               >
                 {/* 연도 */}
-                <td className="px-4 py-3 font-mono text-xs tabular-nums whitespace-nowrap text-zinc-400">
+                <td className="px-4 py-3 font-mono text-xs tabular-nums whitespace-nowrap text-zinc-600 dark:text-zinc-400">
                   {event.year}
                   {event.month ? `.${String(event.month).padStart(2, "0")}` : ""}
                   {event.milestone && (
-                    <span className="ml-1 text-zinc-300">★</span>
+                    <span className="ml-1 text-amber-600 dark:text-zinc-300">★</span>
                   )}
                 </td>
 
@@ -48,13 +48,13 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
 
                 {/* 제목 / 기관 */}
                 <td className="px-4 py-3">
-                  <div className="font-semibold text-zinc-100 leading-snug">
+                  <div className="font-semibold text-zinc-900 leading-snug dark:text-zinc-100">
                     {event.link ? (
                       <Link
                         href={event.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-blue-400 transition-colors"
+                        className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         {event.title}
                       </Link>
@@ -68,7 +68,7 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
                 </td>
 
                 {/* 설명 (md+) */}
-                <td className="px-4 py-3 text-zinc-400 hidden md:table-cell max-w-xs">
+                <td className="px-4 py-3 text-zinc-600 dark:text-zinc-400 hidden md:table-cell max-w-xs">
                   <p className="line-clamp-2">{event.description}</p>
                 </td>
 
@@ -78,7 +78,7 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
                     {event.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400"
+                        className="rounded-full bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 px-2 py-0.5 text-xs"
                       >
                         {tag}
                       </span>

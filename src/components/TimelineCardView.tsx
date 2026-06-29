@@ -20,7 +20,7 @@ export function TimelineCardView({ events }: { events: TimelineEvent[] }) {
         const { ko, en, icon } = categoryLabels[category];
         return (
           <section key={category} id={`cat-${category}`} className="scroll-mt-16">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-200">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
               <span>{icon}</span>
               <span>{ko}</span>
               <span className="text-sm font-normal text-zinc-500">/ {en}</span>

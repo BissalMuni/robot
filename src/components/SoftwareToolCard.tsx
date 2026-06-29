@@ -7,16 +7,16 @@ interface SoftwareToolCardProps {
 
 export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
   return (
-    <div className="group relative flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900 p-5 hover:border-zinc-600 transition-colors">
+    <div className="group relative flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 hover:border-zinc-400 transition-colors dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600">
       {tool.recommended && (
-        <span className="absolute top-3 right-3 rounded-full bg-zinc-700 px-2 py-0.5 text-xs text-zinc-300">
+        <span className="absolute top-3 right-3 rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">
           추천
         </span>
       )}
       <div className="flex items-start gap-3">
         <div className="flex flex-col gap-1 flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-zinc-100 truncate">{tool.name}</h3>
-          <p className="text-xs text-zinc-400 leading-relaxed">{tool.descriptionKo}</p>
+          <h3 className="text-sm font-semibold text-zinc-900 truncate dark:text-zinc-100">{tool.name}</h3>
+          <p className="text-xs text-zinc-600 leading-relaxed dark:text-zinc-400">{tool.descriptionKo}</p>
         </div>
       </div>
 
@@ -24,12 +24,12 @@ export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
         {tool.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full border border-zinc-700 px-2 py-0.5 text-xs text-zinc-400"
+            className="rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
           >
             {tag}
           </span>
         ))}
-        <span className="rounded-full border border-zinc-700 px-2 py-0.5 text-xs text-zinc-500">
+        <span className="rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-500 dark:border-zinc-700">
           {tool.license}
         </span>
       </div>
@@ -39,7 +39,7 @@ export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
           href={tool.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-zinc-400 hover:text-zinc-200 underline underline-offset-2"
+          className="text-xs text-zinc-600 hover:text-zinc-900 underline underline-offset-2 dark:text-zinc-400 dark:hover:text-zinc-200"
         >
           공식 사이트 →
         </Link>
@@ -48,7 +48,7 @@ export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
             href={tool.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-zinc-400 hover:text-zinc-200 underline underline-offset-2"
+            className="text-xs text-zinc-600 hover:text-zinc-900 underline underline-offset-2 dark:text-zinc-400 dark:hover:text-zinc-200"
           >
             GitHub →
           </Link>
