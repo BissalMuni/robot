@@ -169,7 +169,7 @@ export default async function RobotDetail({
               >
                 {s.verified ? t("robot.verified") : t("robot.unverified")}
               </span>
-              <span className="text-zinc-400">
+              <span className="text-zinc-500 dark:text-zinc-400">
                 {t("robot.fetchedAt")}: {dateFmt.format(new Date(s.fetchedAt))}
               </span>
             </li>

@@ -36,7 +36,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
           <div className="grid divide-y divide-zinc-100 dark:divide-zinc-800 md:grid-cols-2 md:divide-x md:divide-y-0">
             {/* 주요 스펙 */}
             <div className="px-5 py-4">
-              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 주요 스펙
               </h3>
               <div className="flex flex-wrap gap-1.5">
@@ -50,7 +50,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
                 ))}
               </div>
 
-              <h3 className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <h3 className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 주요 업체
               </h3>
               <ul className="space-y-2">
@@ -75,7 +75,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
 
             {/* 구매처 */}
             <div className="px-5 py-4">
-              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 구매처
               </h3>
               <ul className="divide-y divide-zinc-100 overflow-hidden rounded-lg border border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">

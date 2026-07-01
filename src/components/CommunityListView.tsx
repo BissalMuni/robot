@@ -43,7 +43,7 @@ export function CommunityListView({ items }: { items: CommunityItem[] }) {
                         </span>
                       )}
                       {item.members && (
-                        <span className="text-xs text-zinc-400">{item.members} 멤버</span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400">{item.members} 멤버</span>
                       )}
                     </div>
                     <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">

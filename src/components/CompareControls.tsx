@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useTransition, useState, useEffect } from "react";
+import { useTransition, useState } from "react";
 
 const SORT_OPTIONS = [
   { value: "status", label: "상태순 (기본)" },
@@ -25,10 +25,11 @@ export function CompareControls() {
   const currentSort = searchParams.get("sort") ?? "status";
   const currentQ = searchParams.get("q") ?? "";
   const [inputValue, setInputValue] = useState(currentQ);
-
-  useEffect(() => {
+  const [syncedQ, setSyncedQ] = useState(currentQ);
+  if (currentQ !== syncedQ) {
+    setSyncedQ(currentQ);
     setInputValue(currentQ);
-  }, [currentQ]);
+  }
 
   const updateParams = (updates: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString());

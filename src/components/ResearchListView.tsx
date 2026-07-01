@@ -42,10 +42,10 @@ export function ResearchListView({ items }: { items: ResearchItem[] }) {
                         </span>
                       )}
                       {item.year && (
-                        <span className="text-xs text-zinc-400">{item.year}</span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400">{item.year}</span>
                       )}
                       {item.authors && (
-                        <span className="text-xs text-zinc-400">— {item.authors}</span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400">— {item.authors}</span>
                       )}
                     </div>
                     <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">

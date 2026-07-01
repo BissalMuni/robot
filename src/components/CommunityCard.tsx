@@ -16,7 +16,7 @@ export function CommunityCard({ item }: { item: CommunityItem }) {
       </div>
 
       {item.members && (
-        <p className="text-xs text-zinc-400">{item.members} 멤버</p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">{item.members} 멤버</p>
       )}
 
       <p className="text-sm text-zinc-500 dark:text-zinc-400">

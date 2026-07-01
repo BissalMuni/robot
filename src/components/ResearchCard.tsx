@@ -16,7 +16,7 @@ export function ResearchCard({ item }: { item: ResearchItem }) {
       </div>
 
       {(item.authors || item.year) && (
-        <p className="text-xs text-zinc-400">
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
           {item.authors && <span>{item.authors}</span>}
           {item.authors && item.year && <span className="mx-1">·</span>}
           {item.year && <span>{item.year}</span>}

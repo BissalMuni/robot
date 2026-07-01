@@ -27,7 +27,7 @@ export function AssemblyTableView({ steps }: { steps: AssemblyStep[] }) {
               <td className="px-4 py-4">
                 <div className="flex flex-col items-center gap-1">
                   <span className="text-xl">{step.icon}</span>
-                  <span className="text-xs font-medium text-zinc-400">Step {step.step}</span>
+                  <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Step {step.step}</span>
                 </div>
               </td>
               <td className="px-4 py-4">
@@ -58,7 +58,7 @@ export function AssemblyTableView({ steps }: { steps: AssemblyStep[] }) {
                     </li>
                   ))}
                   {step.tasks.length > 3 && (
-                    <li className="text-xs text-zinc-400">+{step.tasks.length - 3}개 더...</li>
+                    <li className="text-xs text-zinc-500 dark:text-zinc-400">+{step.tasks.length - 3}개 더...</li>
                   )}
                 </ul>
               </td>
