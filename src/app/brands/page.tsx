@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { brands } from "@/data/brands";
 import { BrandCard } from "@/components/BrandCard";
@@ -16,12 +15,6 @@ export default function BrandsPage() {
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
       <header className="mb-8 flex flex-col gap-2">
-        <Link
-          href="/"
-          className="text-sm text-zinc-500 hover:underline dark:text-zinc-400"
-        >
-          ← 홈으로
-        </Link>
         <h1 className="text-2xl font-bold sm:text-3xl">휴머노이드 로봇 브랜드</h1>
         <p className="text-zinc-500 dark:text-zinc-400">
           2025~2026년 주목할 주요 제조사 {brands.length}개사

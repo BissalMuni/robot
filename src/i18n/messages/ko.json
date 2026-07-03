@@ -6,7 +6,15 @@
   "nav": {
     "home": "홈",
     "guide": "휴머노이드란?",
-    "business": "조립 사업"
+    "business": "조립 사업",
+    "brands": "브랜드",
+    "parts": "부품",
+    "assembly": "조립 방법",
+    "software": "소프트웨어",
+    "research": "연구 자료",
+    "community": "커뮤니티",
+    "timeline": "연표",
+    "compare": "스펙 비교"
   },
   "guide": {
     "browseRobots": "로봇 카탈로그 둘러보기"

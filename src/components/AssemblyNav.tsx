@@ -5,7 +5,7 @@ export function AssemblyNav() {
   return (
     <nav
       aria-label="조립 단계 네비게이션"
-      className="sticky top-0 z-10 -mx-4 mb-8 border-b border-zinc-100 bg-white/90 px-4 py-3 backdrop-blur-sm dark:border-zinc-800/60 dark:bg-zinc-950/90 sm:-mx-6 sm:px-6"
+      className="sticky top-12 z-10 -mx-4 mb-8 border-b border-zinc-100 bg-white/90 px-4 py-3 backdrop-blur-sm dark:border-zinc-800/60 dark:bg-zinc-950/90 sm:-mx-6 sm:px-6"
     >
       <ul className="flex flex-wrap gap-2" role="list">
         {assemblySteps.map((step) => (

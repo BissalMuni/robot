@@ -2,7 +2,7 @@ import { AssemblyStep } from "@/data/assembly";
 
 export function AssemblyStepCard({ step }: { step: AssemblyStep }) {
   return (
-    <article id={step.id} className="flex scroll-mt-16 flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <article id={step.id} className="flex scroll-mt-28 flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       {/* 헤더 */}
       <div className="flex items-start gap-4">
         <span className="shrink-0 text-3xl" aria-hidden="true">

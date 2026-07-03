@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { guide } from "@/lib/guide/content";
 import type { Locale } from "@/i18n/config";
 
@@ -24,16 +23,6 @@ export default async function GuidePage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
-      <header className="mb-8 flex items-start justify-between gap-4">
-        <Link
-          href="/"
-          className="text-sm text-zinc-500 hover:underline dark:text-zinc-400"
-        >
-          ← {t("nav.home")}
-        </Link>
-        <LanguageSwitcher />
-      </header>
-
       <h1 className="text-3xl font-bold">{c.title}</h1>
       <p className="mt-2 text-zinc-500 dark:text-zinc-400">{c.subtitle}</p>
 

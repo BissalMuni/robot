@@ -6,7 +6,15 @@
   "nav": {
     "home": "Home",
     "guide": "What is a humanoid?",
-    "business": "Assembly business"
+    "business": "Assembly business",
+    "brands": "Brands",
+    "parts": "Parts",
+    "assembly": "Assembly",
+    "software": "Software",
+    "research": "Research",
+    "community": "Community",
+    "timeline": "Timeline",
+    "compare": "Compare"
   },
   "guide": {
     "browseRobots": "Browse the robot catalog"

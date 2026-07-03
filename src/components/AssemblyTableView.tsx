@@ -22,7 +22,7 @@ export function AssemblyTableView({ steps }: { steps: AssemblyStep[] }) {
             <tr
               key={step.id}
               id={step.id}
-              className="scroll-mt-16 hover:bg-zinc-50 dark:hover:bg-zinc-900/30"
+              className="scroll-mt-28 hover:bg-zinc-50 dark:hover:bg-zinc-900/30"
             >
               <td className="px-4 py-4">
                 <div className="flex flex-col items-center gap-1">

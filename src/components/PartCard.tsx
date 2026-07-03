@@ -14,7 +14,7 @@ const COUNTRY_LABEL: Record<string, string> = {
 
 export function PartCard({ part }: { part: PartCategory }) {
   return (
-    <section id={part.id} className="flex scroll-mt-16 flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <section id={part.id} className="flex scroll-mt-28 flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       {/* 헤더 */}
       <div className="flex items-center gap-3">
         <span className="text-3xl" aria-hidden="true">

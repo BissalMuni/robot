@@ -19,7 +19,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
         <section
           key={part.id}
           id={part.id}
-          className="scroll-mt-16 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+          className="scroll-mt-28 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
         >
           {/* 헤더 */}
           <div className="flex items-center gap-3 border-b border-zinc-100 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900/60">

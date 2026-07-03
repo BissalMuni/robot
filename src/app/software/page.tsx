@@ -40,7 +40,7 @@ export default function SoftwarePage() {
           if (tools.length === 0) return null;
           const { ko, en, icon } = categoryLabels[category];
           return (
-            <section key={category} id={category} className="scroll-mt-16">
+            <section key={category} id={category} className="scroll-mt-28">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
                 <span>{icon}</span>
                 <span>{ko}</span>
