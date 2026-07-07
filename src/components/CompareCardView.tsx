@@ -1,22 +1,59 @@
 import { statusLabel, countryMeta, type HumanoidSpec } from "@/data/compare";
 
-function SpecRow({ label, value, unit }: { label: string; value: number | null; unit: string }) {
+// 값 옆에 표시할 상대 비교 막대: 지금 화면에 보이는 specs 중 최댓값 대비 비율.
+function SpecRow({
+  label,
+  value,
+  unit,
+  max,
+}: {
+  label: string;
+  value: number | null;
+  unit: string;
+  max: number;
+}) {
+  const pct = value !== null && max > 0 ? Math.max((value / max) * 100, 4) : 0;
   return (
-    <div className="flex items-center justify-between gap-2 text-sm">
-      <span className="text-zinc-500 dark:text-zinc-400">{label}</span>
+    <div className="flex items-center gap-2 text-sm">
+      <span className="w-16 shrink-0 text-zinc-500 dark:text-zinc-400">{label}</span>
       {value === null ? (
         <span className="text-zinc-400 dark:text-zinc-600">—</span>
       ) : (
-        <span className="font-mono tabular-nums text-zinc-700 dark:text-zinc-300">
-          {value}
-          <span className="ml-0.5 text-xs text-zinc-500">{unit}</span>
-        </span>
+        <>
+          <span className="w-16 shrink-0 text-right font-mono tabular-nums text-zinc-700 dark:text-zinc-300">
+            {value}
+            <span className="ml-0.5 text-xs text-zinc-500">{unit}</span>
+          </span>
+          <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+            <span
+              className="block h-full rounded-full bg-zinc-400 dark:bg-zinc-500"
+              style={{ width: `${pct}%` }}
+            />
+          </span>
+        </>
       )}
     </div>
   );
 }
 
-function CompareCard({ spec }: { spec: HumanoidSpec }) {
+type SpecField = "heightCm" | "weightKg" | "dof" | "payloadKg" | "maxSpeedMs" | "batteryHours";
+
+const ROWS: { field: SpecField; label: string; unit: string }[] = [
+  { field: "heightCm", label: "키", unit: "cm" },
+  { field: "weightKg", label: "무게", unit: "kg" },
+  { field: "dof", label: "자유도", unit: "DoF" },
+  { field: "payloadKg", label: "최대 하중", unit: "kg" },
+  { field: "maxSpeedMs", label: "최고 속도", unit: "m/s" },
+  { field: "batteryHours", label: "배터리", unit: "h" },
+];
+
+function CompareCard({
+  spec,
+  maxByField,
+}: {
+  spec: HumanoidSpec;
+  maxByField: Record<SpecField, number>;
+}) {
   const { ko, color } = statusLabel[spec.status];
   const { flag, name: countryName } = countryMeta[spec.country];
 
@@ -35,12 +72,15 @@ function CompareCard({ spec }: { spec: HumanoidSpec }) {
       </header>
 
       <div className="space-y-1.5">
-        <SpecRow label="키" value={spec.heightCm} unit="cm" />
-        <SpecRow label="무게" value={spec.weightKg} unit="kg" />
-        <SpecRow label="자유도" value={spec.dof} unit="DoF" />
-        <SpecRow label="최대 하중" value={spec.payloadKg} unit="kg" />
-        <SpecRow label="최고 속도" value={spec.maxSpeedMs} unit="m/s" />
-        <SpecRow label="배터리" value={spec.batteryHours} unit="h" />
+        {ROWS.map((row) => (
+          <SpecRow
+            key={row.field}
+            label={row.label}
+            value={spec[row.field]}
+            unit={row.unit}
+            max={maxByField[row.field]}
+          />
+        ))}
       </div>
 
       <footer className="flex flex-wrap gap-1.5">
@@ -62,10 +102,18 @@ function CompareCard({ spec }: { spec: HumanoidSpec }) {
 }
 
 export function CompareCardView({ specs }: { specs: HumanoidSpec[] }) {
+  const maxByField = ROWS.reduce(
+    (acc, { field }) => {
+      acc[field] = specs.reduce((m, s) => Math.max(m, s[field] ?? 0), 0);
+      return acc;
+    },
+    {} as Record<SpecField, number>,
+  );
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {specs.map((spec) => (
-        <CompareCard key={spec.id} spec={spec} />
+        <CompareCard key={spec.id} spec={spec} maxByField={maxByField} />
       ))}
     </div>
   );
