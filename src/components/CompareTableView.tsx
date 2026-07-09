@@ -22,6 +22,40 @@ function Num({ value, unit }: { value: number | null; unit: string }) {
   );
 }
 
+// 숫자 스펙 열: 값 뒤에 현재 화면 기준 상대 비교 막대(data bar)를 배경으로 깐다.
+function BarCell({ value, unit, max }: { value: number | null; unit: string; max: number }) {
+  const pct = value !== null && max > 0 ? Math.max((value / max) * 100, 4) : 0;
+  return (
+    <td className="whitespace-nowrap px-1.5 py-1.5 text-sm text-zinc-700 dark:text-zinc-300">
+      <div className="relative flex items-center rounded px-2.5 py-1.5">
+        {value !== null && (
+          <span
+            className="absolute inset-y-0 left-0 rounded bg-zinc-100 dark:bg-zinc-800/70"
+            style={{ width: `${pct}%` }}
+            aria-hidden="true"
+          />
+        )}
+        <span className="relative z-10">
+          <Num value={value} unit={unit} />
+        </span>
+      </div>
+    </td>
+  );
+}
+
+type SpecField = "heightCm" | "weightKg" | "dof" | "payloadKg" | "maxSpeedMs" | "batteryHours";
+
+function computeMaxByField(specs: HumanoidSpec[]): Record<SpecField, number> {
+  const fields: SpecField[] = ["heightCm", "weightKg", "dof", "payloadKg", "maxSpeedMs", "batteryHours"];
+  return fields.reduce(
+    (acc, field) => {
+      acc[field] = specs.reduce((m, s) => Math.max(m, s[field] ?? 0), 0);
+      return acc;
+    },
+    {} as Record<SpecField, number>,
+  );
+}
+
 type ColDef = {
   label: string;
   ascKey?: string;
@@ -145,6 +179,8 @@ function StaticThead() {
 }
 
 export function CompareTableView({ specs }: { specs: HumanoidSpec[] }) {
+  const maxByField = computeMaxByField(specs);
+
   return (
     <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
       <table className="w-full min-w-[900px] border-collapse text-left">
@@ -173,12 +209,12 @@ export function CompareTableView({ specs }: { specs: HumanoidSpec[] }) {
                     {ko}
                   </span>
                 </Cell>
-                <Cell><Num value={spec.heightCm} unit="cm" /></Cell>
-                <Cell><Num value={spec.weightKg} unit="kg" /></Cell>
-                <Cell><Num value={spec.dof} unit="DoF" /></Cell>
-                <Cell><Num value={spec.payloadKg} unit="kg" /></Cell>
-                <Cell><Num value={spec.maxSpeedMs} unit="m/s" /></Cell>
-                <Cell><Num value={spec.batteryHours} unit="h" /></Cell>
+                <BarCell value={spec.heightCm} unit="cm" max={maxByField.heightCm} />
+                <BarCell value={spec.weightKg} unit="kg" max={maxByField.weightKg} />
+                <BarCell value={spec.dof} unit="DoF" max={maxByField.dof} />
+                <BarCell value={spec.payloadKg} unit="kg" max={maxByField.payloadKg} />
+                <BarCell value={spec.maxSpeedMs} unit="m/s" max={maxByField.maxSpeedMs} />
+                <BarCell value={spec.batteryHours} unit="h" max={maxByField.batteryHours} />
                 <Cell>
                   <span className="text-zinc-500 dark:text-zinc-400">{spec.useCase.join(" · ")}</span>
                 </Cell>
