@@ -52,7 +52,7 @@ export function TimelineEventCard({ event }: { event: TimelineEvent }) {
           rel="noopener noreferrer"
           className="mt-auto text-sm text-blue-600 hover:underline dark:text-blue-400"
         >
-          자세히 →
+          자세히 →<span className="sr-only"> (새 창에서 열림)</span>
         </Link>
       )}
     </div>

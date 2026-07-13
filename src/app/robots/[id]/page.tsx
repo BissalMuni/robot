@@ -159,6 +159,7 @@ export default async function RobotDetail({
                 className="break-all text-blue-600 hover:underline dark:text-blue-400"
               >
                 {s.url}
+                <span className="sr-only"> (새 창에서 열림)</span>
               </a>
               <span
                 className={

@@ -57,6 +57,7 @@ export function TimelineTableView({ events }: { events: TimelineEvent[] }) {
                         className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         {event.title}
+                        <span className="sr-only"> (새 창에서 열림)</span>
                       </Link>
                     ) : (
                       event.title

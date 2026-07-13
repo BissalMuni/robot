@@ -66,7 +66,7 @@ export function CommunityListView({ items }: { items: CommunityItem[] }) {
                     rel="noopener noreferrer"
                     className="mt-1 shrink-0 rounded border border-zinc-200 px-2.5 py-1 text-xs text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
                   >
-                    바로가기
+                    바로가기<span className="sr-only"> (새 창에서 열림)</span>
                   </Link>
                 </li>
               ))}

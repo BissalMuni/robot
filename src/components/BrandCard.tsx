@@ -37,7 +37,7 @@ export function BrandCard({ brand }: { brand: Brand }) {
         rel="noopener noreferrer"
         className="mt-auto text-sm text-blue-600 hover:underline dark:text-blue-400"
       >
-        공식 홈페이지 →
+        공식 홈페이지 →<span className="sr-only"> (새 창에서 열림)</span>
       </Link>
     </div>
   );

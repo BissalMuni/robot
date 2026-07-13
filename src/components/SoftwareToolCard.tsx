@@ -41,7 +41,7 @@ export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
           rel="noopener noreferrer"
           className="text-xs text-zinc-600 hover:text-zinc-900 underline underline-offset-2 dark:text-zinc-400 dark:hover:text-zinc-200"
         >
-          공식 사이트 →
+          공식 사이트 →<span className="sr-only"> (새 창에서 열림)</span>
         </Link>
         {tool.github && (
           <Link
@@ -50,7 +50,7 @@ export function SoftwareToolCard({ tool }: SoftwareToolCardProps) {
             rel="noopener noreferrer"
             className="text-xs text-zinc-600 hover:text-zinc-900 underline underline-offset-2 dark:text-zinc-400 dark:hover:text-zinc-200"
           >
-            GitHub →
+            GitHub →<span className="sr-only"> (새 창에서 열림)</span>
           </Link>
         )}
       </div>

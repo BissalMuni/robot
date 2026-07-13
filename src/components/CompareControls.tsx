@@ -64,7 +64,8 @@ export function CompareControls() {
           placeholder="모델명·제조사 검색..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-800 placeholder-zinc-400 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:placeholder-zinc-500"
+          aria-label="모델명·제조사 검색"
+          className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-800 placeholder-zinc-400 focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:placeholder-zinc-500"
         />
         <button
           type="submit"
@@ -88,7 +89,7 @@ export function CompareControls() {
         value={currentSort}
         onChange={(e) => updateParams({ sort: e.target.value })}
         aria-label="정렬 기준"
-        className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+        className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
       >
         {SORT_OPTIONS.map(({ value, label }) => (
           <option key={value} value={value}>

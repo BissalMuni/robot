@@ -44,7 +44,7 @@ export function ResearchCard({ item }: { item: ResearchItem }) {
         rel="noopener noreferrer"
         className="mt-auto text-sm text-blue-600 hover:underline dark:text-blue-400"
       >
-        바로가기 →
+        바로가기 →<span className="sr-only"> (새 창에서 열림)</span>
       </Link>
     </div>
   );

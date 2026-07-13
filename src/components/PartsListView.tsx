@@ -65,6 +65,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
                         className="text-sm font-medium text-zinc-800 underline-offset-2 hover:underline dark:text-zinc-200"
                       >
                         {vendor.name}
+                        <span className="sr-only"> (새 창에서 열림)</span>
                       </Link>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400">{vendor.description}</p>
                     </div>
@@ -95,7 +96,7 @@ export function PartsListView({ categories }: { categories: PartCategory[] }) {
                       rel="noopener noreferrer"
                       className="shrink-0 rounded border border-zinc-200 px-2.5 py-1 text-xs text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
                     >
-                      방문
+                      방문<span className="sr-only"> (새 창에서 열림)</span>
                     </Link>
                   </li>
                 ))}
