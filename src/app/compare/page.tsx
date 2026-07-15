@@ -161,13 +161,15 @@ export default async function ComparePage({
 
       {/* 검색 결과 안내 */}
       {q && (
-        <p className="mb-4 text-sm text-zinc-500">
+        <p role="status" aria-live="polite" className="mb-4 text-sm text-zinc-500">
           &ldquo;{q}&rdquo; 검색 결과: {sorted.length}건
         </p>
       )}
 
       {sorted.length === 0 ? (
-        <p className="py-16 text-center text-zinc-500">해당하는 로봇이 없습니다.</p>
+        <p role="status" aria-live="polite" className="py-16 text-center text-zinc-500">
+          해당하는 로봇이 없습니다.
+        </p>
       ) : view === "card" ? (
         <CompareCardView specs={sorted} />
       ) : (

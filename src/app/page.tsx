@@ -43,7 +43,11 @@ export default async function Home({
 
       <section className="mb-6 flex flex-col gap-3">
         <SearchFilters countries={availableCountries(all)} />
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p
+          role="status"
+          aria-live="polite"
+          className="text-sm text-zinc-500 dark:text-zinc-400"
+        >
           {t("search.results", { count: robots.length })}
         </p>
       </section>

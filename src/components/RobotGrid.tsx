@@ -8,7 +8,11 @@ export default function RobotGrid({ robots }: { robots: Robot[] }) {
 
   if (robots.length === 0) {
     return (
-      <p className="py-16 text-center text-zinc-500 dark:text-zinc-400">
+      <p
+        role="status"
+        aria-live="polite"
+        className="py-16 text-center text-zinc-500 dark:text-zinc-400"
+      >
         {t("search.empty")}
       </p>
     );
