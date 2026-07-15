@@ -34,6 +34,7 @@
 - [x] [T019] search.ts / store.ts / scraper 정규화 단위 테스트 (vitest)
 - [x] [T020] SEO: sitemap/metadata 점검, 이미지 최적화
 - [x] [T021] `pnpm lint` / `pnpm build` 통과 확인
+- [x] [T022] 데이터 무결성 검증 스크립트 — seed/collected JSON이 Robot 스키마 불변식을 만족하는지 zod 없이 순수 Node로 점검 (`scripts/validate-data.mjs`, `pnpm validate:data`)
 
 ## 요약
 
