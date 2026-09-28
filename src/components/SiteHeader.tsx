@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/assembly", key: "assembly" },
   { href: "/software", key: "software" },
   { href: "/research", key: "research" },
+  { href: "/models", key: "models" },
   { href: "/community", key: "community" },
   { href: "/timeline", key: "timeline" },
   { href: "/compare", key: "compare" },

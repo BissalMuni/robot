@@ -13,6 +13,7 @@ const STATIC_PAGES: { path: string; priority: number }[] = [
   { path: "/assembly", priority: 0.6 },
   { path: "/software", priority: 0.6 },
   { path: "/research", priority: 0.6 },
+  { path: "/models", priority: 0.6 },
   { path: "/community", priority: 0.6 },
   { path: "/timeline", priority: 0.6 },
   { path: "/compare", priority: 0.6 },
