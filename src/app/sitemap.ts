@@ -7,6 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 // src/app/ 아래 모든 정적 페이지. 새 페이지 추가 시 여기도 함께 갱신할 것.
 const STATIC_PAGES: { path: string; priority: number }[] = [
   { path: "/guide", priority: 0.7 },
+  { path: "/glossary", priority: 0.6 },
   { path: "/business", priority: 0.6 },
   { path: "/brands", priority: 0.6 },
   { path: "/parts", priority: 0.6 },

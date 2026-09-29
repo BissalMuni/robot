@@ -7,6 +7,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const NAV_ITEMS = [
   { href: "/guide", key: "guide" },
+  { href: "/glossary", key: "glossary" },
   { href: "/business", key: "business" },
   { href: "/brands", key: "brands" },
   { href: "/parts", key: "parts" },
