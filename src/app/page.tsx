@@ -4,10 +4,9 @@ import SearchFilters from "@/components/SearchFilters";
 import { getAllRobots } from "@/lib/robots/store";
 import {
   availableCountries,
+  parseRobotFilters,
   searchRobots,
-  type RobotFilters,
 } from "@/lib/robots/search";
-import type { RobotCategory, RobotStatus } from "@/lib/robots/types";
 
 export default async function Home({
   searchParams,
@@ -24,12 +23,7 @@ export default async function Home({
   const params = await searchParams;
 
   const all = await getAllRobots();
-  const filters: RobotFilters = {
-    query: params.q,
-    country: params.country,
-    category: params.category as RobotCategory | undefined,
-    status: params.status as RobotStatus | undefined,
-  };
+  const filters = parseRobotFilters(params);
   const robots = searchRobots(all, filters);
 
   return (

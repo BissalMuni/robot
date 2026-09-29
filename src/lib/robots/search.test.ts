@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { searchRobots, availableCountries } from "./search";
+import { searchRobots, availableCountries, parseRobotFilters } from "./search";
 import type { Robot } from "./types";
 
 function robot(p: Partial<Robot> & Pick<Robot, "id" | "name">): Robot {
@@ -63,6 +63,43 @@ describe("searchRobots", () => {
 
   it("일치 항목이 없으면 빈 배열", () => {
     expect(searchRobots(data, { query: "zzz" })).toEqual([]);
+  });
+});
+
+describe("parseRobotFilters", () => {
+  it("유효한 category/status 는 그대로 통과시킨다", () => {
+    expect(
+      parseRobotFilters({ category: "service", status: "commercial" }),
+    ).toEqual({
+      query: undefined,
+      country: undefined,
+      category: "service",
+      status: "commercial",
+    });
+  });
+
+  it("유효하지 않은 category/status 는 무시한다(undefined)", () => {
+    const f = parseRobotFilters({ category: "foo", status: "bar" });
+    expect(f.category).toBeUndefined();
+    expect(f.status).toBeUndefined();
+  });
+
+  it("빈 문자열 query/country 는 undefined 로 정규화한다", () => {
+    const f = parseRobotFilters({ q: "  ", country: "" });
+    expect(f.query).toBeUndefined();
+    expect(f.country).toBeUndefined();
+  });
+
+  it("query/country 는 공백을 다듬어 유지한다", () => {
+    const f = parseRobotFilters({ q: "  atlas ", country: " Japan " });
+    expect(f.query).toBe("atlas");
+    expect(f.country).toBe("Japan");
+  });
+
+  it("파싱 결과를 searchRobots 에 넣으면 잘못된 값이 결과에 영향을 주지 않는다", () => {
+    // ?category=foo 같은 잘못된 입력은 무시되어 전체가 반환된다.
+    const f = parseRobotFilters({ category: "foo" });
+    expect(searchRobots(data, f)).toHaveLength(3);
   });
 });
 

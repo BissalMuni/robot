@@ -1,4 +1,5 @@
-import type { Robot, RobotCategory, RobotStatus } from "./types";
+import { RobotCategory, RobotStatus } from "./types";
+import type { Robot } from "./types";
 
 // 검색/필터 조건. 모두 선택적이며, 비어 있으면 해당 조건은 무시한다.
 export interface RobotFilters {
@@ -6,6 +7,27 @@ export interface RobotFilters {
   country?: string;
   category?: RobotCategory;
   status?: RobotStatus;
+}
+
+// URL 쿼리처럼 신뢰할 수 없는 문자열 입력을 안전하게 RobotFilters 로 정규화한다.
+// category/status 는 zod enum 으로 검증해, 유효하지 않은 값은 조용히 무시한다
+// (잘못된 값을 그대로 필터에 넣으면 "0건"이라는 오해를 주는 대신, 없는 조건으로 취급).
+export function parseRobotFilters(raw: {
+  q?: string;
+  country?: string;
+  category?: string;
+  status?: string;
+}): RobotFilters {
+  const category = RobotCategory.safeParse(raw.category);
+  const status = RobotStatus.safeParse(raw.status);
+  const query = raw.q?.trim();
+  const country = raw.country?.trim();
+  return {
+    query: query || undefined,
+    country: country || undefined,
+    category: category.success ? category.data : undefined,
+    status: status.success ? status.data : undefined,
+  };
 }
 
 // 로봇 목록에 검색/필터를 적용한다 (순수 함수).
