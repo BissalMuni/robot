@@ -29,9 +29,24 @@ export function mergeRobots(lists: Robot[][]): Robot[] {
   return [...byId.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
+// 한 소스를 안전하게 로드한다. 실패하면 경고를 남기고 빈 목록으로 격리한다.
+// 한 소스(예: 깨진 JSON·네트워크 오류)의 실패가 전체 카탈로그를 중단시키지 않도록,
+// 나머지 소스만으로 최대한 서비스를 이어간다(graceful degradation).
+export async function loadSourceSafely(source: RobotSource): Promise<Robot[]> {
+  try {
+    return await source.load();
+  } catch (err) {
+    console.warn(
+      `[robots] 소스 "${source.name}" 로드 실패 — 건너뜁니다:`,
+      err,
+    );
+    return [];
+  }
+}
+
 // 모든 소스를 로드·머지한다. 요청 단위로 메모이즈한다.
 export const getAllRobots = cache(async (): Promise<Robot[]> => {
-  const lists = await Promise.all(sources.map((s) => s.load()));
+  const lists = await Promise.all(sources.map(loadSourceSafely));
   return mergeRobots(lists);
 });
 
