@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { getAllRobotIds, getRobotById } from "@/lib/robots/store";
+import { robotJsonLdString } from "@/lib/robots/jsonld";
 import type { Robot } from "@/lib/robots/types";
 
 // 빌드 시 모든 로봇 상세 페이지를 정적 생성한다 (SEO).
@@ -60,6 +61,11 @@ export default async function RobotDetail({
 
   return (
     <article className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
+      {/* 검색엔진 리치 결과용 구조화 데이터(schema.org Product) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: robotJsonLdString(robot) }}
+      />
       <Link
         href="/"
         className="mb-6 inline-block text-sm text-zinc-500 hover:underline dark:text-zinc-400"
