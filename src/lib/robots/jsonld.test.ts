@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { robotJsonLd, robotJsonLdString } from "./jsonld";
+import {
+  robotJsonLd,
+  robotJsonLdString,
+  robotListJsonLd,
+  robotListJsonLdString,
+} from "./jsonld";
 import type { Robot } from "./types";
 
 function robot(p: Partial<Robot> & Pick<Robot, "id" | "name">): Robot {
@@ -63,6 +68,57 @@ describe("robotJsonLd", () => {
       robot({ id: "1", name: "X", images: ["https://x.com/a.jpg"] }),
     );
     expect(ld.image).toEqual(["https://x.com/a.jpg"]);
+  });
+});
+
+describe("robotListJsonLd", () => {
+  const list = [
+    robot({ id: "a", name: "Alpha" }),
+    robot({ id: "b", name: "Beta" }),
+  ];
+
+  it("ItemList 구조와 1부터 매긴 position 을 만든다", () => {
+    const ld = robotListJsonLd(list, "https://x.com");
+    expect(ld["@type"]).toBe("ItemList");
+    expect(ld.numberOfItems).toBe(2);
+    expect(ld.itemListElement).toEqual([
+      {
+        "@type": "ListItem",
+        position: 1,
+        url: "https://x.com/robots/a",
+        name: "Alpha",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        url: "https://x.com/robots/b",
+        name: "Beta",
+      },
+    ]);
+  });
+
+  it("baseUrl 끝 슬래시를 정리해 중복 슬래시를 막는다", () => {
+    const ld = robotListJsonLd([robot({ id: "a", name: "A" })], "https://x.com/");
+    const [first] = ld.itemListElement as { url: string }[];
+    expect(first.url).toBe("https://x.com/robots/a");
+  });
+
+  it("빈 목록이면 numberOfItems 0 과 빈 배열", () => {
+    const ld = robotListJsonLd([], "https://x.com");
+    expect(ld.numberOfItems).toBe(0);
+    expect(ld.itemListElement).toEqual([]);
+  });
+});
+
+describe("robotListJsonLdString", () => {
+  it("유효한 JSON 이며 '<' 를 이스케이프한다", () => {
+    const str = robotListJsonLdString(
+      [robot({ id: "a", name: "</script>" })],
+      "https://x.com",
+    );
+    expect(str).not.toContain("</script>");
+    expect(str).toContain("\\u003c");
+    expect(JSON.parse(str)["@type"]).toBe("ItemList");
   });
 });
 

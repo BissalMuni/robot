@@ -7,6 +7,10 @@ import {
   parseRobotFilters,
   searchRobots,
 } from "@/lib/robots/search";
+import { robotListJsonLdString } from "@/lib/robots/jsonld";
+
+// sitemap.ts·layout.ts 와 동일한 사이트 출처를 사용한다.
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 
 export default async function Home({
   searchParams,
@@ -28,6 +32,13 @@ export default async function Home({
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
+      {/* 검색엔진이 카탈로그 목록을 이해하도록 돕는 구조화 데이터(schema.org ItemList) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: robotListJsonLdString(robots, BASE_URL),
+        }}
+      />
       <header className="mb-8">
         <h1 className="text-2xl font-bold sm:text-3xl">{t("site.title")}</h1>
         <p className="mt-1 text-zinc-500 dark:text-zinc-400">

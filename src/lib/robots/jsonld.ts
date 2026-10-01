@@ -57,8 +57,40 @@ export function robotJsonLd(robot: Robot): Record<string, unknown> {
   };
 }
 
+// 목록(홈) 페이지용 schema.org ItemList 구조화 데이터를 만든다.
+// 검색엔진이 카탈로그에 어떤 로봇들이 있는지 순서와 함께 이해하도록 돕는다.
+export function robotListJsonLd(
+  robots: Robot[],
+  baseUrl: string,
+): Record<string, unknown> {
+  // 끝의 슬래시를 정리해 "//robots/.." 같은 중복 슬래시를 막는다.
+  const base = baseUrl.replace(/\/+$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    numberOfItems: robots.length,
+    itemListElement: robots.map((robot, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${base}/robots/${robot.id}`,
+      name: robot.name,
+    })),
+  };
+}
+
 // JSON-LD 를 <script> 안에 안전하게 넣기 위한 직렬화.
 // "<" 를 유니코드 이스케이프해 </script> 등으로 인한 조기 종료·XSS 를 막는다.
+function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
 export function robotJsonLdString(robot: Robot): string {
-  return JSON.stringify(robotJsonLd(robot)).replace(/</g, "\\u003c");
+  return serializeJsonLd(robotJsonLd(robot));
+}
+
+export function robotListJsonLdString(
+  robots: Robot[],
+  baseUrl: string,
+): string {
+  return serializeJsonLd(robotListJsonLd(robots, baseUrl));
 }
