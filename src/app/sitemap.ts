@@ -1,24 +1,15 @@
 import type { MetadataRoute } from "next";
 import { getAllRobotIds } from "@/lib/robots/store";
+import { NAV_ITEMS } from "@/lib/navigation";
 
 // 사이트 기본 URL. 배포 시 NEXT_PUBLIC_SITE_URL 로 덮어쓴다.
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 
-// src/app/ 아래 모든 정적 페이지. 새 페이지 추가 시 여기도 함께 갱신할 것.
-const STATIC_PAGES: { path: string; priority: number }[] = [
-  { path: "/guide", priority: 0.7 },
-  { path: "/glossary", priority: 0.6 },
-  { path: "/business", priority: 0.6 },
-  { path: "/brands", priority: 0.6 },
-  { path: "/parts", priority: 0.6 },
-  { path: "/assembly", priority: 0.6 },
-  { path: "/software", priority: 0.6 },
-  { path: "/research", priority: 0.6 },
-  { path: "/models", priority: 0.6 },
-  { path: "/community", priority: 0.6 },
-  { path: "/timeline", priority: 0.6 },
-  { path: "/compare", priority: 0.6 },
-];
+// 정적 페이지는 내비게이션 단일 출처(NAV_ITEMS)에서 파생한다.
+// 새 섹션을 NAV_ITEMS 에 추가하면 헤더·사이트맵이 함께 갱신된다.
+const STATIC_PAGES: { path: string; priority: number }[] = NAV_ITEMS.map(
+  ({ href, priority }) => ({ path: href, priority }),
+);
 
 // 목록 페이지 + 모든 정적 페이지 + 모든 로봇 상세 페이지를 사이트맵에 포함한다 (SEO).
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

@@ -4,21 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-
-const NAV_ITEMS = [
-  { href: "/guide", key: "guide" },
-  { href: "/glossary", key: "glossary" },
-  { href: "/business", key: "business" },
-  { href: "/brands", key: "brands" },
-  { href: "/parts", key: "parts" },
-  { href: "/assembly", key: "assembly" },
-  { href: "/software", key: "software" },
-  { href: "/research", key: "research" },
-  { href: "/models", key: "models" },
-  { href: "/community", key: "community" },
-  { href: "/timeline", key: "timeline" },
-  { href: "/compare", key: "compare" },
-] as const;
+import { NAV_ITEMS } from "@/lib/navigation";
 
 // 모든 페이지에서 다른 섹션으로 바로 이동할 수 있는 전역 sticky 헤더.
 // 압축된 한 줄 레이아웃 + 가로 스크롤 네비로 모바일에서도 공간을 아낀다.
