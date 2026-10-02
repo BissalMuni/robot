@@ -11,6 +11,7 @@ export type NavItem = {
 export const NAV_ITEMS: readonly NavItem[] = [
   { href: "/guide", key: "guide", priority: 0.7 },
   { href: "/glossary", key: "glossary", priority: 0.6 },
+  { href: "/faq", key: "faq", priority: 0.6 },
   { href: "/business", key: "business", priority: 0.6 },
   { href: "/brands", key: "brands", priority: 0.6 },
   { href: "/parts", key: "parts", priority: 0.6 },

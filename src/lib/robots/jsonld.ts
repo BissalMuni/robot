@@ -1,4 +1,5 @@
 import type { Robot } from "./types";
+import { jsonLdString } from "@/lib/jsonld";
 
 // 스펙 한 항목(schema.org PropertyValue). 값이 있을 때만 추가한다.
 type PropertyValue = {
@@ -78,19 +79,13 @@ export function robotListJsonLd(
   };
 }
 
-// JSON-LD 를 <script> 안에 안전하게 넣기 위한 직렬화.
-// "<" 를 유니코드 이스케이프해 </script> 등으로 인한 조기 종료·XSS 를 막는다.
-function serializeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, "\\u003c");
-}
-
 export function robotJsonLdString(robot: Robot): string {
-  return serializeJsonLd(robotJsonLd(robot));
+  return jsonLdString(robotJsonLd(robot));
 }
 
 export function robotListJsonLdString(
   robots: Robot[],
   baseUrl: string,
 ): string {
-  return serializeJsonLd(robotListJsonLd(robots, baseUrl));
+  return jsonLdString(robotListJsonLd(robots, baseUrl));
 }
