@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { humanoidSpecs, statusLabel, type RobotStatus, type HumanoidSpec } from "@/data/compare";
+import { humanoidSpecs, statusLabel, type RobotStatus } from "@/data/compare";
+import { sortSpecs } from "@/lib/compare";
 import { CompareTableView } from "@/components/CompareTableView";
 import { CompareCardView } from "@/components/CompareCardView";
 import { ViewToggle } from "@/components/ViewToggle";
@@ -16,55 +17,6 @@ const VIEWS = [
   { key: "table", label: "표형" },
   { key: "card", label: "카드형" },
 ];
-
-const STATUS_ORDER: RobotStatus[] = ["production", "pilot", "prototype"];
-
-function nullLast(a: number | null, b: number | null, desc = false): number {
-  if (a === null && b === null) return 0;
-  if (a === null) return 1;
-  if (b === null) return -1;
-  return desc ? b - a : a - b;
-}
-
-function sortSpecs(specs: HumanoidSpec[], sort: string): HumanoidSpec[] {
-  const arr = [...specs];
-  switch (sort) {
-    case "year_asc":
-      return arr.sort((a, b) => a.year - b.year);
-    case "year_desc":
-      return arr.sort((a, b) => b.year - a.year);
-    case "speed_asc":
-      return arr.sort((a, b) => nullLast(a.maxSpeedMs, b.maxSpeedMs));
-    case "speed_desc":
-      return arr.sort((a, b) => nullLast(a.maxSpeedMs, b.maxSpeedMs, true));
-    case "weight_asc":
-      return arr.sort((a, b) => nullLast(a.weightKg, b.weightKg));
-    case "weight_desc":
-      return arr.sort((a, b) => nullLast(a.weightKg, b.weightKg, true));
-    case "height_asc":
-      return arr.sort((a, b) => nullLast(a.heightCm, b.heightCm));
-    case "height_desc":
-      return arr.sort((a, b) => nullLast(a.heightCm, b.heightCm, true));
-    case "payload_asc":
-      return arr.sort((a, b) => nullLast(a.payloadKg, b.payloadKg));
-    case "payload_desc":
-      return arr.sort((a, b) => nullLast(a.payloadKg, b.payloadKg, true));
-    case "dof_asc":
-      return arr.sort((a, b) => nullLast(a.dof, b.dof));
-    case "dof_desc":
-      return arr.sort((a, b) => nullLast(a.dof, b.dof, true));
-    case "battery_asc":
-      return arr.sort((a, b) => nullLast(a.batteryHours, b.batteryHours));
-    case "battery_desc":
-      return arr.sort((a, b) => nullLast(a.batteryHours, b.batteryHours, true));
-    default:
-      return arr.sort(
-        (a, b) =>
-          STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status) ||
-          a.maker.localeCompare(b.maker),
-      );
-  }
-}
 
 export default async function ComparePage({
   searchParams,
