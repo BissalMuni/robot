@@ -27,6 +27,7 @@ export async function generateMetadata({
   return {
     title: robot.name,
     description,
+    alternates: { canonical: `/robots/${id}` },
     openGraph: {
       title: robot.name,
       description,

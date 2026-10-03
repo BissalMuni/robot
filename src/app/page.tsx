@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import RobotGrid from "@/components/RobotGrid";
 import SearchFilters from "@/components/SearchFilters";
@@ -11,6 +12,13 @@ import { robotListJsonLdString } from "@/lib/robots/jsonld";
 
 // sitemap.ts·layout.ts 와 동일한 사이트 출처를 사용한다.
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+
+// 검색·필터는 ?q=·?category= 등 수많은 URL 변형을 만든다.
+// 모두 루트(/)로 canonical 을 고정해 중복 콘텐츠 색인을 막는다.
+// (제목·설명은 루트 레이아웃 기본값을 상속한다.)
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function Home({
   searchParams,
