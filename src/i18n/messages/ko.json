@@ -29,9 +29,16 @@
     "country": "국가",
     "category": "용도",
     "status": "상태",
+    "sort": "정렬",
     "all": "전체",
     "results": "{count, plural, =0 {로봇 없음} other {로봇 #개}}",
     "empty": "검색 결과가 없습니다. 필터를 조정해 보세요."
+  },
+  "sort": {
+    "name_asc": "이름순",
+    "name_desc": "이름 역순",
+    "year_desc": "최신 연도순",
+    "year_asc": "오래된 연도순"
   },
   "category": {
     "general": "범용",

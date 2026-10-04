@@ -6,7 +6,9 @@ import { getAllRobots } from "@/lib/robots/store";
 import {
   availableCountries,
   parseRobotFilters,
+  parseRobotSort,
   searchRobots,
+  sortRobots,
 } from "@/lib/robots/search";
 import { robotListJsonLdString } from "@/lib/robots/jsonld";
 
@@ -29,6 +31,7 @@ export default async function Home({
     country?: string;
     category?: string;
     status?: string;
+    sort?: string;
   }>;
 }) {
   const t = await getTranslations();
@@ -36,7 +39,8 @@ export default async function Home({
 
   const all = await getAllRobots();
   const filters = parseRobotFilters(params);
-  const robots = searchRobots(all, filters);
+  const sort = parseRobotSort(params.sort);
+  const robots = sortRobots(searchRobots(all, filters), sort);
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">

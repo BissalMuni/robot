@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { searchRobots, availableCountries, parseRobotFilters } from "./search";
+import {
+  searchRobots,
+  availableCountries,
+  parseRobotFilters,
+  parseRobotSort,
+  sortRobots,
+  DEFAULT_ROBOT_SORT,
+} from "./search";
 import type { Robot } from "./types";
 
 function robot(p: Partial<Robot> & Pick<Robot, "id" | "name">): Robot {
@@ -100,6 +107,65 @@ describe("parseRobotFilters", () => {
     // ?category=foo 같은 잘못된 입력은 무시되어 전체가 반환된다.
     const f = parseRobotFilters({ category: "foo" });
     expect(searchRobots(data, f)).toHaveLength(3);
+  });
+});
+
+describe("parseRobotSort", () => {
+  it("유효한 sort 값은 통과시킨다", () => {
+    expect(parseRobotSort("year_desc")).toBe("year_desc");
+    expect(parseRobotSort("name_desc")).toBe("name_desc");
+  });
+
+  it("없거나 잘못된 값은 기본 정렬로 떨어진다", () => {
+    expect(parseRobotSort(undefined)).toBe(DEFAULT_ROBOT_SORT);
+    expect(parseRobotSort("nonsense")).toBe(DEFAULT_ROBOT_SORT);
+    expect(DEFAULT_ROBOT_SORT).toBe("name_asc");
+  });
+});
+
+describe("sortRobots", () => {
+  const items: Robot[] = [
+    robot({ id: "1", name: "Beta", year: 2020 }),
+    robot({ id: "2", name: "Alpha", year: 2024 }),
+    robot({ id: "3", name: "Gamma" }), // 연도 없음
+  ];
+
+  it("원본을 변형하지 않는다(복사본 반환)", () => {
+    const before = items.map((r) => r.id);
+    sortRobots(items, "year_desc");
+    expect(items.map((r) => r.id)).toEqual(before);
+  });
+
+  it("기본값은 이름 오름차순", () => {
+    expect(sortRobots(items).map((r) => r.name)).toEqual([
+      "Alpha",
+      "Beta",
+      "Gamma",
+    ]);
+  });
+
+  it("name_desc 는 이름 내림차순", () => {
+    expect(sortRobots(items, "name_desc").map((r) => r.name)).toEqual([
+      "Gamma",
+      "Beta",
+      "Alpha",
+    ]);
+  });
+
+  it("year_desc 는 최신순, 연도 없음은 뒤로", () => {
+    expect(sortRobots(items, "year_desc").map((r) => r.id)).toEqual([
+      "2",
+      "1",
+      "3",
+    ]);
+  });
+
+  it("year_asc 는 오래된순, 연도 없음은 뒤로", () => {
+    expect(sortRobots(items, "year_asc").map((r) => r.id)).toEqual([
+      "1",
+      "2",
+      "3",
+    ]);
   });
 });
 

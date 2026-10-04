@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { ROBOT_SORTS, DEFAULT_ROBOT_SORT } from "@/lib/robots/search";
 
 const CATEGORIES = [
   "general",
@@ -126,6 +127,22 @@ export default function SearchFilters({ countries }: { countries: string[] }) {
         {STATUSES.map((s) => (
           <option key={s} value={s}>
             {t(`status.${s}`)}
+          </option>
+        ))}
+      </select>
+
+      <select
+        value={searchParams.get("sort") ?? DEFAULT_ROBOT_SORT}
+        onChange={(e) =>
+          // 기본 정렬이면 파라미터를 지워 URL 을 깔끔하게 유지한다.
+          setParam("sort", e.target.value === DEFAULT_ROBOT_SORT ? "" : e.target.value)
+        }
+        className={selectClass}
+        aria-label={t("search.sort")}
+      >
+        {ROBOT_SORTS.map((s) => (
+          <option key={s} value={s}>
+            {`${t("search.sort")}: ${t(`sort.${s}`)}`}
           </option>
         ))}
       </select>

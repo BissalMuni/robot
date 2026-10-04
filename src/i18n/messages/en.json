@@ -29,9 +29,16 @@
     "country": "Country",
     "category": "Category",
     "status": "Status",
+    "sort": "Sort",
     "all": "All",
     "results": "{count, plural, =0 {No robots} =1 {1 robot} other {# robots}}",
     "empty": "No robots match your search. Try adjusting the filters."
+  },
+  "sort": {
+    "name_asc": "Name (A–Z)",
+    "name_desc": "Name (Z–A)",
+    "year_desc": "Newest",
+    "year_asc": "Oldest"
   },
   "category": {
     "general": "General purpose",
