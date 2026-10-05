@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import { getAllRobotIds, getRobotById } from "@/lib/robots/store";
+import { getAllRobotIds, getAllRobots, getRobotById } from "@/lib/robots/store";
 import { robotJsonLdString } from "@/lib/robots/jsonld";
+import { relatedRobots } from "@/lib/robots/related";
+import RobotCard from "@/components/RobotCard";
 import type { Robot } from "@/lib/robots/types";
 
 // 빌드 시 모든 로봇 상세 페이지를 정적 생성한다 (SEO).
@@ -59,6 +61,8 @@ export default async function RobotDetail({
   const locale = await getLocale();
   const dateFmt = new Intl.DateTimeFormat(locale, { dateStyle: "medium" });
   const hasUnverified = robot.sources.some((s) => !s.verified);
+  // 관련 로봇(같은 제조사 → 같은 용도). getAllRobots 는 react cache 로 메모이즈된다.
+  const related = relatedRobots(await getAllRobots(), robot);
 
   return (
     <article className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
@@ -184,6 +188,18 @@ export default async function RobotDetail({
           ))}
         </ul>
       </section>
+
+      {/* 관련 로봇 — 같은 제조사·용도로 탐색을 이어간다(내부 링크). */}
+      {related.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-4 text-lg font-semibold">{t("robot.related")}</h2>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((r) => (
+              <RobotCard key={r.id} robot={r} />
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }
