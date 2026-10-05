@@ -5,9 +5,13 @@ import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { getAllRobotIds, getAllRobots, getRobotById } from "@/lib/robots/store";
 import { robotJsonLdString } from "@/lib/robots/jsonld";
+import { breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
 import { relatedRobots } from "@/lib/robots/related";
 import RobotCard from "@/components/RobotCard";
 import type { Robot } from "@/lib/robots/types";
+
+// sitemap.ts·layout.ts 와 동일한 사이트 출처.
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 
 // 빌드 시 모든 로봇 상세 페이지를 정적 생성한다 (SEO).
 export async function generateStaticParams() {
@@ -64,6 +68,12 @@ export default async function RobotDetail({
   // 관련 로봇(같은 제조사 → 같은 용도). getAllRobots 는 react cache 로 메모이즈된다.
   const related = relatedRobots(await getAllRobots(), robot);
 
+  // 빵부스러기: 홈 › 현재 로봇. 방향 안내(UX) + BreadcrumbList 구조화 데이터(SEO).
+  const crumbs = [
+    { name: t("nav.home"), path: "/" },
+    { name: robot.name, path: `/robots/${robot.id}` },
+  ];
+
   return (
     <article className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
       {/* 검색엔진 리치 결과용 구조화 데이터(schema.org Product) */}
@@ -71,12 +81,30 @@ export default async function RobotDetail({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: robotJsonLdString(robot) }}
       />
-      <Link
-        href="/"
-        className="mb-6 inline-block text-sm text-zinc-500 hover:underline dark:text-zinc-400"
-      >
-        ← {t("robot.backToList")}
-      </Link>
+      {/* 빵부스러기 구조화 데이터(schema.org BreadcrumbList) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdString(breadcrumbJsonLd(crumbs, BASE_URL)),
+        }}
+      />
+
+      {/* 빵부스러기 내비 — 마지막(현재 로봇)은 링크가 아닌 현재 위치로 표시한다. */}
+      <nav aria-label="breadcrumb" className="mb-6">
+        <ol className="flex flex-wrap items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+          <li>
+            <Link href="/" className="hover:underline">
+              {t("nav.home")}
+            </Link>
+          </li>
+          <li aria-hidden className="text-zinc-400 dark:text-zinc-600">
+            /
+          </li>
+          <li aria-current="page" className="text-zinc-700 dark:text-zinc-300">
+            {robot.name}
+          </li>
+        </ol>
+      </nav>
 
       <header className="mb-6">
         <h1 className="text-3xl font-bold">{robot.name}</h1>
