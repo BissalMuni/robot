@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getAllRobotIds } from "@/lib/robots/store";
+import { getAllRobots } from "@/lib/robots/store";
+import { latestFetchedAt } from "@/lib/robots/freshness";
 import { NAV_ITEMS } from "@/lib/navigation";
 
 // 사이트 기본 URL. 배포 시 NEXT_PUBLIC_SITE_URL 로 덮어쓴다.
@@ -13,9 +14,11 @@ const STATIC_PAGES: { path: string; priority: number }[] = NAV_ITEMS.map(
 
 // 목록 페이지 + 모든 정적 페이지 + 모든 로봇 상세 페이지를 사이트맵에 포함한다 (SEO).
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const ids = await getAllRobotIds();
-  const robotUrls = ids.map((id) => ({
-    url: `${BASE_URL}/robots/${id}`,
+  const robots = await getAllRobots();
+  const robotUrls = robots.map((robot) => ({
+    url: `${BASE_URL}/robots/${robot.id}`,
+    // 데이터가 마지막으로 수집된 시점을 lastModified 로 노출한다(없으면 생략).
+    lastModified: latestFetchedAt(robot),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
