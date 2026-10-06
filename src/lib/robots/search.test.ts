@@ -5,6 +5,7 @@ import {
   parseRobotFilters,
   parseRobotSort,
   sortRobots,
+  hasActiveFilters,
   DEFAULT_ROBOT_SORT,
 } from "./search";
 import type { Robot } from "./types";
@@ -166,6 +167,34 @@ describe("sortRobots", () => {
       "2",
       "3",
     ]);
+  });
+});
+
+describe("hasActiveFilters", () => {
+  it("아무것도 없으면 false", () => {
+    expect(hasActiveFilters({})).toBe(false);
+  });
+
+  it("검색어/국가/용도/상태 중 하나라도 있으면 true", () => {
+    expect(hasActiveFilters({ q: "atlas" })).toBe(true);
+    expect(hasActiveFilters({ country: "Japan" })).toBe(true);
+    expect(hasActiveFilters({ category: "service" })).toBe(true);
+    expect(hasActiveFilters({ status: "commercial" })).toBe(true);
+  });
+
+  it("비기본 정렬이면 true, 기본 정렬이면 false", () => {
+    expect(hasActiveFilters({ sort: "year_desc" })).toBe(true);
+    expect(hasActiveFilters({ sort: DEFAULT_ROBOT_SORT })).toBe(false);
+  });
+
+  it("잘못된 값은 활성으로 치지 않는다(parse 로 격리)", () => {
+    expect(hasActiveFilters({ category: "foo", status: "bar", sort: "nope" })).toBe(
+      false,
+    );
+  });
+
+  it("공백뿐인 검색어/국가는 활성이 아니다", () => {
+    expect(hasActiveFilters({ q: "   ", country: "  " })).toBe(false);
   });
 });
 

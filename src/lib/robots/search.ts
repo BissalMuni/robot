@@ -30,6 +30,20 @@ export function parseRobotFilters(raw: {
   };
 }
 
+// 활성 검색/필터/비기본 정렬이 하나라도 있는지 판단한다("초기화" 노출용).
+// parse* 를 재사용하므로 잘못된 값(예: ?category=foo)은 활성으로 치지 않는다.
+export function hasActiveFilters(raw: {
+  q?: string;
+  country?: string;
+  category?: string;
+  status?: string;
+  sort?: string;
+}): boolean {
+  const f = parseRobotFilters(raw);
+  const sortActive = parseRobotSort(raw.sort) !== DEFAULT_ROBOT_SORT;
+  return Boolean(f.query || f.country || f.category || f.status) || sortActive;
+}
+
 // 로봇 목록에 검색/필터를 적용한다 (순수 함수).
 export function searchRobots(robots: Robot[], filters: RobotFilters): Robot[] {
   const q = filters.query?.trim().toLowerCase();

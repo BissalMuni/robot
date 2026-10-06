@@ -3,7 +3,11 @@
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
-import { ROBOT_SORTS, DEFAULT_ROBOT_SORT } from "@/lib/robots/search";
+import {
+  ROBOT_SORTS,
+  DEFAULT_ROBOT_SORT,
+  hasActiveFilters,
+} from "@/lib/robots/search";
 
 const CATEGORIES = [
   "general",
@@ -71,6 +75,21 @@ export default function SearchFilters({ countries }: { countries: string[] }) {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => setParam("q", value), QUERY_DEBOUNCE_MS);
   };
+
+  // 모든 검색/필터/정렬을 지우고 기본 목록으로 되돌린다.
+  const clearAll = useCallback(() => {
+    startTransition(() => {
+      router.replace(pathname);
+    });
+  }, [router, pathname]);
+
+  const active = hasActiveFilters({
+    q: searchParams.get("q") ?? undefined,
+    country: searchParams.get("country") ?? undefined,
+    category: searchParams.get("category") ?? undefined,
+    status: searchParams.get("status") ?? undefined,
+    sort: searchParams.get("sort") ?? undefined,
+  });
 
   const selectClass =
     "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900";
@@ -146,6 +165,16 @@ export default function SearchFilters({ countries }: { countries: string[] }) {
           </option>
         ))}
       </select>
+
+      {active && (
+        <button
+          type="button"
+          onClick={clearAll}
+          className="rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+        >
+          {t("search.clear")}
+        </button>
+      )}
     </div>
   );
 }

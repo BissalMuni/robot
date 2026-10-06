@@ -30,6 +30,7 @@
     "category": "용도",
     "status": "상태",
     "sort": "정렬",
+    "clear": "필터 초기화",
     "all": "전체",
     "results": "{count, plural, =0 {로봇 없음} other {로봇 #개}}",
     "empty": "검색 결과가 없습니다. 필터를 조정해 보세요."

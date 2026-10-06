@@ -30,6 +30,7 @@
     "category": "Category",
     "status": "Status",
     "sort": "Sort",
+    "clear": "Clear filters",
     "all": "All",
     "results": "{count, plural, =0 {No robots} =1 {1 robot} other {# robots}}",
     "empty": "No robots match your search. Try adjusting the filters."
