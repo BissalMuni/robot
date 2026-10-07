@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   robotModels,
   categoryLabels,
@@ -24,19 +25,19 @@ export default function ModelsPage() {
           로봇의 &ldquo;몸&rdquo;이 하드웨어라면, &ldquo;머리&rdquo;는 학습된 AI
           모델입니다. 이 페이지는 개발 도구(소프트웨어)나 연구 생태계(연구 자료)와
           달리, 실제 로봇의 인식·판단·동작을 담당하는 모델 자체를 정리합니다. 도구는{" "}
-          <a
+          <Link
             href="/software"
             className="font-medium text-zinc-900 underline hover:no-underline dark:text-zinc-100"
           >
             소프트웨어
-          </a>
+          </Link>
           , 연구소·논문은{" "}
-          <a
+          <Link
             href="/research"
             className="font-medium text-zinc-900 underline hover:no-underline dark:text-zinc-100"
           >
             연구 자료
-          </a>{" "}
+          </Link>{" "}
           페이지를 참고하세요.
         </p>
       </header>
