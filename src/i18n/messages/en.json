@@ -18,7 +18,8 @@
     "models": "AI models",
     "community": "Community",
     "timeline": "Timeline",
-    "compare": "Compare"
+    "compare": "Compare",
+    "stats": "Stats"
   },
   "guide": {
     "browseRobots": "Browse the robot catalog"

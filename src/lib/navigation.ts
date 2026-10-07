@@ -22,4 +22,5 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: "/community", key: "community", priority: 0.6 },
   { href: "/timeline", key: "timeline", priority: 0.6 },
   { href: "/compare", key: "compare", priority: 0.6 },
+  { href: "/stats", key: "stats", priority: 0.5 },
 ] as const;
