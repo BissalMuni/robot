@@ -75,7 +75,7 @@ export default async function RobotDetail({
   ];
 
   return (
-    <article className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
       {/* 검색엔진 리치 결과용 구조화 데이터(schema.org Product) */}
       <script
         type="application/ld+json"
@@ -228,6 +228,6 @@ export default async function RobotDetail({
           </div>
         </section>
       )}
-    </article>
+    </main>
   );
 }

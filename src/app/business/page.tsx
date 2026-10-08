@@ -22,7 +22,7 @@ export default async function BusinessPage() {
   const c = business[locale] ?? business.ko;
 
   return (
-    <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
+    <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
       <h1 className="text-3xl font-bold">{c.title}</h1>
       <p className="mt-2 text-zinc-500 dark:text-zinc-400">{c.subtitle}</p>
 
@@ -129,6 +129,6 @@ export default async function BusinessPage() {
           {t("guide.browseRobots")} →
         </Link>
       </footer>
-    </div>
+    </main>
   );
 }

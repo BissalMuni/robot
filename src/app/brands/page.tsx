@@ -13,7 +13,7 @@ export default function BrandsPage() {
   const global = brands.filter((b) => b.country !== "KR");
 
   return (
-    <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
       <header className="mb-8 flex flex-col gap-2">
         <h1 className="text-2xl font-bold sm:text-3xl">휴머노이드 로봇 브랜드</h1>
         <p className="text-zinc-500 dark:text-zinc-400">
@@ -38,6 +38,6 @@ export default function BrandsPage() {
           ))}
         </div>
       </section>
-    </div>
+    </main>
   );
 }

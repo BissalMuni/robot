@@ -43,7 +43,7 @@ export default async function Home({
   const robots = sortRobots(searchRobots(all, filters), sort);
 
   return (
-    <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
       {/* 검색엔진이 카탈로그 목록을 이해하도록 돕는 구조화 데이터(schema.org ItemList) */}
       <script
         type="application/ld+json"
@@ -70,6 +70,6 @@ export default async function Home({
       </section>
 
       <RobotGrid robots={robots} />
-    </div>
+    </main>
   );
 }
