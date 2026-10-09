@@ -4,7 +4,14 @@ import { useTranslations } from "next-intl";
 import type { Robot } from "@/lib/robots/types";
 
 // 단일 로봇 카드. 목록 그리드에서 사용한다 (서버 컴포넌트).
-export default function RobotCard({ robot }: { robot: Robot }) {
+// priority=true 면 커버 이미지를 우선 로드한다(목록 최상단 LCP 최적화용).
+export default function RobotCard({
+  robot,
+  priority = false,
+}: {
+  robot: Robot;
+  priority?: boolean;
+}) {
   const t = useTranslations();
   const cover = robot.images[0];
   // 출처 중 하나라도 미검증이면 카드에 미검증 배지를 노출한다.
@@ -21,6 +28,7 @@ export default function RobotCard({ robot }: { robot: Robot }) {
             src={cover}
             alt={robot.name}
             fill
+            priority={priority}
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover transition group-hover:scale-105"
           />

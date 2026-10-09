@@ -140,6 +140,7 @@ export default async function RobotDetail({
                   src={src}
                   alt={idx === 0 ? robot.name : `${robot.name} – photo ${idx + 1}`}
                   fill
+                  priority={idx === 0}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />

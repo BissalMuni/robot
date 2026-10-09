@@ -20,8 +20,9 @@ export default function RobotGrid({ robots }: { robots: Robot[] }) {
 
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {robots.map((robot) => (
-        <RobotCard key={robot.id} robot={robot} />
+      {robots.map((robot, i) => (
+        // 첫 카드만 우선 로드해 목록 LCP 를 앞당긴다(나머지는 지연 로드).
+        <RobotCard key={robot.id} robot={robot} priority={i === 0} />
       ))}
     </div>
   );
