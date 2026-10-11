@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
+import { pageMetadata } from "@/lib/seo";
 import { partCategories } from "@/data/parts";
 import { PartCard } from "@/components/PartCard";
 import { PartsListView } from "@/components/PartsListView";
 import { PartsNav } from "@/components/PartsNav";
 import { ViewToggle } from "@/components/ViewToggle";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "부품 가이드 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇 제작에 필요한 핵심 부품 6종(액추에이터·감속기·힘토크센서·IMU·제어컴퓨터·배터리)의 선택 기준, 주요 업체, 국내외 구매처.",
-};
+  path: "/parts",
+});
 
 const VIEWS = [
   { key: "card", label: "카드형" },

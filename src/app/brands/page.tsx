@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { brands } from "@/data/brands";
 import { BrandCard } from "@/components/BrandCard";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "브랜드 디렉토리",
   description:
     "주요 휴머노이드 로봇 브랜드 12개사의 공식 웹사이트 링크, 대표 제품, 특징을 한눈에.",
-};
+  path: "/brands",
+});
 
 export default function BrandsPage() {
   const domestic = brands.filter((b) => b.country === "KR");

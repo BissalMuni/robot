@@ -1,16 +1,17 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
 import { researchItems, categoryLabels, ResearchCategory } from "@/data/research";
+import { pageMetadata } from "@/lib/seo";
 import { ResearchCard } from "@/components/ResearchCard";
 import { ResearchNav } from "@/components/ResearchNav";
 import { ResearchListView } from "@/components/ResearchListView";
 import { ViewToggle } from "@/components/ViewToggle";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "연구 자료 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇 연구의 핵심 자료: 주요 연구소, 학회, 공개 데이터셋, 핵심 논문을 한눈에 정리.",
-};
+  path: "/research",
+});
 
 const CATEGORY_ORDER: ResearchCategory[] = [
   "labs",

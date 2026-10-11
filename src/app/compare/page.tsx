@@ -1,17 +1,18 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
 import { humanoidSpecs, statusLabel, type RobotStatus } from "@/data/compare";
 import { sortSpecs } from "@/lib/compare";
+import { pageMetadata } from "@/lib/seo";
 import { CompareTableView } from "@/components/CompareTableView";
 import { CompareCardView } from "@/components/CompareCardView";
 import { ViewToggle } from "@/components/ViewToggle";
 import { CompareControls } from "@/components/CompareControls";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "스펙 비교 | 휴머노이드 로봇",
   description:
     "Tesla Optimus·Figure 02·Unitree H1 등 주요 휴머노이드 로봇 12종의 키·무게·자유도·속도·하중을 한눈에 비교합니다.",
-};
+  path: "/compare",
+});
 
 const VIEWS = [
   { key: "table", label: "표형" },

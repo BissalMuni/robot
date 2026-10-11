@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
+import { pageMetadata } from "@/lib/seo";
 import { assemblySteps, roadmapPhases } from "@/data/assembly";
 import { AssemblyStepCard } from "@/components/AssemblyStepCard";
 import { AssemblyTableView } from "@/components/AssemblyTableView";
@@ -7,11 +7,12 @@ import { AssemblyNav } from "@/components/AssemblyNav";
 import { RoadmapPhaseCard } from "@/components/RoadmapPhaseCard";
 import { ViewToggle } from "@/components/ViewToggle";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "조립 방법 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇 조립 7단계(프레임→액추에이터→센서→제어기→배터리→캘리브레이션→통합테스트)와 Phase 1~3 양산 로드맵.",
-};
+  path: "/assembly",
+});
 
 const VIEWS = [
   { key: "step", label: "단계형" },

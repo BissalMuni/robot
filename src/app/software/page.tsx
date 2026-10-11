@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { softwareTools, categoryLabels, SoftwareCategory } from "@/data/software";
+import { pageMetadata } from "@/lib/seo";
 import { SoftwareToolCard } from "@/components/SoftwareToolCard";
 import { SoftwareNav } from "@/components/SoftwareNav";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "소프트웨어 스택 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇 개발에 필요한 소프트웨어 생태계: OS, ROS2 미들웨어, 시뮬레이션, 모션 플래닝, AI/강화학습, SLAM, 컴퓨터 비전, 임베디드 도구를 한눈에.",
-};
+  path: "/software",
+});
 
 const CATEGORY_ORDER: SoftwareCategory[] = [
   "os",

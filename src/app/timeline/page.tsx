@@ -1,16 +1,17 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
 import { timelineEvents, categoryLabels, TimelineCategory } from "@/data/timeline";
+import { pageMetadata } from "@/lib/seo";
 import { TimelineEventCard } from "@/components/TimelineEvent";
 import { TimelineCardView } from "@/components/TimelineCardView";
 import { TimelineTableView } from "@/components/TimelineTableView";
 import { ViewToggle } from "@/components/ViewToggle";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "개발 연표 | 휴머노이드 로봇",
   description:
     "1973년 WABOT-1부터 2025년 양산 경쟁까지, 휴머노이드 로봇 50년 이정표를 한눈에.",
-};
+  path: "/timeline",
+});
 
 function groupByDecade(events: typeof timelineEvents) {
   const map = new Map<number, typeof events>();

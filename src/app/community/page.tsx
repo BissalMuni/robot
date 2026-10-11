@@ -1,16 +1,17 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
 import { communityItems, categoryLabels, CommunityCategory } from "@/data/community";
+import { pageMetadata } from "@/lib/seo";
 import { CommunityCard } from "@/components/CommunityCard";
 import { CommunityNav } from "@/components/CommunityNav";
 import { CommunityListView } from "@/components/CommunityListView";
 import { ViewToggle } from "@/components/ViewToggle";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "커뮤니티 | 휴머노이드 로봇",
   description:
     "휴머노이드·로봇공학 커뮤니티 모음: 포럼, 디스코드, 깃허브 오픈소스, 유튜브 채널, 뉴스레터를 한 곳에서.",
-};
+  path: "/community",
+});
 
 const CATEGORY_ORDER: CommunityCategory[] = [
   "forums",

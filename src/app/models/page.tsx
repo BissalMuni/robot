@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 import {
   robotModels,
   categoryLabels,
@@ -8,11 +8,12 @@ import {
 } from "@/data/models";
 import { ModelCard } from "@/components/ModelCard";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "AI 모델 | 휴머노이드 로봇",
   description:
     "휴머노이드·로봇을 실제로 움직이는 AI 모델을 정리했습니다. 시각-언어-행동(VLA), 휴머노이드 범용 모델, 조작 정책, 크로스-임바디먼트 파운데이션까지 분야에 큰 영향을 준 대표 모델을 개념 중심으로 봅니다.",
-};
+  path: "/models",
+});
 
 export default function ModelsPage() {
   return (
