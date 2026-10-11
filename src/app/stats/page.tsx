@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getAllRobots } from "@/lib/robots/store";
 import { tally, decadeBucket, maxCount, type Tally } from "@/lib/robots/stats";
 import { StatBar } from "@/components/StatBar";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "카탈로그 통계 | 휴머노이드 로봇",
   description:
     "수집된 휴머노이드 로봇 카탈로그를 국가·용도·상태·연대별로 집계해 한눈에 보여줍니다. 데이터가 늘어나면 통계도 자동으로 갱신됩니다.",
-};
+  path: "/stats",
+});
 
 // 한 집계 섹션(제목 + 막대 목록)을 렌더한다.
 function StatSection({

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { useCases } from "@/data/use-cases";
 import { UseCaseCard } from "@/components/UseCaseCard";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "활용 분야 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇이 실제로 투입되는 분야를 제조·물류·의료·가정·연구·재난·소매·극한환경으로 나누어 정리했습니다. 각 분야의 대표 작업과 기대 역할을 중립적으로 설명합니다.",
-};
+  path: "/use-cases",
+});
 
 export default function UseCasesPage() {
   return (

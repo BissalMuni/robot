@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   faqItems,
   faqJsonLd,
@@ -7,12 +6,14 @@ import {
 } from "@/data/faq";
 import { FaqItem } from "@/components/FaqItem";
 import { jsonLdString } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "자주 묻는 질문 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇에 대해 자주 묻는 질문을 기본·구매/비용·기술·안전/윤리 분류로 정리했습니다. 무엇인지, 살 수 있는지, 어떻게 걷고 판단하는지, 사람 곁에서 안전한지를 중립적으로 설명합니다.",
-};
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (

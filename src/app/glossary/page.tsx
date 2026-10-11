@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import {
   glossaryTerms,
   categoryLabels,
   categoryOrder,
 } from "@/data/glossary";
 import { GlossaryCard } from "@/components/GlossaryCard";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "용어집 | 휴머노이드 로봇",
   description:
     "휴머노이드 로봇 분야에서 자주 쓰이는 용어를 한곳에 정리했습니다. 자유도(DoF)·액추에이터·ZMP·VLA·Sim-to-Real 등 기본 개념부터 하드웨어·제어·인식·안전까지 분류별로 찾아볼 수 있습니다.",
-};
+  path: "/glossary",
+});
 
 // id → 한국어 용어 이름(관련 용어 링크 라벨용).
 const termNames: Record<string, string> = Object.fromEntries(
