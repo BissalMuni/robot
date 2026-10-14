@@ -39,6 +39,24 @@ export function parseAllows(robotsTxt: string, userAgent = "*"): string[] {
   return parseRules(robotsTxt, "allow", userAgent);
 }
 
+// robots.txt 규칙 하나가 경로에 매칭되는지 검사한다.
+// Google 스펙의 와일드카드를 지원한다: '*' = 임의의 문자열(빈 문자열 포함),
+// 규칙 끝의 '$' = 경로의 끝에 고정. 둘 다 없으면 리터럴 접두 일치(기존 동작 그대로).
+export function ruleMatches(path: string, rule: string): boolean {
+  if (!rule.includes("*") && !rule.includes("$")) {
+    // 와일드카드 없는 일반 규칙 — 접두 일치(기존 동작 보존).
+    return path.startsWith(rule);
+  }
+  // 정규식으로 변환: '*'→'.*', '$'→경로 끝 고정, 그 외 문자는 이스케이프.
+  let pattern = "^";
+  for (const ch of rule) {
+    if (ch === "*") pattern += ".*";
+    else if (ch === "$") pattern += "$";
+    else pattern += ch.replace(/[.+?^${}()|[\]\\]/g, "\\$&");
+  }
+  return new RegExp(pattern).test(path);
+}
+
 // 경로가 robots.txt 규칙상 허용되는지 검사한다.
 // Disallow 와 Allow 를 모두 보고, 더 긴(= 더 구체적인) 규칙을 우선한다(Google 스펙).
 // 동점이면 Allow 우선, 매칭 규칙이 없으면 허용이 기본값이다.
@@ -50,9 +68,10 @@ export function isPathAllowed(
   const disallows = parseDisallows(robotsTxt, userAgent);
   const allows = parseAllows(robotsTxt, userAgent);
 
+  // 규칙 문자열 길이를 구체성(specificity)으로 쓴다 — Google 의 "가장 긴 경로 규칙 우선".
   const longestMatch = (rules: string[]) =>
     rules
-      .filter((rule) => path.startsWith(rule))
+      .filter((rule) => ruleMatches(path, rule))
       .reduce((max, rule) => Math.max(max, rule.length), 0);
 
   const allowLen = longestMatch(allows);

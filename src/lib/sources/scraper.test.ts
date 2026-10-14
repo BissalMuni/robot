@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   parseDisallows,
   isPathAllowed,
+  ruleMatches,
   RateLimiter,
   normalizeScraped,
   parseInfobox,
@@ -53,6 +54,46 @@ describe("isPathAllowed — Allow 규칙", () => {
   it("동점 시 Allow 우선 (Google 스펙)", () => {
     const txt = "User-agent: *\nDisallow: /page\nAllow: /page\n";
     expect(isPathAllowed(txt, "/page")).toBe(true);
+  });
+});
+
+describe("ruleMatches — 와일드카드/앵커 (Google 스펙)", () => {
+  it("와일드카드가 없으면 리터럴 접두 일치(기존 동작)", () => {
+    expect(ruleMatches("/private/x", "/private")).toBe(true);
+    expect(ruleMatches("/public", "/private")).toBe(false);
+  });
+
+  it("'*' 는 임의의 문자열(빈 문자열 포함)에 매칭된다", () => {
+    expect(ruleMatches("/files/report.pdf", "/*.pdf")).toBe(true);
+    expect(ruleMatches("/report.pdf", "/*.pdf")).toBe(true);
+    expect(ruleMatches("/files/report.html", "/*.pdf")).toBe(false);
+    expect(ruleMatches("/ab", "/a*b")).toBe(true); // '*' 는 빈 문자열에도 매칭
+  });
+
+  it("끝의 '$' 는 경로의 끝에 고정한다", () => {
+    expect(ruleMatches("/index.php", "/*.php$")).toBe(true);
+    // 쿼리스트링이 붙으면 '.php' 로 끝나지 않으므로 매칭 안 됨
+    expect(ruleMatches("/index.php?id=1", "/*.php$")).toBe(false);
+  });
+
+  it("정규식 특수문자는 리터럴로 이스케이프된다", () => {
+    expect(ruleMatches("/a.b/c", "/a.b*")).toBe(true);
+    // '.' 가 임의 문자가 아니라 리터럴이어야 한다
+    expect(ruleMatches("/axb/c", "/a.b*")).toBe(false);
+  });
+});
+
+describe("isPathAllowed — 와일드카드 규칙", () => {
+  it("Disallow 와일드카드로 특정 확장자를 차단한다", () => {
+    const txt = "User-agent: *\nDisallow: /*.pdf$\n";
+    expect(isPathAllowed(txt, "/docs/manual.pdf")).toBe(false);
+    expect(isPathAllowed(txt, "/docs/manual.html")).toBe(true);
+  });
+
+  it("더 구체적인(긴) Allow 와일드카드가 Disallow 를 이긴다", () => {
+    const txt = "User-agent: *\nDisallow: /assets/\nAllow: /assets/*.css\n";
+    expect(isPathAllowed(txt, "/assets/app.css")).toBe(true);
+    expect(isPathAllowed(txt, "/assets/secret.key")).toBe(false);
   });
 });
 
