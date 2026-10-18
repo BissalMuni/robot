@@ -259,3 +259,32 @@ export const glossaryTerms: GlossaryTerm[] = [
     seeAlso: ["torque"],
   },
 ];
+
+// schema.org DefinedTermSet 구조화 데이터를 만든다(용어집 리치 결과용).
+// /glossary 페이지가 <script type="application/ld+json"> 로 주입한다.
+// FAQ(faqJsonLd)와 동일한 방식 — 데이터는 여기 한곳, 페이지는 주입만 한다.
+// 영어 원어(termEn)·약어(abbr)는 alternateName 로, 약어는 termCode 로도 노출해
+// 검색엔진이 한/영/약어 어느 쪽 질의로도 용어를 연결하도록 돕는다.
+export function glossaryJsonLd(
+  terms: GlossaryTerm[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: "휴머노이드 로봇 용어집",
+    hasDefinedTerm: terms.map((term) => {
+      // 원어는 항상, 약어는 있을 때만 대체 이름에 포함한다(중복 제거).
+      const alternateName = [term.termEn, term.abbr].filter(
+        (v): v is string => Boolean(v),
+      );
+      return {
+        "@type": "DefinedTerm",
+        name: term.term,
+        alternateName,
+        description: term.definition,
+        inDefinedTermSet: "휴머노이드 로봇 용어집",
+        ...(term.abbr ? { termCode: term.abbr } : {}),
+      };
+    }),
+  };
+}

@@ -1,9 +1,11 @@
 import {
   glossaryTerms,
+  glossaryJsonLd,
   categoryLabels,
   categoryOrder,
 } from "@/data/glossary";
 import { GlossaryCard } from "@/components/GlossaryCard";
+import { jsonLdString } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -21,6 +23,14 @@ const termNames: Record<string, string> = Object.fromEntries(
 export default function GlossaryPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12">
+      {/* 검색엔진 리치 결과용 구조화 데이터(schema.org DefinedTermSet) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdString(glossaryJsonLd(glossaryTerms)),
+        }}
+      />
+
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
           용어집
