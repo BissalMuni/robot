@@ -3,7 +3,15 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
+import {
+  jsonLdString,
+  websiteJsonLd,
+  organizationJsonLd,
+} from "@/lib/jsonld";
 import "./globals.css";
+
+// sitemap.ts·page.tsx 와 동일한 사이트 출처를 단일화한다.
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +55,17 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+        {/* 사이트 전역 구조화 데이터(schema.org WebSite + SearchAction, Organization).
+            WebSite 의 SearchAction 은 홈의 실제 검색(?q=)을 선언해 사이트링크 검색창 노출을 돕는다. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdString([
+              websiteJsonLd(BASE_URL),
+              organizationJsonLd(BASE_URL),
+            ]),
+          }}
+        />
         <NextIntlClientProvider>
           {/* 키보드 사용자가 헤더 내비를 건너뛰고 본문으로 바로 이동하는 링크.
               평소엔 sr-only, 포커스되면 보인다. */}
