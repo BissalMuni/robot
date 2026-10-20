@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { tally, decadeBucket, maxCount } from "./stats";
+import { tally, decadeBucket, maxCount, statFilterHref } from "./stats";
+import { parseRobotFilters } from "./search";
 import type { Robot } from "./types";
 
 function robot(p: Partial<Robot> & Pick<Robot, "id">): Robot {
@@ -69,5 +70,28 @@ describe("maxCount", () => {
 
   it("빈 배열이면 0", () => {
     expect(maxCount([])).toBe(0);
+  });
+});
+
+describe("statFilterHref", () => {
+  it("쿼리키와 값을 홈 필터 URL 로 만든다", () => {
+    expect(statFilterHref("category", "general")).toBe("/?category=general");
+    expect(statFilterHref("status", "commercial")).toBe(
+      "/?status=commercial",
+    );
+  });
+
+  it("공백·특수문자가 있는 국가명을 인코딩한다", () => {
+    expect(statFilterHref("country", "United States")).toBe(
+      "/?country=United%20States",
+    );
+  });
+
+  it("만든 URL 의 값은 parseRobotFilters 가 그대로 되읽는다(왕복 일치)", () => {
+    // decodeURIComponent 로 쿼리값을 복원해 홈 파서에 넣으면 원래 key 로 돌아와야 한다.
+    const key = "United States";
+    const href = statFilterHref("country", key);
+    const raw = decodeURIComponent(href.split("=")[1]);
+    expect(parseRobotFilters({ country: raw }).country).toBe(key);
   });
 });

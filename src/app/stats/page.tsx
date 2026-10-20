@@ -1,6 +1,12 @@
 import { getTranslations } from "next-intl/server";
 import { getAllRobots } from "@/lib/robots/store";
-import { tally, decadeBucket, maxCount, type Tally } from "@/lib/robots/stats";
+import {
+  tally,
+  decadeBucket,
+  maxCount,
+  statFilterHref,
+  type Tally,
+} from "@/lib/robots/stats";
 import { StatBar } from "@/components/StatBar";
 import { pageMetadata } from "@/lib/seo";
 
@@ -16,10 +22,13 @@ function StatSection({
   title,
   tallies,
   label,
+  href,
 }: {
   title: string;
   tallies: Tally[];
   label: (key: string) => string;
+  // 선택: 집계 항목을 필터링된 카탈로그로 연결하는 URL. 없으면 정적 막대.
+  href?: (key: string) => string;
 }) {
   if (tallies.length === 0) return null;
   const max = maxCount(tallies);
@@ -30,7 +39,13 @@ function StatSection({
       </h2>
       <div className="flex flex-col gap-2">
         {tallies.map((t) => (
-          <StatBar key={t.key} label={label(t.key)} count={t.count} max={max} />
+          <StatBar
+            key={t.key}
+            label={label(t.key)}
+            count={t.count}
+            max={max}
+            href={href?.(t.key)}
+          />
         ))}
       </div>
     </section>
@@ -69,17 +84,21 @@ export default async function StatsPage() {
           title="국가별"
           tallies={byCountry}
           label={(k) => k}
+          href={(k) => statFilterHref("country", k)}
         />
         <StatSection
           title="용도별"
           tallies={byCategory}
           label={(k) => t(`category.${k}`)}
+          href={(k) => statFilterHref("category", k)}
         />
         <StatSection
           title="상태별"
           tallies={byStatus}
           label={(k) => t(`status.${k}`)}
+          href={(k) => statFilterHref("status", k)}
         />
+        {/* 연대(decade)는 홈 카탈로그에 대응 필터가 없어 링크 없이 둔다. */}
         <StatSection title="연대별" tallies={byDecade} label={decadeLabel} />
       </div>
     </main>

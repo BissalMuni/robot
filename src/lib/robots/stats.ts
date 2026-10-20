@@ -25,3 +25,13 @@ export function decadeBucket(year: number | undefined): string {
 export function maxCount(tallies: Tally[]): number {
   return tallies.reduce((m, t) => (t.count > m ? t.count : m), 0);
 }
+
+// 집계 한 줄을 홈 카탈로그의 해당 필터로 연결하는 URL 을 만든다.
+// 홈(page.tsx)의 parseRobotFilters 가 읽는 쿼리키(country/category/status)와 1:1 로 맞춘다.
+// key 는 공백·특수문자가 있는 국가명(예: "United States")일 수 있어 인코딩한다.
+export function statFilterHref(
+  param: "country" | "category" | "status",
+  key: string,
+): string {
+  return `/?${param}=${encodeURIComponent(key)}`;
+}
