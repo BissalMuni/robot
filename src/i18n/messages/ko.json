@@ -26,7 +26,7 @@
     "browseRobots": "로봇 카탈로그 둘러보기"
   },
   "search": {
-    "placeholder": "이름 또는 제조사로 검색",
+    "placeholder": "이름·제조사·국가로 검색",
     "filters": "필터",
     "country": "국가",
     "category": "용도",

@@ -42,6 +42,17 @@ describe("searchRobots", () => {
     expect(searchRobots(data, { query: "tesla" }).map((r) => r.id)).toEqual(["3"]);
   });
 
+  it("국가명으로 검색한다(카드에 보이는 국가로도 찾을 수 있다)", () => {
+    // "Japan" 은 Pepper(일본) 한 건만 일치한다.
+    expect(searchRobots(data, { query: "japan" }).map((r) => r.id)).toEqual([
+      "2",
+    ]);
+    // "United States" 는 Atlas·Optimus 두 건이 일치한다.
+    expect(
+      searchRobots(data, { query: "united states" }).map((r) => r.id),
+    ).toEqual(["1", "3"]);
+  });
+
   it("설명(description) 키워드로 검색한다", () => {
     const withDesc: Robot[] = [
       ...data,

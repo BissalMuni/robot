@@ -49,11 +49,13 @@ export function searchRobots(robots: Robot[], filters: RobotFilters): Robot[] {
   const q = filters.query?.trim().toLowerCase();
 
   return robots.filter((robot) => {
-    // 텍스트 검색: 이름·제조사·설명에 부분 일치
+    // 텍스트 검색: 이름·제조사·국가·설명에 부분 일치.
+    // 카드가 "제조사 · 국가"를 노출하므로, 보이는 국가명(예: "United States")으로
+    // 검색하면 자연히 걸리도록 국가도 포함한다(국가 드롭다운 필터와 별개로 보조).
     // description 은 zod default("") 보장이라 null 체크 불필요.
     if (q) {
       const haystack =
-        `${robot.name} ${robot.manufacturer} ${robot.description}`.toLowerCase();
+        `${robot.name} ${robot.manufacturer} ${robot.country} ${robot.description}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     if (filters.country && robot.country !== filters.country) return false;
