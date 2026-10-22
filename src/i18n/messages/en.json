@@ -74,6 +74,8 @@
     "unverifiedNote": "Some data was gathered by AI search and has not been verified.",
     "backToList": "Back to list",
     "related": "Related robots",
+    "prevRobot": "Previous",
+    "nextRobot": "Next",
     "notFound": "Robot not found"
   },
   "notFoundPage": {

@@ -74,6 +74,8 @@
     "unverifiedNote": "일부 데이터는 AI 검색으로 수집되어 아직 검증되지 않았습니다.",
     "backToList": "목록으로",
     "related": "관련 로봇",
+    "prevRobot": "이전",
+    "nextRobot": "다음",
     "notFound": "로봇을 찾을 수 없습니다"
   },
   "notFoundPage": {

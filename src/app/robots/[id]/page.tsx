@@ -7,6 +7,7 @@ import { getAllRobotIds, getAllRobots, getRobotById } from "@/lib/robots/store";
 import { robotJsonLdString } from "@/lib/robots/jsonld";
 import { breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
 import { relatedRobots } from "@/lib/robots/related";
+import { adjacentRobots } from "@/lib/robots/adjacent";
 import RobotCard from "@/components/RobotCard";
 import type { Robot } from "@/lib/robots/types";
 
@@ -65,8 +66,11 @@ export default async function RobotDetail({
   const locale = await getLocale();
   const dateFmt = new Intl.DateTimeFormat(locale, { dateStyle: "medium" });
   const hasUnverified = robot.sources.some((s) => !s.verified);
-  // 관련 로봇(같은 제조사 → 같은 용도). getAllRobots 는 react cache 로 메모이즈된다.
-  const related = relatedRobots(await getAllRobots(), robot);
+  // 관련 로봇(같은 제조사 → 같은 용도)·순차 이웃(이전/다음)은 같은 목록에서 파생한다.
+  // getAllRobots 는 react cache 로 메모이즈되고 이름순으로 정렬돼 있다.
+  const all = await getAllRobots();
+  const related = relatedRobots(all, robot);
+  const { prev, next } = adjacentRobots(all, robot);
 
   // 빵부스러기: 홈 › 현재 로봇. 방향 안내(UX) + BreadcrumbList 구조화 데이터(SEO).
   const crumbs = [
@@ -228,6 +232,43 @@ export default async function RobotDetail({
             ))}
           </div>
         </section>
+      )}
+
+      {/* 순차 탐색 — 카탈로그(이름순)에서 이전/다음 로봇으로 이동한다. */}
+      {(prev || next) && (
+        <nav
+          aria-label="Robot navigation"
+          className="mt-10 flex items-stretch justify-between gap-3 border-t border-zinc-200 pt-6 dark:border-zinc-800"
+        >
+          {prev ? (
+            <Link
+              href={`/robots/${prev.id}`}
+              rel="prev"
+              className="flex max-w-[48%] flex-col gap-0.5 rounded-lg border border-zinc-200 px-4 py-3 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-900"
+            >
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                ← {t("robot.prevRobot")}
+              </span>
+              <span className="truncate font-medium">{prev.name}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link
+              href={`/robots/${next.id}`}
+              rel="next"
+              className="ml-auto flex max-w-[48%] flex-col gap-0.5 rounded-lg border border-zinc-200 px-4 py-3 text-right transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-900"
+            >
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                {t("robot.nextRobot")} →
+              </span>
+              <span className="truncate font-medium">{next.name}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
       )}
     </main>
   );
