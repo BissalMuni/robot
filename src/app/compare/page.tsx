@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { humanoidSpecs, statusLabel, type RobotStatus } from "@/data/compare";
 import { sortSpecs } from "@/lib/compare";
 import { pageMetadata } from "@/lib/seo";
@@ -83,7 +84,7 @@ export default async function ComparePage({
 
       {/* 상태 필터 */}
       <div className="mb-6 flex flex-wrap gap-2">
-        <a
+        <Link
           href={buildStatusHref()}
           className={`rounded-full border px-3 py-1 text-sm transition-colors ${
             !status
@@ -92,12 +93,12 @@ export default async function ComparePage({
           }`}
         >
           전체 <span className="ml-1 text-xs text-zinc-500">{humanoidSpecs.length}</span>
-        </a>
+        </Link>
         {(["production", "pilot", "prototype"] as RobotStatus[]).map((s) => {
           const { ko, color } = statusLabel[s];
           const active = status === s;
           return (
-            <a
+            <Link
               key={s}
               href={buildStatusHref(s)}
               className={`rounded-full border px-3 py-1 text-sm transition-colors ${
@@ -107,7 +108,7 @@ export default async function ComparePage({
               }`}
             >
               {ko} <span className="ml-1 text-xs opacity-70">{counts[s] ?? 0}</span>
-            </a>
+            </Link>
           );
         })}
       </div>
