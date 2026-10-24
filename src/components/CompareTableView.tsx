@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { humanoidSpecs, statusLabel, countryMeta, type HumanoidSpec } from "@/data/compare";
+import { compareAriaSort } from "@/lib/compare";
 
 function Cell({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -127,6 +128,8 @@ function SortableTheadInner() {
           return (
             <th
               key={col.label}
+              scope="col"
+              aria-sort={compareAriaSort(col.ascKey, col.descKey, currentSort)}
               onClick={sortable ? handleClick : undefined}
               title={sortable ? `${col.label}로 정렬` : undefined}
               className={[
@@ -169,7 +172,11 @@ function StaticThead() {
     <thead>
       <tr className={THEAD_ROW}>
         {COLUMNS.map((col) => (
-          <th key={col.label} className={`${TH_BASE} text-zinc-600 dark:text-zinc-400`}>
+          <th
+            key={col.label}
+            scope="col"
+            className={`${TH_BASE} text-zinc-600 dark:text-zinc-400`}
+          >
             {col.label}
           </th>
         ))}

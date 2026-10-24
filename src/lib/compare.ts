@@ -50,3 +50,21 @@ export function sortSpecs(specs: HumanoidSpec[], sort: string): HumanoidSpec[] {
   const compare = comparators[sort] ?? defaultCompare;
   return [...specs].sort(compare);
 }
+
+// 비교표 컬럼 헤더의 현재 정렬 상태를 WAI-ARIA aria-sort 값으로 환산한다 (순수 함수, a11y).
+// 화면의 ↑/↓/✓ 글리프로만 전달되던 정렬 상태를 스크린리더에도 노출하기 위함.
+// - ascKey 가 없으면 정렬 불가 컬럼 → undefined(aria-sort 미설정).
+// - ascKey === descKey 는 단방향(상태) 정렬 → 활성 시 "other", 비활성 "none".
+// - 양방향 컬럼은 현재 정렬이 asc/desc 중 무엇인지에 따라 ascending/descending, 아니면 none.
+export type AriaSort = "none" | "ascending" | "descending" | "other";
+export function compareAriaSort(
+  ascKey: string | undefined,
+  descKey: string | undefined,
+  currentSort: string,
+): AriaSort | undefined {
+  if (!ascKey) return undefined;
+  if (ascKey === descKey) return ascKey === currentSort ? "other" : "none";
+  if (currentSort === ascKey) return "ascending";
+  if (currentSort === descKey) return "descending";
+  return "none";
+}

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { nullLast, sortSpecs, STATUS_ORDER } from "./compare";
+import { nullLast, sortSpecs, STATUS_ORDER, compareAriaSort } from "./compare";
 import type { HumanoidSpec } from "@/data/compare";
 
 function spec(p: Partial<HumanoidSpec> & Pick<HumanoidSpec, "id">): HumanoidSpec {
@@ -93,5 +93,29 @@ describe("sortSpecs", () => {
 
   it("STATUS_ORDER 는 양산 우선이다", () => {
     expect(STATUS_ORDER[0]).toBe("production");
+  });
+});
+
+describe("compareAriaSort", () => {
+  it("정렬 불가 컬럼(ascKey 없음)은 undefined", () => {
+    expect(compareAriaSort(undefined, undefined, "year_desc")).toBeUndefined();
+  });
+
+  it("양방향 컬럼: 현재 정렬이 asc/desc 인지에 따라 ascending/descending", () => {
+    expect(compareAriaSort("year_asc", "year_desc", "year_asc")).toBe(
+      "ascending",
+    );
+    expect(compareAriaSort("year_asc", "year_desc", "year_desc")).toBe(
+      "descending",
+    );
+  });
+
+  it("양방향 컬럼이 비활성이면 none", () => {
+    expect(compareAriaSort("year_asc", "year_desc", "status")).toBe("none");
+  });
+
+  it("단방향(상태) 컬럼: 활성 시 other, 비활성 시 none", () => {
+    expect(compareAriaSort("status", "status", "status")).toBe("other");
+    expect(compareAriaSort("status", "status", "year_desc")).toBe("none");
   });
 });
