@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { mergeRobots, loadSourceSafely } from "./store";
+import { mergeRobots, loadSourceSafely, dedupeSources } from "./store";
 import type { Robot } from "./types";
 import type { RobotSource } from "@/lib/sources/types";
 
@@ -47,6 +47,56 @@ describe("mergeRobots", () => {
     expect(merged).toHaveLength(1);
     expect(merged[0].description).toBe("new");
     expect(merged[0].sources).toHaveLength(2);
+  });
+
+  it("같은 url 이 여러 소스에 중복되면 출처를 한 번만 유지한다", () => {
+    const merged = mergeRobots([
+      [
+        robot({
+          id: "a",
+          name: "Alpha",
+          sources: [{ url: "https://dup.com", fetchedAt: "2026-05-22T00:00:00.000Z", verified: false }],
+        }),
+      ],
+      [
+        robot({
+          id: "a",
+          name: "Alpha",
+          sources: [{ url: "https://dup.com", fetchedAt: "2026-06-01T00:00:00.000Z", verified: true }],
+        }),
+      ],
+    ]);
+    expect(merged[0].sources).toHaveLength(1);
+    // 뒤 소스가 덮어쓴다 — 마지막 메타데이터(verified·fetchedAt)를 유지한다.
+    expect(merged[0].sources[0]).toEqual({
+      url: "https://dup.com",
+      fetchedAt: "2026-06-01T00:00:00.000Z",
+      verified: true,
+    });
+  });
+});
+
+describe("dedupeSources", () => {
+  const s = (url: string, verified = true) => ({
+    url,
+    fetchedAt: "2026-05-22T00:00:00.000Z",
+    verified,
+  });
+
+  it("중복 url 을 제거하되 첫 등장 순서를 유지한다", () => {
+    const out = dedupeSources([s("https://a.com"), s("https://b.com"), s("https://a.com")]);
+    expect(out.map((x) => x.url)).toEqual(["https://a.com", "https://b.com"]);
+  });
+
+  it("중복 url 의 메타데이터는 마지막 값으로 갱신한다(뒤가 덮어쓴다)", () => {
+    const out = dedupeSources([s("https://a.com", false), s("https://a.com", true)]);
+    expect(out).toHaveLength(1);
+    expect(out[0].verified).toBe(true);
+  });
+
+  it("중복이 없으면 입력을 그대로(순서·내용) 반환한다", () => {
+    const input = [s("https://a.com"), s("https://b.com")];
+    expect(dedupeSources(input)).toEqual(input);
   });
 });
 
