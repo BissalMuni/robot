@@ -116,12 +116,19 @@ export default async function RobotDetail({
           {robot.manufacturer} · {robot.country}
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs dark:bg-zinc-800">
+          {/* 용도·상태 배지는 홈 카탈로그의 해당 필터로 연결해 비슷한 로봇 탐색을 잇는다. */}
+          <Link
+            href={`/?category=${robot.category}`}
+            className="rounded-full bg-zinc-100 px-3 py-1 text-xs transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+          >
             {t(`category.${robot.category}`)}
-          </span>
-          <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs dark:bg-zinc-800">
+          </Link>
+          <Link
+            href={`/?status=${robot.status}`}
+            className="rounded-full bg-zinc-100 px-3 py-1 text-xs transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+          >
             {t(`status.${robot.status}`)}
-          </span>
+          </Link>
           {hasUnverified && (
             <span className="rounded-full bg-amber-500/90 px-3 py-1 text-xs font-medium text-white">
               {t("robot.unverified")}
