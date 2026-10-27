@@ -5,6 +5,7 @@ import {
   decadeBucket,
   maxCount,
   statFilterHref,
+  statQueryHref,
   type Tally,
 } from "@/lib/robots/stats";
 import { StatBar } from "@/components/StatBar";
@@ -57,6 +58,7 @@ export default async function StatsPage() {
   const robots = await getAllRobots();
 
   const byCountry = tally(robots, (r) => r.country);
+  const byManufacturer = tally(robots, (r) => r.manufacturer);
   const byCategory = tally(robots, (r) => r.category);
   const byStatus = tally(robots, (r) => r.status);
   const byDecade = tally(robots, (r) => decadeBucket(r.year));
@@ -85,6 +87,13 @@ export default async function StatsPage() {
           tallies={byCountry}
           label={(k) => k}
           href={(k) => statFilterHref("country", k)}
+        />
+        {/* 제조사별 — 시장 주요 플레이어 파악용. 전용 필터가 없어 검색(?q=)으로 연결한다. */}
+        <StatSection
+          title="제조사별"
+          tallies={byManufacturer}
+          label={(k) => k}
+          href={(k) => statQueryHref(k)}
         />
         <StatSection
           title="용도별"

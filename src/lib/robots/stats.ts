@@ -35,3 +35,9 @@ export function statFilterHref(
 ): string {
   return `/?${param}=${encodeURIComponent(key)}`;
 }
+
+// 집계 한 줄을 홈 카탈로그의 자유 텍스트 검색(?q=)으로 연결하는 URL 을 만든다.
+// 제조사처럼 전용 필터 파라미터가 없는 차원에 쓴다(검색은 제조사도 매칭하므로 해당 제조사 로봇만 걸러진다).
+export function statQueryHref(query: string): string {
+  return `/?q=${encodeURIComponent(query)}`;
+}

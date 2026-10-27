@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { tally, decadeBucket, maxCount, statFilterHref } from "./stats";
+import {
+  tally,
+  decadeBucket,
+  maxCount,
+  statFilterHref,
+  statQueryHref,
+} from "./stats";
 import { parseRobotFilters } from "./search";
 import type { Robot } from "./types";
 
@@ -93,5 +99,18 @@ describe("statFilterHref", () => {
     const href = statFilterHref("country", key);
     const raw = decodeURIComponent(href.split("=")[1]);
     expect(parseRobotFilters({ country: raw }).country).toBe(key);
+  });
+});
+
+describe("statQueryHref", () => {
+  it("검색(?q=) URL 을 만들고 공백·특수문자를 인코딩한다", () => {
+    expect(statQueryHref("Boston Dynamics")).toBe("/?q=Boston%20Dynamics");
+  });
+
+  it("만든 URL 의 값은 parseRobotFilters 가 query 로 되읽는다(왕복 일치)", () => {
+    const maker = "Unitree Robotics";
+    const href = statQueryHref(maker);
+    const raw = decodeURIComponent(href.split("=")[1]);
+    expect(parseRobotFilters({ q: raw }).query).toBe(maker);
   });
 });
