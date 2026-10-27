@@ -272,5 +272,23 @@
     "sources": [
       { "url": "https://pal-robotics.com/robots/talos/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "unitree-g1",
+    "name": "Unitree G1",
+    "manufacturer": "Unitree Robotics",
+    "country": "China",
+    "year": 2024,
+    "category": "general",
+    "status": "commercial",
+    "height": 132,
+    "weight": 35,
+    "dof": 23,
+    "description": "Unitree Robotics의 소형 범용 휴머노이드. 2024년 8월 양산 버전이 공개됐고, 출시가 약 US$16,000(기본 모델은 이후 약 US$13,500부터)으로 비교적 낮은 가격에 판매돼 연구·개발 플랫폼으로 널리 보급됐다. 기본형 23 자유도, EDU 구성은 손·허리 관절을 더해 최대 43 자유도까지 확장된다.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.unitree.com/g1", "fetchedAt": "2026-10-28T00:00:00.000Z", "verified": true },
+      { "url": "https://en.wikipedia.org/wiki/Unitree_Robotics", "fetchedAt": "2026-10-28T00:00:00.000Z", "verified": true }
+    ]
   }
 ]
