@@ -216,10 +216,11 @@
     "height": 165,
     "weight": 30,
     "dof": 22,
-    "description": "가정용 작업을 목표로 한 경량 휴머노이드. 안전한 인간 상호작용을 위해 텐던 구동을 채택했다.",
+    "description": "가정용 작업을 목표로 한 경량 휴머노이드. 안전한 인간 상호작용을 위해 텐던 구동을 채택했다. 2025년 10월 가정용 모델 사전예약을 시작했고, 가격은 조기 구매 US$20,000 또는 월 구독 US$499(2026년 배송 예정)으로 공개됐다.",
     "images": [],
     "sources": [
-      { "url": "https://www.1x.tech/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
+      { "url": "https://www.1x.tech/", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false },
+      { "url": "https://en.wikipedia.org/wiki/1X_Technologies", "fetchedAt": "2026-10-29T00:00:00.000Z", "verified": true }
     ]
   },
   {
@@ -289,6 +290,22 @@
     "sources": [
       { "url": "https://www.unitree.com/g1", "fetchedAt": "2026-10-28T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/Unitree_Robotics", "fetchedAt": "2026-10-28T00:00:00.000Z", "verified": true }
+    ]
+  },
+  {
+    "id": "figure-03",
+    "name": "Figure 03",
+    "manufacturer": "Figure AI",
+    "country": "United States",
+    "year": 2025,
+    "category": "general",
+    "status": "commercial",
+    "height": 173,
+    "description": "Figure AI의 3세대 범용 휴머노이드. 2025년 10월 공개됐으며 자체 AI(Helix) 구동·가정 사용·대량 생산을 설계 목표로 삼았다. 2026년 들어 출하를 확대했고(시간당 1대 생산 수준), 가정용 리스 요금은 월 약 US$600으로 알려졌다. 손바닥 카메라·지문형 촉각 센서 등 감지 능력을 2세대 대비 강화했다.",
+    "images": [],
+    "sources": [
+      { "url": "https://en.wikipedia.org/wiki/Figure_AI", "fetchedAt": "2026-10-29T00:00:00.000Z", "verified": true },
+      { "url": "https://www.figure.ai/", "fetchedAt": "2026-10-29T00:00:00.000Z", "verified": false }
     ]
   }
 ]
