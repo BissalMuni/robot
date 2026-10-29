@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { pricingEntries, basisLabel } from "@/data/pricing";
 
@@ -59,9 +60,18 @@ export default function PricingPage() {
                 }`}
               >
                 <td className={TD}>
-                  <div className="font-semibold text-zinc-900 dark:text-zinc-100">
-                    {e.model}
-                  </div>
+                  {e.robotId ? (
+                    <Link
+                      href={`/robots/${e.robotId}`}
+                      className="font-semibold text-zinc-900 underline-offset-2 hover:underline dark:text-zinc-100"
+                    >
+                      {e.model}
+                    </Link>
+                  ) : (
+                    <div className="font-semibold text-zinc-900 dark:text-zinc-100">
+                      {e.model}
+                    </div>
+                  )}
                   {e.note && (
                     <p className="mt-1 max-w-xs text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
                       {e.note}

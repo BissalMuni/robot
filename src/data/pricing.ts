@@ -20,6 +20,7 @@ export type PricingEntry = {
   basis: PricingBasis;
   availability: string; // 예: "판매 중", "사전예약(2026 배송)"
   note?: string;
+  robotId?: string; // 카탈로그(data/robots.*.json)의 로봇 id — 있으면 상세 페이지로 연결한다.
   sources: PricingSource[];
 };
 
@@ -35,6 +36,7 @@ export const basisLabel: Record<PricingBasis, string> = {
 export const pricingEntries: PricingEntry[] = [
   {
     id: "unitree-r1",
+    robotId: "unitree-r1",
     model: "Unitree R1",
     maker: "Unitree Robotics",
     country: "China",
@@ -49,6 +51,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "unitree-g1",
+    robotId: "unitree-g1",
     model: "Unitree G1",
     maker: "Unitree Robotics",
     country: "China",
@@ -62,6 +65,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "1x-neo",
+    robotId: "neo",
     model: "1X NEO",
     maker: "1X Technologies",
     country: "Norway",
@@ -76,6 +80,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "figure-03",
+    robotId: "figure-03",
     model: "Figure 03",
     maker: "Figure AI",
     country: "United States",
@@ -89,6 +94,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "unitree-h1",
+    robotId: "unitree-h1",
     model: "Unitree H1",
     maker: "Unitree Robotics",
     country: "China",
