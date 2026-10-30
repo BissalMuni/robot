@@ -55,7 +55,8 @@ export default function PricingPage() {
             {pricingEntries.map((e, idx) => (
               <tr
                 key={e.id}
-                className={`border-b border-zinc-100 dark:border-zinc-800/60 ${
+                id={e.id}
+                className={`scroll-mt-20 border-b border-zinc-100 dark:border-zinc-800/60 ${
                   idx % 2 === 0 ? "" : "bg-zinc-50/50 dark:bg-zinc-900/20"
                 }`}
               >

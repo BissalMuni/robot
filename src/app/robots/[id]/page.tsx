@@ -8,6 +8,7 @@ import { robotJsonLdString } from "@/lib/robots/jsonld";
 import { breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
 import { relatedRobots } from "@/lib/robots/related";
 import { adjacentRobots } from "@/lib/robots/adjacent";
+import { pricingEntryFor } from "@/data/pricing";
 import RobotCard from "@/components/RobotCard";
 import type { Robot } from "@/lib/robots/types";
 
@@ -66,6 +67,8 @@ export default async function RobotDetail({
   const locale = await getLocale();
   const dateFmt = new Intl.DateTimeFormat(locale, { dateStyle: "medium" });
   const hasUnverified = robot.sources.some((s) => !s.verified);
+  // 가격·구매 가이드(/pricing)에 이 로봇이 있으면 가격 배지를 보여준다(창업 관점 가격 노출).
+  const priced = pricingEntryFor(robot.id);
   // 관련 로봇(같은 제조사 → 같은 용도)·순차 이웃(이전/다음)은 같은 목록에서 파생한다.
   // getAllRobots 는 react cache 로 메모이즈되고 이름순으로 정렬돼 있다.
   const all = await getAllRobots();
@@ -133,6 +136,16 @@ export default async function RobotDetail({
             <span className="rounded-full bg-amber-500/90 px-3 py-1 text-xs font-medium text-white">
               {t("robot.unverified")}
             </span>
+          )}
+          {/* 가격 배지 — /pricing 가이드의 해당 모델로 연결한다(출처 포함 상세 가격). */}
+          {priced && (
+            <Link
+              href={`/pricing#${priced.id}`}
+              title={t("nav.pricing")}
+              className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-200 dark:bg-emerald-950 dark:text-emerald-300 dark:hover:bg-emerald-900"
+            >
+              💰 {priced.priceLabel}
+            </Link>
           )}
         </div>
       </header>

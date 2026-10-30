@@ -107,3 +107,8 @@ export const pricingEntries: PricingEntry[] = [
     ],
   },
 ];
+
+// 카탈로그 로봇 id 로 해당 가격 정보를 찾는다(상세 페이지의 가격 배지용). 없으면 undefined.
+export function pricingEntryFor(robotId: string): PricingEntry | undefined {
+  return pricingEntries.find((e) => e.robotId === robotId);
+}

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { pricingEntries, basisLabel } from "./pricing";
+import { pricingEntries, basisLabel, pricingEntryFor } from "./pricing";
 
 // 카탈로그(seed + collected)의 로봇 id 집합. robotId 참조 무결성 검증용.
 function catalogIds(): Set<string> {
@@ -58,5 +58,17 @@ describe("pricing 데이터 정합성", () => {
     for (const e of pricingEntries) {
       if (e.robotId) expect(ids.has(e.robotId), `${e.id} → ${e.robotId}`).toBe(true);
     }
+  });
+});
+
+describe("pricingEntryFor", () => {
+  it("robotId 로 가격 항목을 찾는다", () => {
+    expect(pricingEntryFor("neo")?.id).toBe("1x-neo");
+    expect(pricingEntryFor("unitree-g1")?.id).toBe("unitree-g1");
+  });
+
+  it("가격 정보가 없는 로봇 id 는 undefined", () => {
+    expect(pricingEntryFor("atlas")).toBeUndefined();
+    expect(pricingEntryFor("does-not-exist")).toBeUndefined();
   });
 });
