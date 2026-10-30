@@ -325,5 +325,22 @@
       { "url": "https://www.unitree.com/R1", "fetchedAt": "2026-10-30T00:00:00.000Z", "verified": true },
       { "url": "https://www.therobotreport.com/unitree-designs-r1-humanoid-robot-to-be-agile-and-affordable/", "fetchedAt": "2026-10-30T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "walker-s2",
+    "name": "Walker S2",
+    "manufacturer": "UBTECH Robotics",
+    "country": "China",
+    "year": 2025,
+    "category": "industrial",
+    "status": "commercial",
+    "height": 176,
+    "dof": 52,
+    "description": "UBTECH Robotics의 산업용 휴머노이드. 2025년 공개 후 11월 양산·초도 물량(수백 대) 출하를 시작했다. 약 3분 만에 스스로 배터리를 교체하는 자율 핫스왑(듀얼 배터리)이 특징이며, 자동차·전자 등 공장 라인에 배치되고 있다. 2025년 초 이후 Walker 시리즈 누적 수주가 8억 위안(약 US$1.12억)을 넘었다고 발표했다.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.robotshop.com/products/ubtech-walker-s2-industrial-humanoid-robot", "fetchedAt": "2026-10-31T00:00:00.000Z", "verified": true },
+      { "url": "https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html", "fetchedAt": "2026-10-31T00:00:00.000Z", "verified": true }
+    ]
   }
 ]
