@@ -342,5 +342,22 @@
       { "url": "https://www.robotshop.com/products/ubtech-walker-s2-industrial-humanoid-robot", "fetchedAt": "2026-10-31T00:00:00.000Z", "verified": true },
       { "url": "https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html", "fetchedAt": "2026-10-31T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "xpeng-iron",
+    "name": "XPeng Iron",
+    "manufacturer": "XPeng",
+    "country": "China",
+    "year": 2025,
+    "category": "general",
+    "status": "concept",
+    "height": 173,
+    "weight": 70,
+    "description": "중국 전기차 기업 XPeng의 휴머노이드. 2025년 공개됐으며 XPeng 자사 EV 생산라인에 우선 투입되고 있다. 바이오닉 근육·촉각 센서를 내장한 소프트 스킨, 휴머노이드 최초를 표방하는 전고체 배터리를 내세운다. 소비자용 버전·공개 판매는 이후로 예고됐다(자유도는 세대·집계 방식에 따라 수치가 엇갈려 생략).",
+    "images": [],
+    "sources": [
+      { "url": "https://qviro.com/blog/xpeng-launches-iron-advanced-humanoid-robot/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://basic-tutorials.com/news/xpeng-iron-humanoid-robot-begins-mass-production/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
