@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { Robot } from "@/lib/robots/types";
+import { pricingEntryFor } from "@/data/pricing";
 
 // 단일 로봇 카드. 목록 그리드에서 사용한다 (서버 컴포넌트).
 // priority=true 면 커버 이미지를 우선 로드한다(목록 최상단 LCP 최적화용).
@@ -16,6 +17,8 @@ export default function RobotCard({
   const cover = robot.images[0];
   // 출처 중 하나라도 미검증이면 카드에 미검증 배지를 노출한다.
   const unverified = robot.sources.some((s) => !s.verified);
+  // 가격·구매 가이드(/pricing)에 있으면 카드에 가격 배지를 노출한다(구매 가능 모델 스캔용).
+  const priced = pricingEntryFor(robot.id);
 
   return (
     <Link
@@ -55,6 +58,11 @@ export default function RobotCard({
           <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
             {t(`status.${robot.status}`)}
           </span>
+          {priced && (
+            <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+              💰 {priced.priceLabel}
+            </span>
+          )}
         </div>
       </div>
     </Link>
