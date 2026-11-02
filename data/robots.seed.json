@@ -359,5 +359,22 @@
       { "url": "https://qviro.com/blog/xpeng-launches-iron-advanced-humanoid-robot/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://basic-tutorials.com/news/xpeng-iron-humanoid-robot-begins-mass-production/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
     ]
+  },
+  {
+    "id": "unitree-h2",
+    "name": "Unitree H2",
+    "manufacturer": "Unitree Robotics",
+    "country": "China",
+    "year": 2025,
+    "category": "general",
+    "status": "commercial",
+    "height": 182,
+    "weight": 70,
+    "dof": 31,
+    "description": "Unitree H1의 후속 풀사이즈 휴머노이드. 2025년 10월 공개, 2026년 4월부터 고객 출하. 공식 스토어에 US$29,900 실가격이 공개돼 풀사이즈 중 드물게 명시 가격으로 구매 가능하다. 31 자유도, 관절 토크 약 360N·m.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.unitree.com/H2", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
+    ]
   }
 ]
