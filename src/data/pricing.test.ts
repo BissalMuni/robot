@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { pricingEntries, basisLabel, pricingEntryFor } from "./pricing";
+import { pricingEntries, basisLabel, pricingEntryFor, cheapestEntry } from "./pricing";
 
 // 카탈로그(seed + collected)의 로봇 id 집합. robotId 참조 무결성 검증용.
 function catalogIds(): Set<string> {
@@ -70,5 +70,33 @@ describe("pricingEntryFor", () => {
   it("가격 정보가 없는 로봇 id 는 undefined", () => {
     expect(pricingEntryFor("atlas")).toBeUndefined();
     expect(pricingEntryFor("does-not-exist")).toBeUndefined();
+  });
+});
+
+describe("cheapestEntry", () => {
+  it("priceFromUsd 가 가장 낮은 항목을 고른다", () => {
+    const c = cheapestEntry();
+    expect(c).not.toBeNull();
+    const min = Math.min(
+      ...pricingEntries
+        .map((e) => e.priceFromUsd)
+        .filter((v): v is number => typeof v === "number"),
+    );
+    expect(c?.priceFromUsd).toBe(min);
+  });
+
+  it("priceFromUsd 가 하나도 없으면 null", () => {
+    const noPrice = pricingEntries
+      .filter((e) => e.priceFromUsd !== undefined)
+      .map((e) => ({ ...e, priceFromUsd: undefined }));
+    expect(cheapestEntry(noPrice)).toBeNull();
+  });
+
+  it("priceFromUsd 는 양수여야 한다", () => {
+    for (const e of pricingEntries) {
+      if (e.priceFromUsd !== undefined) {
+        expect(e.priceFromUsd, e.id).toBeGreaterThan(0);
+      }
+    }
   });
 });

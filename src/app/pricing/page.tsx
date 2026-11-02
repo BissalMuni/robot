@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
-import { pricingEntries, basisLabel } from "@/data/pricing";
+import { pricingEntries, basisLabel, cheapestEntry } from "@/data/pricing";
 
 export const metadata = pageMetadata({
   title: "가격·구매 가이드 | 휴머노이드 로봇",
@@ -23,6 +23,7 @@ const TH = "px-4 py-3 text-xs font-semibold uppercase tracking-wide text-zinc-60
 const TD = "px-4 py-3 align-top text-sm text-zinc-700 dark:text-zinc-300";
 
 export default function PricingPage() {
+  const cheapest = cheapestEntry();
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6">
       <header className="mb-8">
@@ -37,6 +38,17 @@ export default function PricingPage() {
           ※ 가격은 구성·지역·환율·시점에 따라 크게 달라지며, 각 수치는 표기된 출처의 확인 시점 기준입니다.
           본 사이트는 제휴 관계가 없습니다.
         </p>
+        {cheapest && (
+          <div className="mt-4 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm dark:border-emerald-900 dark:bg-emerald-950/40">
+            <span className="text-zinc-500 dark:text-zinc-400">최저 진입가</span>
+            <span className="font-semibold text-emerald-700 dark:text-emerald-300">
+              {cheapest.model} · {cheapest.priceLabel}
+            </span>
+            <span className="text-zinc-400 dark:text-zinc-500">
+              (비교 {pricingEntries.length}종)
+            </span>
+          </div>
+        )}
       </header>
 
       <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">

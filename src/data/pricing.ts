@@ -21,6 +21,9 @@ export type PricingEntry = {
   availability: string; // 예: "판매 중", "사전예약(2026 배송)"
   note?: string;
   robotId?: string; // 카탈로그(data/robots.*.json)의 로봇 id — 있으면 상세 페이지로 연결한다.
+  // 일시불 구매(또는 공개 리스트가) 진입가의 대략적 USD 값 — '최저 진입가' 요약·정렬용.
+  // 범위는 하한을 쓰고, 리스/구독 전용(일시불가 미공개)은 생략한다.
+  priceFromUsd?: number;
   sources: PricingSource[];
 };
 
@@ -36,6 +39,7 @@ export const basisLabel: Record<PricingBasis, string> = {
 export const pricingEntries: PricingEntry[] = [
   {
     id: "unitree-r1",
+    priceFromUsd: 5900,
     robotId: "unitree-r1",
     model: "Unitree R1",
     maker: "Unitree Robotics",
@@ -51,6 +55,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "unitree-g1",
+    priceFromUsd: 13500,
     robotId: "unitree-g1",
     model: "Unitree G1",
     maker: "Unitree Robotics",
@@ -65,6 +70,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "1x-neo",
+    priceFromUsd: 20000,
     robotId: "neo",
     model: "1X NEO",
     maker: "1X Technologies",
@@ -76,6 +82,21 @@ export const pricingEntries: PricingEntry[] = [
     sources: [
       { url: "https://en.wikipedia.org/wiki/1X_Technologies", fetchedAt: "2026-10-29T00:00:00.000Z", verified: true },
       { url: "https://www.engadget.com/ai/1x-neo-is-a-20000-home-robot-that-will-learn-chores-via-teleoperation-040252200.html", fetchedAt: "2026-10-29T00:00:00.000Z", verified: false },
+    ],
+  },
+  {
+    id: "unitree-h2",
+    priceFromUsd: 29900,
+    robotId: "unitree-h2",
+    model: "Unitree H2",
+    maker: "Unitree Robotics",
+    country: "China",
+    priceLabel: "US$29,900 (스탠다드)",
+    basis: "purchase",
+    availability: "판매 중(2026년 4월부터 출하)",
+    note: "H1 후속 풀사이즈 모델. 공식 스토어에 실가격을 공개해 풀사이즈 중 드물게 명시 가격으로 구매 가능. 31 자유도.",
+    sources: [
+      { url: "https://www.unitree.com/H2", fetchedAt: "2026-11-02T00:00:00.000Z", verified: true },
     ],
   },
   {
@@ -94,6 +115,7 @@ export const pricingEntries: PricingEntry[] = [
   },
   {
     id: "unitree-h1",
+    priceFromUsd: 90000,
     robotId: "unitree-h1",
     model: "Unitree H1",
     maker: "Unitree Robotics",
@@ -111,4 +133,15 @@ export const pricingEntries: PricingEntry[] = [
 // 카탈로그 로봇 id 로 해당 가격 정보를 찾는다(상세 페이지의 가격 배지용). 없으면 undefined.
 export function pricingEntryFor(robotId: string): PricingEntry | undefined {
   return pricingEntries.find((e) => e.robotId === robotId);
+}
+
+// priceFromUsd 가 있는 항목 중 진입가가 가장 낮은 항목을 고른다(요약용). 없으면 null.
+export function cheapestEntry(
+  entries: PricingEntry[] = pricingEntries,
+): PricingEntry | null {
+  return entries.reduce<PricingEntry | null>((min, e) => {
+    if (e.priceFromUsd === undefined) return min;
+    if (min === null || e.priceFromUsd < (min.priceFromUsd ?? Infinity)) return e;
+    return min;
+  }, null);
 }
