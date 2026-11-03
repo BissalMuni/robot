@@ -9,6 +9,7 @@ import { breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
 import { relatedRobots } from "@/lib/robots/related";
 import { adjacentRobots } from "@/lib/robots/adjacent";
 import { pricingEntryFor } from "@/data/pricing";
+import { countryWithFlag } from "@/lib/robots/country";
 import RobotCard from "@/components/RobotCard";
 import type { Robot } from "@/lib/robots/types";
 
@@ -116,7 +117,7 @@ export default async function RobotDetail({
       <header className="mb-6">
         <h1 className="text-3xl font-bold">{robot.name}</h1>
         <p className="mt-1 text-zinc-500 dark:text-zinc-400">
-          {robot.manufacturer} · {robot.country}
+          {robot.manufacturer} · {countryWithFlag(robot.country)}
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           {/* 용도·상태 배지는 홈 카탈로그의 해당 필터로 연결해 비슷한 로봇 탐색을 잇는다. */}

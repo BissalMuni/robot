@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { Robot } from "@/lib/robots/types";
 import { pricingEntryFor } from "@/data/pricing";
+import { countryWithFlag } from "@/lib/robots/country";
 
 // 단일 로봇 카드. 목록 그리드에서 사용한다 (서버 컴포넌트).
 // priority=true 면 커버 이미지를 우선 로드한다(목록 최상단 LCP 최적화용).
@@ -49,7 +50,7 @@ export default function RobotCard({
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="text-lg font-semibold">{robot.name}</h3>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          {robot.manufacturer} · {robot.country}
+          {robot.manufacturer} · {countryWithFlag(robot.country)}
         </p>
         <div className="mt-2 flex flex-wrap gap-1.5">
           <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">

@@ -9,6 +9,7 @@ import {
   type Tally,
 } from "@/lib/robots/stats";
 import { StatBar } from "@/components/StatBar";
+import { countryWithFlag } from "@/lib/robots/country";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -85,7 +86,7 @@ export default async function StatsPage() {
         <StatSection
           title="국가별"
           tallies={byCountry}
-          label={(k) => k}
+          label={(k) => countryWithFlag(k)}
           href={(k) => statFilterHref("country", k)}
         />
         {/* 제조사별 — 시장 주요 플레이어 파악용. 전용 필터가 없어 검색(?q=)으로 연결한다. */}
