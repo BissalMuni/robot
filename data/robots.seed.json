@@ -376,5 +376,23 @@
     "sources": [
       { "url": "https://www.unitree.com/H2", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "drc-hubo",
+    "name": "DRC-HUBO",
+    "manufacturer": "Rainbow Robotics",
+    "country": "South Korea",
+    "year": 2015,
+    "category": "research",
+    "status": "research",
+    "height": 175,
+    "weight": 80,
+    "dof": 32,
+    "description": "KAIST 휴보(HUBO) 연구에서 출발한 한국 레인보우로보틱스의 재난대응 휴머노이드. 2015년 DARPA 로보틱스 챌린지 결승에서 팀 KAIST로 우승했다. 직립 보행과 무릎 바퀴 주행을 오가는 듀얼 모드 설계가 특징이다.",
+    "images": [],
+    "sources": [
+      { "url": "https://en.wikipedia.org/wiki/HUBO", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://robodirectory.huskynarr.de/robot/rainbow-robotics-drc-hubo/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
+    ]
   }
 ]
