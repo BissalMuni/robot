@@ -394,5 +394,22 @@
       { "url": "https://en.wikipedia.org/wiki/HUBO", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://robodirectory.huskynarr.de/robot/rainbow-robotics-drc-hubo/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "agibot-a2",
+    "name": "Yuanzheng A2",
+    "manufacturer": "AgiBot (Zhiyuan Robotics)",
+    "country": "China",
+    "year": 2024,
+    "category": "general",
+    "status": "commercial",
+    "height": 175,
+    "weight": 55,
+    "description": "상하이의 AgiBot(즈위안 로보틱스, 2023년 설립)이 만든 범용 이족 휴머노이드. 2024년 8월 다섯 개 모델과 함께 공개됐고 바늘에 실을 꿰는 수준의 정밀 손 조작을 시연했다. 저비용 양산을 앞세워 테슬라 옵티머스의 경쟁자로 거론되며 표준·Max·W(바퀴형) 등 변형이 있다. 창업자는 전 화웨이 '천재소년' 펑즈후이. (자유도는 변형별로 40~49+로 엇갈려 생략)",
+    "images": [],
+    "sources": [
+      { "url": "https://interestingengineering.com/innovation/china-robots-to-take-on-elon-musks-optimus", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://humanoidmetric.com/robot/agibot-a2", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
