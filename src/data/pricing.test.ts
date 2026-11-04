@@ -1,6 +1,12 @@
 import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { pricingEntries, basisLabel, pricingEntryFor, cheapestEntry } from "./pricing";
+import {
+  pricingEntries,
+  basisLabel,
+  pricingEntryFor,
+  cheapestEntry,
+  filterByBasis,
+} from "./pricing";
 
 // 카탈로그(seed + collected)의 로봇 id 집합. robotId 참조 무결성 검증용.
 function catalogIds(): Set<string> {
@@ -98,5 +104,23 @@ describe("cheapestEntry", () => {
         expect(e.priceFromUsd, e.id).toBeGreaterThan(0);
       }
     }
+  });
+});
+
+describe("filterByBasis", () => {
+  it("basis 가 없으면 전체를 반환한다", () => {
+    expect(filterByBasis(pricingEntries)).toHaveLength(pricingEntries.length);
+  });
+
+  it("주어진 구매 형태만 추린다", () => {
+    const purchase = filterByBasis(pricingEntries, "purchase");
+    expect(purchase.length).toBeGreaterThan(0);
+    expect(purchase.every((e) => e.basis === "purchase")).toBe(true);
+  });
+
+  it("알 수 없는 basis 는 무시하고 전체를 반환한다(동작 보존)", () => {
+    expect(filterByBasis(pricingEntries, "bogus")).toHaveLength(
+      pricingEntries.length,
+    );
   });
 });

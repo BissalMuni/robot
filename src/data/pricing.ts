@@ -135,6 +135,15 @@ export function pricingEntryFor(robotId: string): PricingEntry | undefined {
   return pricingEntries.find((e) => e.robotId === robotId);
 }
 
+// 구매 형태(basis)로 가격 항목을 거른다. basis 가 없거나 알 수 없는 값이면 전체를 반환한다(동작 보존).
+export function filterByBasis(
+  entries: PricingEntry[],
+  basis?: string,
+): PricingEntry[] {
+  if (!basis || !(basis in basisLabel)) return entries;
+  return entries.filter((e) => e.basis === basis);
+}
+
 // priceFromUsd 가 있는 항목 중 진입가가 가장 낮은 항목을 고른다(요약용). 없으면 null.
 export function cheapestEntry(
   entries: PricingEntry[] = pricingEntries,

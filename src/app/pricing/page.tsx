@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
-import { pricingEntries, basisLabel, cheapestEntry } from "@/data/pricing";
+import {
+  pricingEntries,
+  basisLabel,
+  cheapestEntry,
+  filterByBasis,
+  type PricingBasis,
+} from "@/data/pricing";
 
 export const metadata = pageMetadata({
   title: "가격·구매 가이드 | 휴머노이드 로봇",
@@ -22,8 +28,24 @@ const basisClass: Record<string, string> = {
 const TH = "px-4 py-3 text-xs font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400";
 const TD = "px-4 py-3 align-top text-sm text-zinc-700 dark:text-zinc-300";
 
-export default function PricingPage() {
-  const cheapest = cheapestEntry();
+// 구매 형태 필터 칩 순서.
+const BASIS_ORDER: PricingBasis[] = ["purchase", "lease", "subscription", "contact"];
+
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ basis?: string }>;
+}) {
+  const { basis } = await searchParams;
+  const entries = filterByBasis(pricingEntries, basis);
+  const activeBasis = basis && basis in basisLabel ? basis : undefined;
+  const cheapest = cheapestEntry(entries);
+  const chipBase =
+    "rounded-full border px-3 py-1 text-sm transition-colors";
+  const chipInactive =
+    "border-zinc-300 text-zinc-600 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-300";
+  const chipActive =
+    "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100";
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6">
       <header className="mb-8">
@@ -45,10 +67,33 @@ export default function PricingPage() {
               {cheapest.model} · {cheapest.priceLabel}
             </span>
             <span className="text-zinc-400 dark:text-zinc-500">
-              (비교 {pricingEntries.length}종)
+              ({entries.length}종)
             </span>
           </div>
         )}
+
+        {/* 구매 형태 필터 — 창업자가 "바로 살 수 있는(구매)" 모델만 추리기 좋게. */}
+        <nav aria-label="구매 형태 필터" className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/pricing"
+            className={`${chipBase} ${activeBasis ? chipInactive : chipActive}`}
+          >
+            전체 <span className="ml-1 text-xs opacity-70">{pricingEntries.length}</span>
+          </Link>
+          {BASIS_ORDER.map((b) => {
+            const count = pricingEntries.filter((e) => e.basis === b).length;
+            if (count === 0) return null;
+            return (
+              <Link
+                key={b}
+                href={`/pricing?basis=${b}`}
+                className={`${chipBase} ${activeBasis === b ? chipActive : chipInactive}`}
+              >
+                {basisLabel[b]} <span className="ml-1 text-xs opacity-70">{count}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </header>
 
       <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
@@ -64,7 +109,7 @@ export default function PricingPage() {
             </tr>
           </thead>
           <tbody>
-            {pricingEntries.map((e, idx) => (
+            {entries.map((e, idx) => (
               <tr
                 key={e.id}
                 id={e.id}
