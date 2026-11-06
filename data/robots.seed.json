@@ -411,5 +411,23 @@
       { "url": "https://interestingengineering.com/innovation/china-robots-to-take-on-elon-musks-optimus", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://humanoidmetric.com/robot/agibot-a2", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
     ]
+  },
+  {
+    "id": "booster-t1",
+    "name": "Booster T1",
+    "manufacturer": "Booster Robotics",
+    "country": "China",
+    "year": 2024,
+    "category": "research",
+    "status": "commercial",
+    "height": 118,
+    "weight": 30,
+    "dof": 23,
+    "description": "중국 Booster Robotics의 개발자용 휴머노이드 플랫폼. 기본 23 자유도(그리퍼·정교한 손으로 31~41까지 확장), NVIDIA Orin 기반 온보드 연산을 갖췄다. RoboCup 2025 성인부 등 로봇 경진대회에서 우승한 검증 플랫폼이며, 일부 판매처 기준 약 US$41,224에 판매된다. 후속 T2 출시를 앞두고 T1은 단종 수순에 들어갔다.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.robotshop.com/products/booster-t1-humanoid-robot-standard", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://www.humanoid-robots.io/robot/booster-t1-by-booster-robotics", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
+    ]
   }
 ]
