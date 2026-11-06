@@ -8,6 +8,7 @@ import {
   DEFAULT_ROBOT_SORT,
   hasActiveFilters,
 } from "@/lib/robots/search";
+import { countryWithFlag } from "@/lib/robots/country";
 
 const CATEGORIES = [
   "general",
@@ -117,7 +118,7 @@ export default function SearchFilters({ countries }: { countries: string[] }) {
         <option value="">{`${t("search.country")}: ${t("search.all")}`}</option>
         {countries.map((c) => (
           <option key={c} value={c}>
-            {c}
+            {countryWithFlag(c)}
           </option>
         ))}
       </select>
