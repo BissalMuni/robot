@@ -1,11 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { getAllRobots } from "@/lib/robots/store";
+import Link from "next/link";
 import {
   tally,
   decadeBucket,
   maxCount,
   statFilterHref,
   statQueryHref,
+  commercialShare,
   type Tally,
 } from "@/lib/robots/stats";
 import { StatBar } from "@/components/StatBar";
@@ -63,6 +65,7 @@ export default async function StatsPage() {
   const byCategory = tally(robots, (r) => r.category);
   const byStatus = tally(robots, (r) => r.status);
   const byDecade = tally(robots, (r) => decadeBucket(r.year));
+  const share = commercialShare(robots);
 
   const decadeLabel = (key: string) => (key === "unknown" ? "미상" : key);
 
@@ -80,6 +83,16 @@ export default async function StatsPage() {
           종을 국가·용도·상태·연대별로 집계했습니다. 데이터가 늘어나면 이 통계도
           자동으로 갱신됩니다.
         </p>
+        {/* 시장 성숙도 한눈에: 지금 구매·배치 가능한(상용) 비중. 클릭 시 해당 목록으로. */}
+        <Link
+          href="/?status=commercial"
+          className="mt-4 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm transition-colors hover:bg-emerald-100 dark:border-emerald-900 dark:bg-emerald-950/40 dark:hover:bg-emerald-950/70"
+        >
+          <span className="text-zinc-500 dark:text-zinc-400">지금 구매·배치 가능(상용)</span>
+          <span className="font-semibold text-emerald-700 dark:text-emerald-300">
+            {share.commercial} / {share.total}종 ({share.pct}%)
+          </span>
+        </Link>
       </header>
 
       <div className="space-y-10">

@@ -5,6 +5,7 @@ import {
   maxCount,
   statFilterHref,
   statQueryHref,
+  commercialShare,
 } from "./stats";
 import { parseRobotFilters } from "./search";
 import type { Robot } from "./types";
@@ -99,6 +100,26 @@ describe("statFilterHref", () => {
     const href = statFilterHref("country", key);
     const raw = decodeURIComponent(href.split("=")[1]);
     expect(parseRobotFilters({ country: raw }).country).toBe(key);
+  });
+});
+
+describe("commercialShare", () => {
+  it("상용 비중을 올바로 계산한다", () => {
+    const robots = [
+      robot({ id: "1", status: "commercial" }),
+      robot({ id: "2", status: "commercial" }),
+      robot({ id: "3", status: "research" }),
+      robot({ id: "4", status: "concept" }),
+    ];
+    expect(commercialShare(robots)).toEqual({
+      commercial: 2,
+      total: 4,
+      pct: 50,
+    });
+  });
+
+  it("빈 목록이면 0으로 떨어진다(0 나눗셈 방지)", () => {
+    expect(commercialShare([])).toEqual({ commercial: 0, total: 0, pct: 0 });
   });
 });
 
