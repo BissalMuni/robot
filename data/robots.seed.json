@@ -429,5 +429,23 @@
       { "url": "https://www.robotshop.com/products/booster-t1-humanoid-robot-standard", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://www.humanoid-robots.io/robot/booster-t1-by-booster-robotics", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
     ]
+  },
+  {
+    "id": "engineai-pm01",
+    "name": "EngineAI PM01",
+    "manufacturer": "EngineAI",
+    "country": "China",
+    "year": 2024,
+    "category": "general",
+    "status": "commercial",
+    "height": 138,
+    "weight": 40,
+    "dof": 24,
+    "description": "중국 선전의 EngineAI가 2024년 12월 공개한 소형 범용 휴머노이드로, 플래그십 SE01의 소형 버전이다. 24 자유도, 320도 허리 회전, X86+NVIDIA Jetson Orin 연산을 갖췄다. 상용·교육용을 88,000위안(약 US$12,000, 2025년 3월 말까지 프로모션가)에 공개해 저가 보급형으로 주목받았다.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.therobotreport.com/engineai-releases-pm01-humanoid-robot-for-commercial-educational-use/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://en.wikipedia.org/wiki/Engine_AI", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
