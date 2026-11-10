@@ -182,10 +182,11 @@
     "height": 173,
     "weight": 73,
     "dof": 30,
-    "description": "모듈형 설계의 산업용 범용 휴머노이드. 제조·물류 작업을 위한 협동 로봇으로 개발되었다.",
+    "description": "Apptronik의 모듈형 산업용 범용 휴머노이드. 제조·물류 작업용 협동 로봇으로 개발됐다. 시리즈 A 누적 9억 3,500만 달러(총 조달 약 10억 달러)를 확보하며 양산을 확대 중이고, 구글 딥마인드(제미나이 로보틱스)와 차세대 모델을 공동 개발한다. 메르세데스-벤츠·GXO·자빌 등과 실증·배치를 진행한다.",
     "images": [],
     "sources": [
-      { "url": "https://apptronik.com/apollo", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false }
+      { "url": "https://apptronik.com/apollo", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": false },
+      { "url": "https://www.therobotreport.com/apptronik-brings-in-another-520m-to-ramp-up-apollo-production/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
     ]
   },
   {
