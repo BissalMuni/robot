@@ -6,6 +6,7 @@ import {
   pricingEntryFor,
   cheapestEntry,
   filterByBasis,
+  pricingItemListJsonLd,
 } from "./pricing";
 
 // 카탈로그(seed + collected)의 로봇 id 집합. robotId 참조 무결성 검증용.
@@ -122,5 +123,25 @@ describe("filterByBasis", () => {
     expect(filterByBasis(pricingEntries, "bogus")).toHaveLength(
       pricingEntries.length,
     );
+  });
+});
+
+describe("pricingItemListJsonLd", () => {
+  it("schema.org ItemList 구조를 만든다", () => {
+    const ld = pricingItemListJsonLd(pricingEntries, "https://x.com");
+    expect(ld["@context"]).toBe("https://schema.org");
+    expect(ld["@type"]).toBe("ItemList");
+    expect(ld.numberOfItems).toBe(pricingEntries.length);
+    const items = ld.itemListElement as { position: number }[];
+    expect(items).toHaveLength(pricingEntries.length);
+    expect(items[0].position).toBe(1);
+  });
+
+  it("robotId 가 있으면 상세 페이지 절대 URL 을 연결한다(끝 슬래시 정리)", () => {
+    const [first] = pricingItemListJsonLd(
+      [pricingEntries[0]],
+      "https://x.com/",
+    ).itemListElement as { url?: string }[];
+    expect(first.url).toBe(`https://x.com/robots/${pricingEntries[0].robotId}`);
   });
 });

@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import { jsonLdString } from "@/lib/jsonld";
 import {
   pricingEntries,
   basisLabel,
   cheapestEntry,
   filterByBasis,
+  pricingItemListJsonLd,
   type PricingBasis,
 } from "@/data/pricing";
+
+// sitemap.ts·layout.ts 와 동일한 사이트 출처.
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 
 export const metadata = pageMetadata({
   title: "가격·구매 가이드 | 휴머노이드 로봇",
@@ -48,6 +53,13 @@ export default async function PricingPage({
     "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100";
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6">
+      {/* 검색엔진 리치 결과용 구조화 데이터(schema.org ItemList) — 전체 목록 기준. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdString(pricingItemListJsonLd(pricingEntries, BASE_URL)),
+        }}
+      />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
           가격·구매 가이드

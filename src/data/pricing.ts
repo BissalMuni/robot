@@ -135,6 +135,28 @@ export function pricingEntryFor(robotId: string): PricingEntry | undefined {
   return pricingEntries.find((e) => e.robotId === robotId);
 }
 
+// schema.org ItemList 구조화 데이터를 만든다(/pricing 리치 결과용).
+// FAQ·용어집과 같은 방식 — 데이터는 여기, 페이지는 jsonLdString 으로 주입만 한다.
+// robotId 가 있으면 해당 상세 페이지 절대 URL 을 item 으로 연결한다.
+export function pricingItemListJsonLd(
+  entries: PricingEntry[],
+  baseUrl: string,
+): Record<string, unknown> {
+  const base = baseUrl.replace(/\/+$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "휴머노이드 로봇 가격·구매 가이드",
+    numberOfItems: entries.length,
+    itemListElement: entries.map((e, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${e.model} — ${e.priceLabel}`,
+      ...(e.robotId ? { url: `${base}/robots/${e.robotId}` } : {}),
+    })),
+  };
+}
+
 // 구매 형태(basis)로 가격 항목을 거른다. basis 가 없거나 알 수 없는 값이면 전체를 반환한다(동작 보존).
 export function filterByBasis(
   entries: PricingEntry[],
