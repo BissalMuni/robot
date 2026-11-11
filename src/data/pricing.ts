@@ -54,6 +54,21 @@ export const pricingEntries: PricingEntry[] = [
     ],
   },
   {
+    id: "engineai-pm01",
+    priceFromUsd: 12000,
+    robotId: "engineai-pm01",
+    model: "EngineAI PM01",
+    maker: "EngineAI",
+    country: "China",
+    priceLabel: "약 US$12,000 (88,000위안 프로모션)",
+    basis: "purchase",
+    availability: "판매 중(상용·교육용)",
+    note: "플래그십 SE01의 소형 버전. 2024년 12월 상용·교육용 출시, 프로모션가는 2025년 3월 말 기준.",
+    sources: [
+      { url: "https://www.therobotreport.com/engineai-releases-pm01-humanoid-robot-for-commercial-educational-use/", fetchedAt: "2026-11-02T00:00:00.000Z", verified: true },
+    ],
+  },
+  {
     id: "unitree-g1",
     priceFromUsd: 13500,
     robotId: "unitree-g1",
@@ -97,6 +112,21 @@ export const pricingEntries: PricingEntry[] = [
     note: "H1 후속 풀사이즈 모델. 공식 스토어에 실가격을 공개해 풀사이즈 중 드물게 명시 가격으로 구매 가능. 31 자유도.",
     sources: [
       { url: "https://www.unitree.com/H2", fetchedAt: "2026-11-02T00:00:00.000Z", verified: true },
+    ],
+  },
+  {
+    id: "booster-t1",
+    priceFromUsd: 41224,
+    robotId: "booster-t1",
+    model: "Booster T1",
+    maker: "Booster Robotics",
+    country: "China",
+    priceLabel: "약 US$41,224 (판매처 기준)",
+    basis: "purchase",
+    availability: "판매 중(후속 T2 예정 — 단종 수순)",
+    note: "RoboCup 2025 성인부 우승 개발자 플랫폼. 기본 23 자유도(그리퍼·정교한 손으로 확장).",
+    sources: [
+      { url: "https://www.robotshop.com/products/booster-t1-humanoid-robot-standard", fetchedAt: "2026-11-02T00:00:00.000Z", verified: true },
     ],
   },
   {
