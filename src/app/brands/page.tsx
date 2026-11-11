@@ -1,6 +1,8 @@
 import { pageMetadata } from "@/lib/seo";
 import { brands } from "@/data/brands";
 import { BrandCard } from "@/components/BrandCard";
+import { getAllRobots } from "@/lib/robots/store";
+import { robotNameIndex } from "@/lib/robots/name-index";
 
 export const metadata = pageMetadata({
   title: "브랜드 디렉토리",
@@ -9,7 +11,9 @@ export const metadata = pageMetadata({
   path: "/brands",
 });
 
-export default function BrandsPage() {
+export default async function BrandsPage() {
+  // 브랜드의 제품명을 카탈로그 상세로 연결하기 위한 이름→id 색인.
+  const nameIndex = robotNameIndex(await getAllRobots());
   const domestic = brands.filter((b) => b.country === "KR");
   const global = brands.filter((b) => b.country !== "KR");
 
@@ -26,7 +30,7 @@ export default function BrandsPage() {
         <h2 className="mb-4 text-xl font-semibold">🇰🇷 국내 기업</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {domestic.map((brand) => (
-            <BrandCard key={brand.id} brand={brand} />
+            <BrandCard key={brand.id} brand={brand} nameIndex={nameIndex} />
           ))}
         </div>
       </section>
@@ -35,7 +39,7 @@ export default function BrandsPage() {
         <h2 className="mb-4 text-xl font-semibold">🌍 해외 기업</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {global.map((brand) => (
-            <BrandCard key={brand.id} brand={brand} />
+            <BrandCard key={brand.id} brand={brand} nameIndex={nameIndex} />
           ))}
         </div>
       </section>

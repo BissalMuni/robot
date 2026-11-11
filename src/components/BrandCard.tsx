@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Brand } from "@/data/brands";
+import { robotIdByName } from "@/lib/robots/name-index";
 
 const COUNTRY_FLAG: Record<Brand["country"], string> = {
   KR: "🇰🇷",
@@ -9,7 +10,14 @@ const COUNTRY_FLAG: Record<Brand["country"], string> = {
   UK: "🇬🇧",
 };
 
-export function BrandCard({ brand }: { brand: Brand }) {
+export function BrandCard({
+  brand,
+  // 로봇 이름→카탈로그 id 색인. 일치하는 제품명은 상세 페이지로 연결한다(없으면 정적 배지).
+  nameIndex = {},
+}: {
+  brand: Brand;
+  nameIndex?: Record<string, string>;
+}) {
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-zinc-300 bg-white p-4 transition-shadow hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900">
       <div className="flex items-center justify-between">
@@ -22,14 +30,23 @@ export function BrandCard({ brand }: { brand: Brand }) {
         {brand.description}
       </p>
       <div className="flex flex-wrap gap-1">
-        {brand.robots.map((robot) => (
-          <span
-            key={robot}
-            className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs dark:bg-zinc-800"
-          >
-            {robot}
-          </span>
-        ))}
+        {brand.robots.map((robot) => {
+          const id = robotIdByName(nameIndex, robot);
+          const base = "rounded-full bg-zinc-100 px-2 py-0.5 text-xs dark:bg-zinc-800";
+          return id ? (
+            <Link
+              key={robot}
+              href={`/robots/${id}`}
+              className={`${base} transition-colors hover:bg-zinc-200 dark:hover:bg-zinc-700`}
+            >
+              {robot}
+            </Link>
+          ) : (
+            <span key={robot} className={base}>
+              {robot}
+            </span>
+          );
+        })}
       </div>
       <Link
         href={brand.website}
