@@ -261,4 +261,34 @@ export const partCategories: PartCategory[] = [
       { name: "RobotShop", url: "https://www.robotshop.com/collections/robot-batteries", country: "GLOBAL", description: "로봇 전용 배터리 모음" },
     ],
   },
+  {
+    id: "hand",
+    name: "Dexterous Hand / Gripper",
+    nameKo: "로봇 핸드·그리퍼",
+    icon: "🖐️",
+    description:
+      "팔 끝에서 물체를 쥐고 조작하는 엔드이펙터. 손가락 수·자유도와 촉각 센서가 조작 정밀도를 좌우한다. 휴머노이드 '작업' 능력의 핵심.",
+    keySpecs: ["손가락 수", "자유도(DoF)", "구동 방식(선형/텐던)", "촉각 센서 유무", "통신(RS-485/CAN)", "가반(kg)"],
+    vendors: [
+      {
+        name: "원익로보틱스 (Allegro Hand)",
+        country: "KR",
+        website: "https://www.allegrohand.com",
+        description: "16자유도 토크제어 로봇 핸드 Allegro Hand. 전 세계 180여 연구기관이 채택한 연구·교육 표준. 국산.",
+        products: ["Allegro Hand V4", "Allegro Hand V5", "Allegro Hand V6"],
+      },
+      {
+        name: "Inspire Robots",
+        country: "CN",
+        website: "https://en.inspire-robots.com",
+        description: "RH56 시리즈 5지 정교한 손(6자유도·12관절, 선형 서보). 중국 최초 양산 정교한 손으로 휴머노이드에 가장 널리 채택(예: Unitree G1·H2).",
+        products: ["RH56DFX", "RH56BFX", "RH56DFTP"],
+      },
+    ],
+    purchaseSites: [
+      { name: "Allegro Hand 공식", url: "https://www.allegrohand.com", country: "KR", description: "원익로보틱스 Allegro Hand 구매·문의" },
+      { name: "Inspire Robots 스토어", url: "https://inspire-robots.store", country: "GLOBAL", description: "RH56 정교한 손 온라인 구매" },
+      { name: "RobotShop", url: "https://www.robotshop.com", country: "GLOBAL", description: "로봇 핸드·그리퍼 취급" },
+    ],
+  },
 ];
