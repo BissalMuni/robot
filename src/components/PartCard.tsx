@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PartCategory } from "@/data/parts";
+import { koreanVendorCount } from "@/lib/parts";
 
 const COUNTRY_LABEL: Record<string, string> = {
   KR: "🇰🇷 국내",
@@ -24,6 +25,11 @@ export function PartCard({ part }: { part: PartCategory }) {
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{part.nameKo}</h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">{part.name}</p>
         </div>
+        {koreanVendorCount(part) > 0 && (
+          <span className="ml-auto shrink-0 self-start rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+            🇰🇷 국산 제조사 {koreanVendorCount(part)}
+          </span>
+        )}
       </div>
 
       {/* 설명 */}
