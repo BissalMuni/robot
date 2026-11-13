@@ -17,6 +17,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: "/pricing", key: "pricing", priority: 0.6 },
   { href: "/brands", key: "brands", priority: 0.6 },
   { href: "/parts", key: "parts", priority: 0.6 },
+  { href: "/suppliers", key: "suppliers", priority: 0.6 },
   { href: "/assembly", key: "assembly", priority: 0.6 },
   { href: "/software", key: "software", priority: 0.6 },
   { href: "/research", key: "research", priority: 0.6 },
