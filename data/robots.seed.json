@@ -448,5 +448,23 @@
       { "url": "https://www.therobotreport.com/engineai-releases-pm01-humanoid-robot-for-commercial-educational-use/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://en.wikipedia.org/wiki/Engine_AI", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
     ]
+  },
+  {
+    "id": "gr-2",
+    "name": "GR-2",
+    "manufacturer": "Fourier Intelligence",
+    "country": "China",
+    "year": 2024,
+    "category": "general",
+    "status": "commercial",
+    "height": 175,
+    "weight": 63,
+    "dof": 53,
+    "description": "Fourier Intelligence의 2세대 범용 휴머노이드(GR-1 후속). 2024년 10월 공개됐으며 53 자유도에 손마다 12자유도 정교한 손과 어레이형 촉각 센서를 갖췄다. 관절 구조를 병렬에서 직렬로 바꿔 제어·유지보수를 단순화하고, 탈착식 배터리로 구동 시간을 늘렸다. 단일 팔 가반 3kg.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.engineering.com/fourier-unveils-next-generation-humanoid-robot-gr-2/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://www.fourierintelligence.com/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
