@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import type { Robot } from "@/lib/robots/types";
 import { pricingEntryFor } from "@/data/pricing";
 import { countryWithFlag } from "@/lib/robots/country";
+import { robotSpecSummary } from "@/lib/robots/spec-summary";
 
 // 단일 로봇 카드. 목록 그리드에서 사용한다 (서버 컴포넌트).
 // priority=true 면 커버 이미지를 우선 로드한다(목록 최상단 LCP 최적화용).
@@ -20,6 +21,8 @@ export default function RobotCard({
   const unverified = robot.sources.some((s) => !s.verified);
   // 가격·구매 가이드(/pricing)에 있으면 카드에 가격 배지를 노출한다(구매 가능 모델 스캔용).
   const priced = pricingEntryFor(robot.id);
+  // 카드에서 빠르게 비교할 수 있는 한 줄 스펙(키·무게·자유도). 없으면 빈 문자열.
+  const specs = robotSpecSummary(robot);
 
   return (
     <Link
@@ -52,6 +55,9 @@ export default function RobotCard({
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           {robot.manufacturer} · {countryWithFlag(robot.country)}
         </p>
+        {specs && (
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">{specs}</p>
+        )}
         <div className="mt-2 flex flex-wrap gap-1.5">
           <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
             {t(`category.${robot.category}`)}
