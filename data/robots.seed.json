@@ -46,10 +46,11 @@
     "height": 175,
     "weight": 65,
     "dof": 20,
-    "description": "물류 창고용으로 설계된 상용 이족 휴머노이드. 박스를 들어 옮기는 작업에 특화되어 있다.",
+    "description": "물류 창고용으로 설계된 상용 이족 휴머노이드. 박스·토트를 들어 옮기는 작업에 특화됐다. 2024년 6월 GXO Logistics와 다년 계약을 맺어 업계 최초의 휴머노이드 상용 배치이자 첫 서비스형 로봇(RaaS) 배치를 시작했고, 클라우드 운영 플랫폼 Agility Arc로 관리된다.",
     "images": [],
     "sources": [
-      { "url": "https://agilityrobotics.com/products/digit", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true }
+      { "url": "https://agilityrobotics.com/products/digit", "fetchedAt": "2026-05-22T00:00:00.000Z", "verified": true },
+      { "url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true }
     ]
   },
   {
