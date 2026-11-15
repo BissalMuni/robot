@@ -467,5 +467,22 @@
       { "url": "https://www.engineering.com/fourier-unveils-next-generation-humanoid-robot-gr-2/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://www.fourierintelligence.com/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
     ]
+  },
+  {
+    "id": "galbot-g1",
+    "name": "Galbot G1",
+    "manufacturer": "Galbot (Galaxy General)",
+    "country": "China",
+    "year": 2024,
+    "category": "service",
+    "status": "commercial",
+    "height": 173,
+    "weight": 92.5,
+    "description": "베이징 Galaxy General(Galbot)의 바퀴형 양팔 세미휴머노이드. 전방향 바퀴 베이스 + 승강형 다리 + 7자유도 양팔(팔당 가반 5kg)에 NVIDIA Orin 연산과 자체 멀티모달 모델을 탑재했다. 2024년 공개됐으며 매장·약국·창고에서 선반 피킹·재입고·포장 작업을 겨냥한다. (자유도는 집계 기준이 엇갈려 생략)",
+    "images": [],
+    "sources": [
+      { "url": "http://developer.galbot.com/docs/g1/2.2.4/en/g1/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://www.humanoid-robots.io/robot/g1-by-galbot", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
