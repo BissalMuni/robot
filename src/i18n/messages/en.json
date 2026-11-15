@@ -43,7 +43,9 @@
     "name_asc": "Name (A–Z)",
     "name_desc": "Name (Z–A)",
     "year_desc": "Newest",
-    "year_asc": "Oldest"
+    "year_asc": "Oldest",
+    "dof_desc": "Most DoF",
+    "height_desc": "Tallest"
   },
   "category": {
     "general": "General purpose",

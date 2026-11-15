@@ -43,7 +43,9 @@
     "name_asc": "이름순",
     "name_desc": "이름 역순",
     "year_desc": "최신 연도순",
-    "year_asc": "오래된 연도순"
+    "year_asc": "오래된 연도순",
+    "dof_desc": "자유도 높은순",
+    "height_desc": "키 큰순"
   },
   "category": {
     "general": "범용",

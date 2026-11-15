@@ -72,6 +72,8 @@ export const ROBOT_SORTS = [
   "name_desc",
   "year_desc",
   "year_asc",
+  "dof_desc",
+  "height_desc",
 ] as const;
 export type RobotSort = (typeof ROBOT_SORTS)[number];
 export const DEFAULT_ROBOT_SORT: RobotSort = "name_asc";
@@ -98,6 +100,20 @@ export function sortRobots(
     if (yb === null) return -1;
     return desc ? yb - ya : ya - yb;
   };
+  // 선택 숫자 스펙(height/weight/dof) 비교. 값 없음은 항상 뒤로 보낸다.
+  const byNum = (
+    a: Robot,
+    b: Robot,
+    field: "height" | "weight" | "dof",
+    desc: boolean,
+  ) => {
+    const va = a[field] ?? null;
+    const vb = b[field] ?? null;
+    if (va === null && vb === null) return 0;
+    if (va === null) return 1;
+    if (vb === null) return -1;
+    return desc ? vb - va : va - vb;
+  };
 
   const arr = [...robots];
   switch (sort) {
@@ -107,6 +123,10 @@ export function sortRobots(
       return arr.sort((a, b) => byYear(a, b, true) || byName(a, b));
     case "year_asc":
       return arr.sort((a, b) => byYear(a, b, false) || byName(a, b));
+    case "dof_desc":
+      return arr.sort((a, b) => byNum(a, b, "dof", true) || byName(a, b));
+    case "height_desc":
+      return arr.sort((a, b) => byNum(a, b, "height", true) || byName(a, b));
     case "name_asc":
     default:
       return arr.sort(byName);

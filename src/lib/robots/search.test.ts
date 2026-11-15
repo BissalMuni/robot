@@ -179,6 +179,37 @@ describe("sortRobots", () => {
       "3",
     ]);
   });
+
+  it("dof_desc 는 자유도 많은순, 값 없음은 뒤로", () => {
+    const specItems: Robot[] = [
+      robot({ id: "a", name: "A", dof: 20 }),
+      robot({ id: "b", name: "B", dof: 53 }),
+      robot({ id: "c", name: "C" }), // dof 없음
+    ];
+    expect(sortRobots(specItems, "dof_desc").map((r) => r.id)).toEqual([
+      "b",
+      "a",
+      "c",
+    ]);
+  });
+
+  it("height_desc 는 키 큰순, 값 없음은 뒤로", () => {
+    const specItems: Robot[] = [
+      robot({ id: "a", name: "A", height: 150 }),
+      robot({ id: "b", name: "B", height: 180 }),
+      robot({ id: "c", name: "C" }), // height 없음
+    ];
+    expect(sortRobots(specItems, "height_desc").map((r) => r.id)).toEqual([
+      "b",
+      "a",
+      "c",
+    ]);
+  });
+
+  it("parseRobotSort 는 새 스펙 정렬 키를 통과시킨다", () => {
+    expect(parseRobotSort("dof_desc")).toBe("dof_desc");
+    expect(parseRobotSort("height_desc")).toBe("height_desc");
+  });
 });
 
 describe("hasActiveFilters", () => {
