@@ -46,4 +46,17 @@ export const marketForecasts: MarketForecast[] = [
       { url: "https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050", fetchedAt: "2026-11-02T00:00:00.000Z", verified: false },
     ],
   },
+  {
+    id: "citi-2050",
+    source: "Citi (GPS)",
+    targetYear: 2050,
+    marketLabel: "약 US$7조",
+    unitsLabel: "약 6.48억 대(보급)",
+    summary:
+      "2050년 TAM 약 US$7조 전망(보급 약 6억 4,800만 대). 택배·건설·음식배달·홈서비스를 주요 성장 용도로 꼽는다.",
+    sources: [
+      { url: "https://finance.yahoo.com/news/humanoid-robots-could-create-a-7-trillion-market-in-the-next-25-years-citi-analysts-233324909.html", fetchedAt: "2026-11-02T00:00:00.000Z", verified: true },
+      { url: "https://longbridge.com/en/news/218827006", fetchedAt: "2026-11-02T00:00:00.000Z", verified: false },
+    ],
+  },
 ];
