@@ -1,5 +1,14 @@
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { marketForecasts, type MarketForecast } from "@/data/market";
+
+// 창업 리서치 동선: 시장 전망 → 가격 → 공급사 → 통계로 이어지는 관련 페이지.
+const RELATED = [
+  { href: "/pricing", label: "가격·구매" },
+  { href: "/suppliers", label: "부품 공급사" },
+  { href: "/parts", label: "부품 가이드" },
+  { href: "/stats", label: "카탈로그 통계" },
+];
 
 export const metadata = pageMetadata({
   title: "시장 전망 | 휴머노이드 로봇",
@@ -82,6 +91,24 @@ export default function MarketPage() {
           <ForecastCard key={f.id} forecast={f} />
         ))}
       </div>
+
+      {/* 창업 리서치 동선 — 관련 자료로 이어가기. */}
+      <nav aria-label="관련 자료" className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+        <h2 className="mb-3 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+          관련 자료
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {RELATED.map((r) => (
+            <Link
+              key={r.href}
+              href={r.href}
+              className="rounded-full border border-zinc-300 px-3 py-1 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            >
+              {r.label} →
+            </Link>
+          ))}
+        </div>
+      </nav>
     </main>
   );
 }
