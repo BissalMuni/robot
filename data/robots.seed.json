@@ -484,5 +484,23 @@
       { "url": "http://developer.galbot.com/docs/g1/2.2.4/en/g1/", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
       { "url": "https://www.humanoid-robots.io/robot/g1-by-galbot", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
     ]
+  },
+  {
+    "id": "neura-4ne-1",
+    "name": "4NE-1",
+    "manufacturer": "NEURA Robotics",
+    "country": "Germany",
+    "year": 2026,
+    "category": "industrial",
+    "status": "concept",
+    "height": 180,
+    "weight": 80,
+    "dof": 53,
+    "description": "독일 NEURA Robotics의 풀사이즈 인지(cognitive) 휴머노이드. 고토크 액추에이터와 정교한 손(손당 12자유도)·다중 센서로 산업·물류 협업을 겨냥한다. 2026년 사전예약 단계이며 Gen 3.5 가격은 약 €98,000로 알려졌다. 유럽을 대표하는 휴머노이드 개발사 중 하나다.",
+    "images": [],
+    "sources": [
+      { "url": "https://www.humanoid-robots.io/robot/4ne-1-gen-3-5-by-neura-robotics", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": true },
+      { "url": "https://blog.robozaps.com/b/neura-robotics-4ne1-review", "fetchedAt": "2026-11-02T00:00:00.000Z", "verified": false }
+    ]
   }
 ]
