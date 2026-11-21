@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import RobotGrid from "@/components/RobotGrid";
 import SearchFilters from "@/components/SearchFilters";
@@ -14,6 +15,16 @@ import { robotListJsonLdString } from "@/lib/robots/jsonld";
 
 // sitemap.ts·layout.ts 와 동일한 사이트 출처를 사용한다.
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+
+// 창업 리서치에 바로 쓰는 핵심 자료 페이지 — 긴 상단 내비에 묻히지 않게 랜딩에 바로 노출한다.
+// 라벨은 기존 nav.* i18n 키를 재사용한다(로케일 parity 유지).
+const RESEARCH_SHORTCUTS = [
+  { href: "/market", key: "market" },
+  { href: "/pricing", key: "pricing" },
+  { href: "/suppliers", key: "suppliers" },
+  { href: "/parts", key: "parts" },
+  { href: "/compare", key: "compare" },
+] as const;
 
 // 검색·필터는 ?q=·?category= 등 수많은 URL 변형을 만든다.
 // 모두 루트(/)로 canonical 을 고정해 중복 콘텐츠 색인을 막는다.
@@ -56,6 +67,21 @@ export default async function Home({
         <p className="mt-1 text-zinc-500 dark:text-zinc-400">
           {t("site.tagline")}
         </p>
+        {/* 창업 리서치 바로가기 — 시장·가격·공급사·부품·비교 */}
+        <nav
+          aria-label="창업 리서치 바로가기"
+          className="mt-4 flex flex-wrap gap-2"
+        >
+          {RESEARCH_SHORTCUTS.map(({ href, key }) => (
+            <Link
+              key={href}
+              href={href}
+              className="rounded-full border border-zinc-300 px-3 py-1 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            >
+              {t(`nav.${key}`)}
+            </Link>
+          ))}
+        </nav>
       </header>
 
       <section className="mb-6 flex flex-col gap-3">
